@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ShowFavPoem"
+    android:background="@drawable/back"
+    android:keepScreenOn="true"
+    >
+
+    <LinearLayout
+        android:layout_gravity="center_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:orientation="vertical"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/trans_rectangle_back_blue"
+        android:layout_marginTop="10dp"
+        >
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/fp_swiprefresh_sabk">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:orientation="vertical"
+            android:background="@drawable/trans_rectangle_back"
+            android:gravity="center"
+
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:background="@drawable/trans_rectangle_poem_back"
+                android:layoutDirection="ltr">
+
+                <ImageView
+                    android:id="@+id/fp_img_heart_btn"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="25dp"
+                    android:src="@drawable/heart_white" />
+                <ImageView
+                    android:id="@+id/fp_img_share_btn"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginTop="25dp"
+
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="5dp"
+                    android:src="@drawable/share64" />
+                <ImageView
+                    android:id="@+id/fp_img_play"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="25dp"
+                    android:src="@drawable/play_btn" />
+                <ImageView
+                    android:id="@+id/fp_img_download"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="25dp"
+                    android:src="@drawable/ic_file_download" />
+
+
+                <SeekBar
+                    android:id="@+id/fp_seekBar"
+                    android:layout_width="match_parent"
+                    android:layout_height="23dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="30dp"
+                    android:paddingEnd="12dp"
+                    android:progressDrawable="@drawable/seekbarprogress"
+                    android:thumb="@drawable/cusror32" />
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+        </android.support.v4.widget.SwipeRefreshLayout>
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:layout_marginTop="100dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/trans_rectangle_back_blue"
+        android:layout_marginBottom="10dp"
+        android:textAlignment="center"
+        android:textDirection="rtl"
+
+        >
+
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/trans_rectangle_back"
+                >
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/trans_rectangle_poem_back"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginBottom="15dp"
+                    android:textAlignment="center"
+                    android:orientation="vertical"
+                    >
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        >
+                        <ScrollView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            >
+
+                            <TextView
+                                android:id="@+id/fp_txt_body"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+
+                                android:layout_marginBottom="10dp"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                android:layout_marginTop="10dp"
+                                android:paddingBottom="10dp"
+                                android:paddingLeft="10dp"
+                                android:paddingRight="10dp"
+                                android:paddingTop="10dp"
+                                android:scrollbars="vertical"
+                                android:singleLine="false"
+
+                                android:textAlignment="center"
+                                android:textColor="#fff"
+                                android:textDirection="rtl"
+
+                                android:textSize="16dp" />
+                        </ScrollView>
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+
+
+    </LinearLayout>
+
+
+</RelativeLayout>

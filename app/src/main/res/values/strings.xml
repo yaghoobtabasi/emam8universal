@@ -1,0 +1,50 @@
+<resources>
+    <string name="app_name">اپلیکیشن جامع امام هشت</string>
+    <string name="title_activity_login">ورود به برنامه</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password (optional)</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+
+    <string name="pref_access_token" translatable="false">pref_access_token</string>
+    <string name="pref_expire_in_sec" translatable="false">pref_expire_in_sec</string>
+    <string name="pref_expire_at" translatable="false">pref_expire_at</string>
+    <string name="pref_refresh_token" translatable="false">pref_refresh_token</string>
+    <string name="pref_app_id" translatable="false">pref_app_id</string>
+    <string name="pref_user_id" translatable="false">pref_user_id</string>
+    <string name="pref_user_email" translatable="false">pref_user_email</string>
+    <string name="pref_user_name" translatable="false">pref_user_name</string>
+    <string name="pref_user_image_url">pref_user_image_url</string>
+    <string name="title_activity_sign_up">SignUpActivity</string>
+    <string name="txt_shop">فروشگاه</string>
+    <string name="txt_home">خانه</string>
+    <string name="text_favorites">علاقمندی ها</string>
+    <string name="text_filter">فیلتر</string>
+    <string name="text_poets">شاعران</string>
+    <string name="text_profile">پروفایل</string>
+    <string name="txt_contact_us">ارتباط با ما</string>
+
+
+
+    <string name="txt_hint_username_login">شماره موبایل  خود را وارد کنید</string>
+    <string name="txt_hint_pass_signup">رمز عبور را وارد کنید</string>
+    <string name="txt_hint_pass_confirm_signup">رمز عبور را مجددا وارد کنید</string>
+    <string name="btn_signup">ثبت نام</string>
+
+
+
+    <string name="msg_err_signup_lenth">حد اقل طول رمز بایستی 6 کاراکتر باشد</string>
+    <string name="msg_err_signup_username_length">حد اقل طول شماره موبایل یا ایمیل بایستی ده کاراکتر باشد</string>
+    <string name="msg_err_signup_pass_confirm">هر دو رمز وارد شده باید یکسان باشد</string>
+
+
+</resources>

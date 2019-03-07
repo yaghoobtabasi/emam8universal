@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Auth.login_activity">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/back"
+        android:scaleType="centerCrop"
+        android:id="@+id/background"
+        />
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+
+
+        >
+        <LinearLayout
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:background="@drawable/trans_rectangle_back_blue"
+            android:layout_marginTop="18dp"
+
+
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:background="@drawable/trans_rectangle_back"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:paddingBottom="10dp"
+
+                >
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:id="@+id/emam8_logo"
+                    android:src="@drawable/logo"
+                    android:layout_marginTop="5dp"
+                    android:scaleType="fitCenter"
+                    />
+
+                <!-- Email Label -->
+
+
+                    <EditText
+                        android:id="@+id/input_email"
+                        android:layout_width="match_parent"
+                        android:layout_height="32dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginStart="10dp"
+                        android:background="@color/backgroud_white"
+                        android:hint="موبایل یا ایمیل یا نام کاربری  خود را وارد کنید"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:inputType="textEmailAddress" />
+
+
+                <!-- Password Label -->
+
+
+                    <EditText
+                        android:id="@+id/input_password"
+                        android:layout_width="match_parent"
+                        android:layout_height="32dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginStart="10dp"
+                        android:background="@color/backgroud_white"
+                        android:hint="رمز عبور را وارد کنید"
+                        android:textDirection="rtl"
+                        android:inputType="textPassword" />
+
+
+                <android.support.v7.widget.AppCompatButton
+                    android:id="@+id/btn_login"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="24dp"
+                    android:layout_marginTop="24dp"
+                    android:padding="12dp"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginEnd="30dp"
+                    android:text="ورود" />
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:weightSum="1"
+
+    >
+                <TextView android:id="@+id/link_signup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="24dp"
+                    android:text="ایجاد حساب کاربری"
+                    android:layout_weight="0.5"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:layout_gravity="center_horizontal"
+                    android:textSize="16sp"/>
+
+                <TextView android:id="@+id/link_cancel_signup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="24dp"
+                    android:layout_marginRight="16dp"
+                    android:text="تمایلی به ثبت نام ندارم"
+                    android:textColor="@color/white"
+                    android:gravity="center"
+                    android:textSize="16dip"/>
+
+</LinearLayout>
+
+
+
+
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

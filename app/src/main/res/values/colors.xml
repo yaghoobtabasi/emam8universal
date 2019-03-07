@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="gray_back">#e0e0e0</color>
+    <color name="nav_button">#616161</color>
+
+    <color name="white">#ffffff</color>
+    <color name="colorPrimary">#607D8B</color>
+    <color name="colorPrimaryDark">#455A64</color>
+    <color name="colorAccent">#FFEB3B</color>
+    <color name="color_btn_green">#4caf50</color>
+    <color name="color_orange_border">#ff6700</color>
+    <color name="color_inside_border">#323332</color>
+    <color name="backgroud_white">#eeeeee</color>
+
+</resources>
