@@ -71,7 +71,7 @@
             tools:text="00:00" />
 
         <SeekBar
-            android:id="@+id/seekbar_show_poem"
+            android:id="@+id/seekbar_showPoem"
             android:layout_width="240dp"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@+id/current_duration"
@@ -85,7 +85,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
-            android:layout_toRightOf="@+id/seekbar_show_poem"
+            android:layout_toRightOf="@+id/seekbar_showPoem"
             android:textColor="@android:color/white"
             android:textSize="12sp"
             tools:text="00:00" />
@@ -93,7 +93,7 @@
     </RelativeLayout>
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
+        android:id="@+id/fab_play"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
@@ -190,19 +190,30 @@
                         android:src="@drawable/share"
                         android:layout_gravity="bottom"
                         android:layout_marginTop="4dp"
-                        android:layout_marginLeft="8dp"
+                        android:layout_marginLeft="12dp"
                         />
 
 
                     <ImageView
-                        android:id="@+id/like_sharePoem"
+                        android:id="@+id/like_showPoem"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:src="@drawable/heart"
                         android:layout_gravity="bottom"
                         android:layout_marginTop="4dp"
-                        android:layout_marginLeft="8dp"
+                        android:layout_marginLeft="12dp"
                         />
+
+                    <ImageView
+                        android:id="@+id/download_showPoem"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/download"
+                        android:layout_gravity="bottom"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginLeft="12dp"
+                        />
+
 
                 </LinearLayout>
 
