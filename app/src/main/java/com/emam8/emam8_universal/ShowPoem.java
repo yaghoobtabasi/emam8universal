@@ -634,7 +634,6 @@ try {
         String text=body_response;
 
         pDialog.dismiss();
-
     }
 
     @Override
