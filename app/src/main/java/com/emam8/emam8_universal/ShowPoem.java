@@ -85,8 +85,8 @@ public class ShowPoem extends RuntimePermissionsActivity {
 
         isplay=false;
         txt_body=(TextView)findViewById(R.id.txt_body);
-        share_btn=(ImageView)findViewById(R.id.img_heart_btn_raw);
-        dwonload_img=(ImageView)findViewById(R.id.img_heart_btn_raw);
+        share_btn=(ImageView)findViewById(R.id.share_showPoem);
+        dwonload_img=(ImageView)findViewById(R.id.download_showPoem);
 
 
 
@@ -100,7 +100,7 @@ public class ShowPoem extends RuntimePermissionsActivity {
 
 
 
-        img_play=(ImageView)findViewById(R.id.img_heart_btn_raw);
+        img_play=(ImageView)findViewById(R.id.fab_play);
 
 
 
@@ -116,33 +116,32 @@ public class ShowPoem extends RuntimePermissionsActivity {
         db = new database(ShowPoem.this);
         db.useable();
         db.open();
-//        heart_btn=(ImageView)findViewById(R.id.img_heart_btn);
+        heart_btn=(ImageView)findViewById(R.id.like_showPoem);
 
 
         if(db.check_fav_content(article_id))
         {
-//            heart_btn.setImageResource(R.drawable.heart_red);
+            heart_btn.setImageResource(R.drawable.heart_red);
         }else
         {
-//            heart_btn.setImageResource(R.drawable.heart_white);
+            heart_btn.setImageResource(R.drawable.heart);
         }
 
-//heart_btn.setOnClickListener(new View.OnClickListener() {
-//    @Override
-//    public void onClick(View v) {
-//        Log.d("Emam8",article_id+"");
-//    }
-//});
+heart_btn.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        Log.d("Emam8",article_id+"");
+    }
+});
 
-
-//        dwonload_img.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Toast.makeText(getApplicationContext(),"آغاز عملیات دانلود فایل",Toast.LENGTH_SHORT).show();
-//                check_permission();
-////                downloadFile();
-//            }
-//        });
+        dwonload_img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(),"آغاز عملیات دانلود فایل",Toast.LENGTH_SHORT).show();
+                check_permission();
+                downloadFile(sabk_url);
+            }
+        });
 
 
 
@@ -190,29 +189,26 @@ public class ShowPoem extends RuntimePermissionsActivity {
         sabk=sabk_path;
 
 
+        share_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent myIntent=new Intent(Intent.ACTION_SEND);
+                myIntent.setType("text/plain");
+                String share_body=txt_body.getText()+System.getProperty("line.separator")+" منبع: سایت امام هشت  "+System.getProperty("line.separator")+" https://emam8.com/article/"+article_id;
+                String share_sub="ارسال مطلب به دیگران ";
+                myIntent.putExtra(Intent.EXTRA_SUBJECT,share_sub);
+                myIntent.putExtra(Intent.EXTRA_TEXT,share_body);
+                startActivity(Intent.createChooser(myIntent,"اشتراک گذاری"));
 
-
-
-//        share_btn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent myIntent=new Intent(Intent.ACTION_SEND);
-//                myIntent.setType("text/plain");
-//                String share_body=txt_body.getText()+System.getProperty("line.separator")+" منبع: سایت امام هشت  "+System.getProperty("line.separator")+" https://emam8.com/article/"+article_id;
-//                String share_sub="ارسال مطلب به دیگران ";
-//                myIntent.putExtra(Intent.EXTRA_SUBJECT,share_sub);
-//                myIntent.putExtra(Intent.EXTRA_TEXT,share_body);
-//                startActivity(Intent.createChooser(myIntent,"اشتراک گذاری"));
-//
-//            }
-//        });
+            }
+        });
 
 
         if(!TextUtils.isEmpty(sabk_path))
         {
             handler=new Handler();
 
-            seekBar=(SeekBar)findViewById(R.id.img_heart_btn_raw);
+            seekBar=(SeekBar)findViewById(R.id.seekbar_showPoem);
 
 
             sabk_url="https://emam8.com/"+sabk_path;
@@ -224,7 +220,7 @@ public class ShowPoem extends RuntimePermissionsActivity {
                 String fileName = sabk.substring(sabk.lastIndexOf('/')+1, sabk.length());
                 File directory = new File(Environment.getDataDirectory()
                         + "/Emam8_apps/audio/");
-//                sabk_url=directory+"/"+fileName;
+                sabk_url=directory+"/"+fileName;
                 sabk_url=Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MUSIC)+"/"+fileName;
             }
 
@@ -232,112 +228,112 @@ public class ShowPoem extends RuntimePermissionsActivity {
 
             mediaPlayer = new MediaPlayer();
 
-//            Log.i("info","start Media player");
+            Log.i("info","start Media player");
 
             mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
 
 
-//            img_play.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//
-//
-////                    Log.i("info","Click on button Media player");
-////                    Log.d("exist",sabk);
-//                    connectionDetector=new ConnectionDetector(getApplicationContext());
-//                    if((!connectionDetector.is_connected()&&(!mediaPlayer.isPlaying()))&&(!check_sabk_exist(sabk)))
-//                    {
-//                        Toast.makeText(getApplicationContext(),"لطفا اتصال  اینترنت را چک کنید",Toast.LENGTH_LONG).show();
-//                        return;
-//                    }
-////                    Log.d("exist",sabk_url);
-//
-//
-//                    try {
-//                        if(!isplay) {
-//                            img_play.setImageResource(R.drawable.time);
-//                            mediaPlayer.setDataSource(sabk_url);
-//                            mediaPlayer.prepare(); // might take long! (for buffering, etc)
-//                        }
-//                        else
-//                        {
-//                            if(mediaPlayer.isPlaying()){
-//                                mediaPlayer.pause();
-//                                img_play.setImageResource(R.drawable.play_btn);
-//
-//                            }else{
-//                                mediaPlayer.start();
-//                                img_play.setImageResource(R.drawable.pause_btn);
-//                                seekBar.setProgress(mediaPlayer.getCurrentPosition());
-//                                runnable=new Runnable() {
-//                                    @Override
-//                                    public void run() {
-//                                        playCycle();
-////                                        Log.i("info","Run Media player");
-//                                    }
-//                                };
-//                                handler.postDelayed(runnable,1000);
-//
-//                            }
-//                        }
-////                mediaPlayer.start();
-////                Toast.makeText(ShowPoem.this,""+sabk_url,Toast.LENGTH_SHORT).show();
-//
-//                        if(!isplay) {
-//                            mediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-//                                @Override
-//                                public void onPrepared(MediaPlayer mp) {
-////                                    Log.i("info", "Prepare Media player");
-//                                    seekBar.setMax(mediaPlayer.getDuration());
-//                                    playCycle();
-//                                    mediaPlayer.start();
-//                                    seekBar.setProgress(mediaPlayer.getCurrentPosition());
-//                                    runnable=new Runnable() {
-//                                        @Override
-//                                        public void run() {
-//                                            playCycle();
-////                                            Log.i("info","Run Media player");
-//                                        }
-//                                    };
-//                                    handler.postDelayed(runnable,1000);
-//                                    img_play.setImageResource(R.drawable.pause_btn);
-//
-//                                }
-//                            });
-//                        }
-//
-//
-//
-//
-//                        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-//                            @Override
-//                            public void onProgressChanged(SeekBar seekBar, int progress, boolean input) {
-//                                if(input){
-//                                    mediaPlayer.seekTo(progress);
-//                                }
-//
-//                            }
-//
-//                            @Override
-//                            public void onStartTrackingTouch(SeekBar seekBar) {
-//
-//                            }
-//
-//                            @Override
-//                            public void onStopTrackingTouch(SeekBar seekBar) {
-//
-//                            }
-//                        });
-//
-//                    }catch (IOException e){
-//                        e.printStackTrace();
-//                    }
-//
-//                    isplay=true;
-//
-//
-//                }
-//            });
+            img_play.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+
+                    Log.i("info","Click on button Media player");
+                    Log.d("exist",sabk);
+                    connectionDetector=new ConnectionDetector(getApplicationContext());
+                    if((!connectionDetector.is_connected()&&(!mediaPlayer.isPlaying()))&&(!check_sabk_exist(sabk)))
+                    {
+                        Toast.makeText(getApplicationContext(),"لطفا اتصال  اینترنت را چک کنید",Toast.LENGTH_LONG).show();
+                        return;
+                    }
+                    Log.d("exist",sabk_url);
+
+
+                    try {
+                        if(!isplay) {
+                            img_play.setImageResource(R.drawable.time);
+                            mediaPlayer.setDataSource(sabk_url);
+                            mediaPlayer.prepare(); // might take long! (for buffering, etc)
+                        }
+                        else
+                        {
+                            if(mediaPlayer.isPlaying()){
+                                mediaPlayer.pause();
+                                img_play.setImageResource(R.drawable.play_btn);
+
+                            }else{
+                                mediaPlayer.start();
+                                img_play.setImageResource(R.drawable.pause_btn);
+                                seekBar.setProgress(mediaPlayer.getCurrentPosition());
+                                runnable=new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        playCycle();
+                                        Log.i("info","Run Media player");
+                                    }
+                                };
+                                handler.postDelayed(runnable,1000);
+
+                            }
+                        }
+                mediaPlayer.start();
+//                Toast.makeText(ShowPoem.this,""+sabk_url,Toast.LENGTH_SHORT).show();
+
+                        if(!isplay) {
+                            mediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+                                @Override
+                                public void onPrepared(MediaPlayer mp) {
+//                                    Log.i("info", "Prepare Media player");
+                                    seekBar.setMax(mediaPlayer.getDuration());
+                                    playCycle();
+                                    mediaPlayer.start();
+                                    seekBar.setProgress(mediaPlayer.getCurrentPosition());
+                                    runnable=new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            playCycle();
+//                                            Log.i("info","Run Media player");
+                                        }
+                                    };
+                                    handler.postDelayed(runnable,1000);
+                                    img_play.setImageResource(R.drawable.pause_btn);
+
+                                }
+                            });
+                        }
+
+
+
+
+                        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+                            @Override
+                            public void onProgressChanged(SeekBar seekBar, int progress, boolean input) {
+                                if(input){
+                                    mediaPlayer.seekTo(progress);
+                                }
+
+                            }
+
+                            @Override
+                            public void onStartTrackingTouch(SeekBar seekBar) {
+
+                            }
+
+                            @Override
+                            public void onStopTrackingTouch(SeekBar seekBar) {
+
+                            }
+                        });
+
+                    }catch (IOException e){
+                        e.printStackTrace();
+                    }
+
+                    isplay=true;
+
+
+                }
+            });
 
 
         }
@@ -394,7 +390,7 @@ if(requestCode==30){
             super.onResume();
             mediaPlayer.start();
 //            Log.i("info","On Resume Media player");
-//            img_play.setImageResource(R.drawable.pause_btn);
+            img_play.setImageResource(R.drawable.pause_btn);
         }
     }
 
@@ -404,7 +400,7 @@ if(requestCode==30){
             super.onPause();
             mediaPlayer.pause();
 //            Log.i("info","On Pause Media player");
-//            img_play.setImageResource(R.drawable.play_btn);
+            img_play.setImageResource(R.drawable.play_btn);
         }
     }
 
@@ -580,9 +576,9 @@ try {
 
         Load_poems load_poems=retro.create(Load_poems.class);
 
-//        String  article_id="48000";
-//        String app_name="s";
-//        String app_version="1.2";
+        String article_id="48000";
+        String app_name="s";
+        String app_version="1.2";
         Call<Poem_retro> call=load_poems.load_article(headerMap,article_id,app_name,app_version,"json");
 
         call.enqueue(new Callback<Poem_retro>() {
