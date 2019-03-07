@@ -25,12 +25,30 @@
         </android.support.v7.widget.Toolbar>
 
         <ImageView
+            android:id="@+id/image_poet_showPoem"
             android:layout_width="45dp"
             android:layout_height="45dp"
             android:layout_centerHorizontal="true"
             android:layout_centerInParent="true"
             android:src="@drawable/chavoshi" />
 
+        <ImageView
+            android:id="@+id/zoom_plus"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/magnify_plus"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:layout_marginRight="8dp"/>
+
+        <ImageView
+            android:id="@+id/zoom_minus"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/magnify_minus"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:layout_marginRight="40dp"/>
 
 
     </RelativeLayout>
@@ -103,17 +121,17 @@
         android:layout_marginRight="15dp"
         android:layout_marginTop="100dp"
         android:background="@drawable/trans_rectangle_back_blue"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:textAlignment="center"
         android:textDirection="rtl"
 
         >
 
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/trans_rectangle_back"
+
 
             >
 
@@ -126,10 +144,14 @@
                 android:textAlignment="center">
 
 
+
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:elevation="5dp">
+
+
 
                     <ScrollView
                         android:layout_width="match_parent"
@@ -147,15 +169,47 @@
                             android:textColor="#ffffff"
                             android:textDirection="rtl"
                             android:textSize="16dp"
+                            tools:text="alireza abbasian"
                             />
+
+
 
                     </ScrollView>
 
 
                 </LinearLayout>
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/share_showPoem"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/share"
+                        android:layout_gravity="bottom"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginLeft="8dp"
+                        />
+
+
+                    <ImageView
+                        android:id="@+id/like_sharePoem"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/heart"
+                        android:layout_gravity="bottom"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginLeft="8dp"
+                        />
+
+                </LinearLayout>
+
+
 
             </LinearLayout>
+
 
         </LinearLayout>
 
