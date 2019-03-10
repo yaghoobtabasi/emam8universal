@@ -53,7 +53,7 @@ public class ShowFavRawPoem extends AppCompatActivity {
             heart_btn.setImageResource(R.drawable.heart_red);
         }else
         {
-            heart_btn.setImageResource(R.drawable.heart_white);
+            heart_btn.setImageResource(R.drawable.heart);
         }
 
         heart_btn.setOnClickListener(new View.OnClickListener() {

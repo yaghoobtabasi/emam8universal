@@ -115,10 +115,34 @@
                                 android:textSize="16dp" />
                         </ScrollView>
                     </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:id="@+id/fpr_img_share_btn_raw"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:src="@drawable/share"
+                            android:layout_marginTop="4dp"
+                            android:layout_marginLeft="12dp"
+                            android:layout_gravity="center"/>
+
+                        <ImageView
+                            android:id="@+id/fpr_img_heart_btn_raw"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:src="@drawable/heart"
+                            android:layout_marginLeft="12dp"
+                            android:layout_marginTop="4dp"
+                            android:layout_gravity="center"
+                            />
 
 
                 </LinearLayout>
 
+
+                </LinearLayout>
             </LinearLayout>
 
 
