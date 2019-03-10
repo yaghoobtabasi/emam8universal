@@ -30,7 +30,7 @@
             android:layout_marginStart="30dp"
             android:layout_marginEnd="30dp"
             android:background="@drawable/trans_rectangle_back_blue"
-            android:layout_marginTop="18dp"
+
 
 
             >
@@ -50,54 +50,61 @@
                     android:layout_height="80dp"
                     android:id="@+id/emam8_logo"
                     android:src="@drawable/logo"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="16dp"
                     android:scaleType="fitCenter"
                     />
 
                 <!-- Email Label -->
 
 
-                    <EditText
+                    <com.rey.material.widget.EditText
                         android:id="@+id/input_email"
                         android:layout_width="match_parent"
-                        android:layout_height="32dp"
-                        android:layout_marginEnd="10dp"
-                        android:layout_marginStart="10dp"
-                        android:background="@color/backgroud_white"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="24dp"
+                        android:layout_marginLeft="24dp"
+                        android:layout_marginTop="16dp"
                         android:hint="موبایل یا ایمیل یا نام کاربری  خود را وارد کنید"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginBottom="10dp"
-                        android:inputType="textEmailAddress" />
+                        android:inputType="textEmailAddress"
+                        android:elevation="4dp"
+                        app:et_supportMode="charCounter"
+                        app:et_supportMaxChars="40"
+                        />
 
 
                 <!-- Password Label -->
 
 
-                    <EditText
+                    <com.rey.material.widget.EditText
                         android:id="@+id/input_password"
                         android:layout_width="match_parent"
-                        android:layout_height="32dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginBottom="10dp"
-
-                        android:layout_marginEnd="10dp"
-                        android:layout_marginStart="10dp"
-                        android:background="@color/backgroud_white"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="24dp"
+                        android:layout_marginLeft="24dp"
                         android:hint="رمز عبور را وارد کنید"
-                        android:textDirection="rtl"
-                        android:inputType="textPassword" />
+                        android:textAlignment="textEnd"
+                        android:inputType="textPassword"
+                        android:elevation="4dp"
+                        android:gravity="end"
+                        app:et_supportMode="charCounter"
+                        app:et_supportMaxChars="20"
+
+                        />
 
 
                 <android.support.v7.widget.AppCompatButton
                     android:id="@+id/btn_login"
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="24dp"
-                    android:layout_marginTop="24dp"
-                    android:padding="12dp"
-                    android:layout_marginStart="30dp"
-                    android:layout_marginEnd="30dp"
-                    android:text="ورود" />
+                    android:layout_marginTop="8dp"
+                    android:layout_marginRight="40dp"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginBottom="16dp"
+                    android:text="ورود"
+                    android:textColor="#fff"
+                    android:textSize="20sp"
+                    android:background="@drawable/rounded_button"
+                    />
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -107,24 +114,26 @@
     >
                 <TextView android:id="@+id/link_signup"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginBottom="24dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
                     android:text="ایجاد حساب کاربری"
                     android:layout_weight="0.5"
                     android:gravity="center"
-                    android:textColor="@color/white"
+                    android:textColor="#263238"
                     android:layout_gravity="center_horizontal"
-                    android:textSize="16sp"/>
+                    android:textSize="16sp"
+                    android:layout_marginLeft="16dp"
+                    />
 
                 <TextView android:id="@+id/link_cancel_signup"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_weight="0.5"
                     android:layout_gravity="center_horizontal"
-                    android:layout_marginBottom="24dp"
+                    android:layout_marginBottom="16dp"
                     android:layout_marginRight="16dp"
                     android:text="تمایلی به ثبت نام ندارم"
-                    android:textColor="@color/white"
+                    android:textColor="#78909C"
                     android:gravity="center"
                     android:textSize="16dip"/>
 

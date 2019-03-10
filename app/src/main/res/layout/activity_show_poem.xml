@@ -18,11 +18,8 @@
             android:id="@+id/toolbar_show_poem"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/colorPrimary">
+            android:background="@color/colorPrimary"/>
 
-
-
-        </android.support.v7.widget.Toolbar>
 
         <ImageView
             android:id="@+id/image_poet_showPoem"
@@ -116,10 +113,10 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="15dp"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="85dp"
         android:background="@drawable/trans_rectangle_back_blue"
         android:orientation="vertical"
         android:textAlignment="center"
@@ -138,7 +135,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_margin="5dp"
+                android:layout_margin="4dp"
                 android:background="@drawable/trans_rectangle_poem_back"
                 android:orientation="vertical"
                 android:textAlignment="center">
@@ -216,8 +213,6 @@
 
 
                 </LinearLayout>
-
-
 
             </LinearLayout>
 
