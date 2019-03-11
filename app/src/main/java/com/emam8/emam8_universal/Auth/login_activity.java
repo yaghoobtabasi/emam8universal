@@ -25,11 +25,12 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import com.emam8.emam8_universal.services.RetroService;
 import com.emam8.emam8_universal.utilities.AppPreferenceTools;
 import com.emam8.emam8_universal.utilities.ClientConfigs;
+import com.github.pinball83.maskededittext.MaskedEditText;
 
 public class login_activity extends AppCompatActivity {
 
     private String username,password;
-    private EditText usr,pass;
+    private MaskedEditText usr,pass;
     private TextInputLayout inputLayoutUsr,inputLayoutPass;
     private Button login_btn;
     private TextView creat_acnt_txt,cancle_signup;
@@ -40,28 +41,9 @@ public class login_activity extends AppCompatActivity {
 
         findview();
 
-        usr.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                if (v != usr && usr.getText().toString().isEmpty()) {
-                    inputLayoutUsr.setErrorEnabled(true);
-                    inputLayoutUsr.setError("error username");
-                } else {
-                    inputLayoutUsr.setErrorEnabled(false);
-                }
-            }
-        });
-        pass.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                if (v != pass && pass.getText().toString().isEmpty()) {
-                    inputLayoutPass.setErrorEnabled(true);
-                    inputLayoutPass.setError("error password");
-                } else {
-                    inputLayoutPass.setErrorEnabled(false);
-                }
-            }
-        });
+        usr = new MaskedEditText.Builder(this).
+                icon(R.drawable.usr_icon).build();
+
 
         ConnectionDetector connectionDetector=new ConnectionDetector(this);
         if(!connectionDetector.is_connected())
@@ -106,8 +88,8 @@ public class login_activity extends AppCompatActivity {
 void findview(){
         inputLayoutUsr = (TextInputLayout)findViewById(R.id.input_layout_email);
         inputLayoutPass = (TextInputLayout)findViewById(R.id.input_layout_password);
-        usr=(EditText) findViewById(R.id.input_email);
-        pass=(EditText)findViewById(R.id.input_password);
+        usr=(MaskedEditText) findViewById(R.id.input_email);
+        pass=(MaskedEditText) findViewById(R.id.input_password);
         login_btn=(Button) findViewById(R.id.btn_login);
         creat_acnt_txt=(TextView) findViewById(R.id.link_signup);
         cancle_signup=(TextView) findViewById(R.id.link_cancel_signup);

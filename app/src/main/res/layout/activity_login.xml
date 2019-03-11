@@ -55,34 +55,25 @@
                 <!-- Email Label -->
 
 
-                <android.support.design.widget.TextInputLayout
-                    android:id="@+id/input_layout_email"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <EditText
+                    <com.github.pinball83.maskededittext.MaskedEditText
                         android:id="@+id/input_email"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="24dp"
                         android:layout_marginLeft="24dp"
                         android:layout_marginTop="16dp"
-                        android:hint="موبایل یا ایمیل یا نام کاربری  خود را وارد کنید"
+                        android:hint="موبایل یا ایمیل یا نام کاربری خود را وارد کنید"
                         android:inputType="textEmailAddress"
                         android:elevation="4dp"
                         />
 
-                </android.support.design.widget.TextInputLayout>
+
 
 
 
                 <!-- Password Label -->
 
-                <android.support.design.widget.TextInputLayout
-                    android:id="@+id/input_layout_password"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    <EditText
+                    <com.github.pinball83.maskededittext.MaskedEditText
                         android:id="@+id/input_password"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -93,7 +84,7 @@
                         android:elevation="4dp"
 
                         />
-                </android.support.design.widget.TextInputLayout>
+
 
                 <android.support.v7.widget.AppCompatButton
                     android:id="@+id/btn_login"
