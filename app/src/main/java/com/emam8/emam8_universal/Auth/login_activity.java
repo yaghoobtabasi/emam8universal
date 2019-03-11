@@ -2,6 +2,7 @@ package com.emam8.emam8_universal.Auth;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -29,6 +30,7 @@ public class login_activity extends AppCompatActivity {
 
     private String username,password;
     private EditText usr,pass;
+    private TextInputLayout inputLayoutUsr,inputLayoutPass;
     private Button login_btn;
     private TextView creat_acnt_txt,cancle_signup;
     @Override
@@ -37,6 +39,29 @@ public class login_activity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         findview();
+
+        usr.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (v != usr && usr.getText().toString().isEmpty()) {
+                    inputLayoutUsr.setErrorEnabled(true);
+                    inputLayoutUsr.setError("error username");
+                } else {
+                    inputLayoutUsr.setErrorEnabled(false);
+                }
+            }
+        });
+        pass.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (v != pass && pass.getText().toString().isEmpty()) {
+                    inputLayoutPass.setErrorEnabled(true);
+                    inputLayoutPass.setError("error password");
+                } else {
+                    inputLayoutPass.setErrorEnabled(false);
+                }
+            }
+        });
 
         ConnectionDetector connectionDetector=new ConnectionDetector(this);
         if(!connectionDetector.is_connected())
@@ -79,7 +104,9 @@ public class login_activity extends AppCompatActivity {
     }
 
 void findview(){
-        usr=(EditText)findViewById(R.id.input_email);
+        inputLayoutUsr = (TextInputLayout)findViewById(R.id.input_layout_email);
+        inputLayoutPass = (TextInputLayout)findViewById(R.id.input_layout_password);
+        usr=(EditText) findViewById(R.id.input_email);
         pass=(EditText)findViewById(R.id.input_password);
         login_btn=(Button) findViewById(R.id.btn_login);
         creat_acnt_txt=(TextView) findViewById(R.id.link_signup);
