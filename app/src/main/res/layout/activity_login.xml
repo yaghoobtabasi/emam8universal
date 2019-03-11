@@ -55,7 +55,12 @@
                 <!-- Email Label -->
 
 
-                    <com.rey.material.widget.EditText
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/input_layout_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
                         android:id="@+id/input_email"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -65,30 +70,30 @@
                         android:hint="موبایل یا ایمیل یا نام کاربری  خود را وارد کنید"
                         android:inputType="textEmailAddress"
                         android:elevation="4dp"
-                        app:et_supportMode="charCounter"
-                        app:et_supportMaxChars="40"
                         />
+
+                </android.support.design.widget.TextInputLayout>
+
 
 
                 <!-- Password Label -->
 
-
-                    <com.rey.material.widget.EditText
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/input_layout_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <EditText
                         android:id="@+id/input_password"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="24dp"
                         android:layout_marginLeft="24dp"
                         android:hint="رمز عبور را وارد کنید"
-                        android:textAlignment="textEnd"
                         android:inputType="textPassword"
                         android:elevation="4dp"
-                        android:gravity="end"
-                        app:et_supportMode="charCounter"
-                        app:et_supportMaxChars="20"
 
                         />
-
+                </android.support.design.widget.TextInputLayout>
 
                 <android.support.v7.widget.AppCompatButton
                     android:id="@+id/btn_login"
