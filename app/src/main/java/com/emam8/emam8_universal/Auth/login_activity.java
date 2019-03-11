@@ -45,7 +45,7 @@ public class login_activity extends AppCompatActivity {
             public void onFocusChange(View v, boolean hasFocus) {
                 if (v != usr && usr.getText().toString().isEmpty()) {
                     inputLayoutUsr.setErrorEnabled(true);
-                    inputLayoutUsr.setError("error username");
+                    inputLayoutUsr.setError("نام کاربری اشتباه وارد شده است");
                 } else {
                     inputLayoutUsr.setErrorEnabled(false);
                 }
@@ -56,7 +56,7 @@ public class login_activity extends AppCompatActivity {
             public void onFocusChange(View v, boolean hasFocus) {
                 if (v != pass && pass.getText().toString().isEmpty()) {
                     inputLayoutPass.setErrorEnabled(true);
-                    inputLayoutPass.setError("error password");
+                    inputLayoutPass.setError("رمز عبور اشتباه وارد شده است");
                 } else {
                     inputLayoutPass.setErrorEnabled(false);
                 }
