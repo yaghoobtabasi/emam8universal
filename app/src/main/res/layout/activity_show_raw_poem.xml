@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,68 +8,47 @@
     android:background="@drawable/background"
     android:keepScreenOn="true"
     >
-    <LinearLayout
-        android:layout_gravity="center_horizontal"
+
+    <RelativeLayout
+        android:id="@+id/rltv_toolbar_show_fav_rawPoem"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:orientation="vertical"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:background="@drawable/trans_rectangle_back_blue"
-        android:layout_marginTop="10dp"
+        android:layout_height="wrap_content"
         >
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar_show_fav_raw_poem"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorPrimary"
+            />
+
+
+        <TextView
+            android:id="@+id/image_poet_showPoem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="اشعار مورد علاقه"
+            android:textAlignment="center"
+            android:textSize="24sp"
+            android:layout_centerInParent="true"
+            android:textColor="@color/colorAccent"
+            android:textStyle="bold|italic"/>
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
         <android.support.v4.widget.SwipeRefreshLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/swiprefresh_raw">
+            android:id="@+id/fpr_swiprefresh_raw">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:orientation="vertical"
-            android:background="@drawable/trans_rectangle_back"
-            android:gravity="center"
-
-            >
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/trans_rectangle_poem_back"
-                >
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-
-                    android:layoutDirection="ltr">
-
-                    <ImageView
-                        android:id="@+id/img_heart_btn_raw"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-
-                        android:layout_centerInParent="true"
-                        android:src="@drawable/heart_white" />
-
-                    <ImageView
-                        android:id="@+id/img_share_btn_raw"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_alignParentStart="true"
-
-                        android:layout_centerVertical="true"
-                        android:layout_marginStart="95dp"
-                        android:src="@drawable/share64" />
-                </RelativeLayout>
-            </LinearLayout>
-
-
-        </LinearLayout>
         </android.support.v4.widget.SwipeRefreshLayout>
-    </LinearLayout>
 
-
+    </RelativeLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -147,4 +126,4 @@
 
     </LinearLayout>
 
-</RelativeLayout>
+</android.support.design.widget.CoordinatorLayout>
