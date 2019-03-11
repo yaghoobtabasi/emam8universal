@@ -9,16 +9,18 @@
             android:title="@string/text_favorites"
             app:showAsAction="ifRoom" />
         <item
-            android:id="@+id/action_schedules"
-            android:enabled="true"
-            android:icon="@drawable/ic_shopping_cart"
-            android:title="@string/txt_shop"
-            app:showAsAction="ifRoom" />
-        <item
             android:id="@+id/action_home"
             android:enabled="true"
             android:icon="@drawable/ic_home_black_24dp"
             android:title="@string/txt_home"
             app:showAsAction="ifRoom" />
+
+        <item
+            android:id="@+id/action_schedules"
+            android:enabled="true"
+            android:icon="@drawable/ic_shopping_cart"
+            android:title="@string/txt_shop"
+            app:showAsAction="ifRoom" />
+
 
 </menu>
