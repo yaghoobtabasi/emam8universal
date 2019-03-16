@@ -3,23 +3,32 @@
     android:id="@+id/rltv_cat"
     android:layout_width="match_parent"
     android:layout_height="60dp"
-    android:layout_marginEnd="12dp"
-    android:layout_marginStart="8dp"
     android:layout_marginTop="5dp"
 
     android:orientation="vertical">
 
-    <ImageView
-        style="@style/frame_button"
-        android:id="@+id/frame_cat"
-        />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
+        <ImageView
+            style="@style/frame_button"
+            android:id="@+id/frame_cat"
+            android:layout_centerInParent="true"
+            />
+
+    </RelativeLayout>
     <TextView
         android:id="@+id/txt_title_cat"
         style="@style/text_button_frame_cat"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="فهرست مطالب" />
+        android:layout_height="wrap_content"
+        android:text="فهرست مطالب"
+        android:layout_centerInParent="true"
+        android:textSize="18sp"
+        />
+
+
 
 
 

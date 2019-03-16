@@ -2,6 +2,7 @@ package com.emam8.emam8_universal.Auth;
 
 import android.content.Intent;
 import android.support.design.widget.Snackbar;
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -30,6 +31,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class signup extends AppCompatActivity {
     private EditText username,pass,conf_pass;
     String txt_pass,txt_conf_pass,txt_username;
+    private TextInputLayout inputLayoutUserName,inputLayoutPass,inputLayoutConfPass;
     Button btn_signup;
     Boolean check_pass;
     Snackbar snackbar;
@@ -123,6 +125,9 @@ public class signup extends AppCompatActivity {
     }
 
     void  findView(){
+        inputLayoutUserName = (TextInputLayout)findViewById(R.id.input_layout_signup_email);
+        inputLayoutPass = (TextInputLayout)findViewById(R.id.input_layout_signup_password);
+        inputLayoutConfPass = (TextInputLayout)findViewById(R.id.input_layout_signup_password_confirm);
         username=(EditText)findViewById(R.id.signup_email);
         pass=(EditText)findViewById(R.id.signup_password);
         conf_pass=(EditText)findViewById(R.id.signup_password_confirm);

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.annotation.NonNull;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -75,7 +76,7 @@ public class PoetsContentsAdapter extends RecyclerView.Adapter<PoetsContentsAdap
 
         holder.txtTitle.setText(title);
 
-        holder.rltv.setOnClickListener(new View.OnClickListener() {
+        holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -119,12 +120,12 @@ public class PoetsContentsAdapter extends RecyclerView.Adapter<PoetsContentsAdap
     public class PoemViewHolder extends RecyclerView.ViewHolder{
         public TextView txtTitle;
         public ImageView imgpoet;
-        public RelativeLayout rltv;
+        public CardView cardView;
         public PoemViewHolder(View itemView) {
             super(itemView);
             txtTitle=(TextView)itemView.findViewById(R.id.txt_title);
             imgpoet=(ImageView)itemView.findViewById(R.id.img_poet);
-            rltv=(RelativeLayout)itemView.findViewById(R.id.rltv);
+            cardView=(CardView) itemView.findViewById(R.id.cardView_poetContent);
 
         }
         public ImageView getImage(){ return this.imgpoet;}
