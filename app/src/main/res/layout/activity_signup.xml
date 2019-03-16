@@ -51,80 +51,88 @@
                     android:layout_height="80dp"
                     android:id="@+id/emam8_logo"
                     android:src="@drawable/logo"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="16dp"
                     android:scaleType="fitCenter"
+
                     />
 
                 <!-- Email Label -->
 
-
-                <EditText
-                    android:id="@+id/signup_email"
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/input_layout_signup_email"
                     android:layout_width="match_parent"
-                    android:layout_height="32dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginStart="10dp"
-                    android:padding="5dp"
-                    android:background="@color/backgroud_white"
-                    android:hint="@string/txt_hint_username_login"
-                    android:textColorHint="@android:color/black"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:textSize="14sp"
-                    android:inputType="textEmailAddress" />
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp">
+
+                    <EditText
+                        android:id="@+id/signup_email"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="24dp"
+                        android:layout_marginLeft="24dp"
+                        android:hint="موبایل یا ایمیل"
+                        android:inputType="textEmailAddress"
+                        android:textSize="18sp"
+                        tools:text="@tools:sample/cities"
+                        android:gravity="right"/>
+
+                </android.support.design.widget.TextInputLayout>
+
 
 
                 <!-- Password Label -->
 
-
-                <EditText
-                    android:id="@+id/signup_password"
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/input_layout_signup_password"
                     android:layout_width="match_parent"
-                    android:layout_height="32dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:layoutDirection="rtl"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginStart="10dp"
-                    android:padding="5dp"
-                    android:textColorHint="@android:color/black"
-                    android:background="@color/backgroud_white"
-                    android:hint="@string/txt_hint_pass_signup"
-                    android:textAlignment="viewStart"
-                    android:textDirection="rtl"
-                    android:textSize="14sp"
-                    android:inputType="textPassword" />
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp">
+                    <EditText
+                        android:id="@+id/signup_password"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="24dp"
+                        android:layout_marginLeft="24dp"
+                        android:hint="رمز عبور"
+                        android:inputType="textPassword"
+                        android:textSize="18sp"
+                        android:layoutDirection="rtl"
+                        android:gravity="right"
+                        tools:text="@tools:sample/cities" />
+                </android.support.design.widget.TextInputLayout>
 
-                <EditText
-                    android:id="@+id/signup_password_confirm"
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/input_layout_signup_password_confirm"
                     android:layout_width="match_parent"
-                    android:layoutDirection="rtl"
-                    android:padding="5dp"
-                    android:textAlignment="viewStart"
-                    android:textSize="14sp"
-                    android:layout_height="32dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginStart="10dp"
-                    android:textColorHint="@android:color/black"
-                    android:background="@color/backgroud_white"
-                    android:hint="@string/txt_hint_pass_confirm_signup"
-                    android:textDirection="rtl"
-                    android:inputType="textPassword" />
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp">
+                    <EditText
+                        android:id="@+id/signup_password_confirm"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="24dp"
+                        android:layout_marginLeft="24dp"
+                        android:hint="تکرار رمز عبور"
+                        android:inputType="textPassword"
+                        android:textSize="18sp"
+                        android:layoutDirection="rtl"
+                        android:gravity="right"
+                        tools:text="@tools:sample/cities" />
+                </android.support.design.widget.TextInputLayout>
 
-
-                <Button
+                <android.support.v7.widget.AppCompatButton
                     android:id="@+id/btnsignup"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="24dp"
-                    android:layout_marginEnd="30dp"
-                    android:layout_marginStart="30dp"
-                    android:layout_marginTop="24dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="40dp"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginBottom="16dp"
                     android:text="@string/btn_signup"
-                    android:textSize="16sp"
-                    android:padding="12dp" />
+                    android:textColor="#fff"
+                    android:textSize="20sp"
+                    android:background="@drawable/rounded_button"
+                    />
 
                 <RelativeLayout
                     android:layout_width="match_parent"
