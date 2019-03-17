@@ -135,37 +135,6 @@ public class RecyclerPoem extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle(" فهرست مطالب ");
 
-        materialSearchView = (MaterialSearchView) findViewById(R.id.search);
-        materialSearchView.closeSearch();
-        materialSearchView.setOnQueryTextListener(new MaterialSearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                return false;
-            }
-        });
-
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.item_search,menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-
-        switch (item.getItemId()){
-            case R.id.search:
-                Toast.makeText(this,"search",Toast.LENGTH_LONG).show();
-                break;
-        }
-        return super.onOptionsItemSelected(item);
     }
 
 
