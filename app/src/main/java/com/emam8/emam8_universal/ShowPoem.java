@@ -239,7 +239,6 @@ heart_btn.setOnClickListener(new View.OnClickListener() {
 
 
                     Log.i("info","Click on button Media player");
-                    Log.d("exist",sabk);
                     connectionDetector=new ConnectionDetector(getApplicationContext());
                     if((!connectionDetector.is_connected()&&(!mediaPlayer.isPlaying()))&&(!check_sabk_exist(sabk)))
                     {
@@ -296,7 +295,7 @@ heart_btn.setOnClickListener(new View.OnClickListener() {
                                         }
                                     };
                                     handler.postDelayed(runnable,1000);
-                                    img_play.setImageResource(R.drawable.pause_btn);
+                                    img_play.setImageResource(R.drawable.play_btn);
 
                                 }
                             });
