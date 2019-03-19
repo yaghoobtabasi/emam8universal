@@ -10,19 +10,16 @@
         android:protectionLevel="signature" />
 
     <uses-permission android:name="com.emam8.emam8_universal.permission.C2D_MESSAGE" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-
-    <!-- Optional permissions -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- Optional permissions -->
     <uses-permission android:name="com.google.android.gms.permission.ACTIVITY_RECOGNITION" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-
-    <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" /> <!-- To auto-complete the email text field in the login form with the user's emails -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
     <application
+        
         android:name=".App.AppController"
         android:allowBackup="true"
         android:hardwareAccelerated="false"
@@ -32,6 +29,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".Cat_Farsi_Poems" />
         <activity android:name=".Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -43,7 +41,7 @@
         <activity android:name=".splash_book" />
         <activity android:name=".Auth.login_activity" />
         <activity android:name=".SherActivity" />
-        <activity android:name=".Farsi_poems" />
+        <activity android:name=".Sec_Farsi_poems" />
         <activity android:name=".TorkiPoem" />
         <activity android:name=".ShowFavPoem" />
         <activity android:name=".ShowFavRawPoem" />
@@ -81,7 +79,7 @@
             android:name="co.ronash.pushe.cr"
             android:value="Tm9uZQ==" />
 
-        <activity android:name=".Auth.signup"></activity>
+        <activity android:name=".Auth.signup" />
     </application>
 
 </manifest>

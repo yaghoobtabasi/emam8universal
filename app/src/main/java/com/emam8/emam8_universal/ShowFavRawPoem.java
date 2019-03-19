@@ -1,6 +1,7 @@
 package com.emam8.emam8_universal;
 
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -11,6 +12,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.emam8.emam8_universal.App.Article_functions;
+
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class ShowFavRawPoem extends AppCompatActivity {
     public TextView body_raw;
@@ -123,5 +126,10 @@ if(poet!=null){
 
 
         db.close();
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 }

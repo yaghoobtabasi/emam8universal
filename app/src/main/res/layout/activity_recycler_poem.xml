@@ -20,31 +20,31 @@
                 app:layout_scrollFlags="enterAlways"
                 />
 
-            <com.miguelcatalan.materialsearchview.MaterialSearchView
-                android:id="@+id/search"
 
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:visibility="gone"/>
 
 
     </android.support.design.widget.AppBarLayout>
 
 
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            android:id="@+id/swiprefresh_recpoem"
+            android:layout_below="@+id/search_poemTorki"
 
-    <android.support.v4.widget.SwipeRefreshLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        android:id="@+id/swiprefresh_recpoem">
+            >
 
-    <android.support.v7.widget.RecyclerView
-app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/poem_recycler"
-        android:padding="8dp"/>
+            <android.support.v7.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/poem_recycler"
+                android:padding="8dp"
+
+                />
 
         </android.support.v4.widget.SwipeRefreshLayout>
+
+
 
 </android.support.design.widget.CoordinatorLayout>
