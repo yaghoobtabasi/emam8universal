@@ -1,6 +1,7 @@
 package com.emam8.emam8_universal;
 
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.media.AudioManager;
@@ -20,6 +21,8 @@ import com.emam8.emam8_universal.App.Article_functions;
 import com.emam8.emam8_universal.services.ConnectionDetector;
 
 import java.io.IOException;
+
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class ShowFavPoem extends AppCompatActivity {
     SeekBar seekBar;
@@ -340,7 +343,10 @@ public class ShowFavPoem extends AppCompatActivity {
     }
 
 
-
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
+    }
 
 
 }

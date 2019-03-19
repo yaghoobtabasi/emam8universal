@@ -1,6 +1,7 @@
 package com.emam8.emam8_universal;
 
 
+import android.content.Context;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -14,6 +15,8 @@ import com.emam8.emam8_universal.Model.Poems_category_model;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class poem_category extends AppCompatActivity {
 
@@ -85,6 +88,11 @@ public class poem_category extends AppCompatActivity {
             adapter.notifyDataSetChanged();
         }
 
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 }
 

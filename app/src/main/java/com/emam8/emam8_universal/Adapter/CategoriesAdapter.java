@@ -48,7 +48,6 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Ca
                 intent = new Intent(mContext, RecyclerPoem.class);
                 intent.putExtra("catid",catid);
                 mContext.startActivity(intent);
-//                Toast.makeText(mContext,categoriesList.get(position).getCatid()+" ",Toast.LENGTH_SHORT).show();
 
             }
         });

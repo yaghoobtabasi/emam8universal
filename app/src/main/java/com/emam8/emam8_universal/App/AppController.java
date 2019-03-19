@@ -25,7 +25,7 @@ public class AppController extends Application
 		super.onCreate();
 		mInstance = this;
 		CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
-				.setDefaultFontPath("fonts/IRANSansMobile_Bold.ttf").setFontAttrId(R.attr.fontPath).build());
+				.setDefaultFontPath("fonts/IRANSansMobile.ttf").setFontAttrId(R.attr.fontPath).build());
 	}
 
 	public static synchronized AppController getInstance()

@@ -28,21 +28,22 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
+
 public class RecyclerPoetcontents extends AppCompatActivity {
     public List<Poems> poem = new ArrayList<>();
-    private String catid,mode,gid,poet_id;
+    private String catid, mode, gid, poet_id;
     private RecyclerView recyclerView;
     private PoetsContentsAdapter adapter;
     private LinearLayoutManager layoutManager;
     TextView title;
 
     //variables for pagination
-    private Boolean isLoading=true;
-    private int pastVisibleItems,visibleItemCount,totalItemCount,previoustotal=0;
-    private int view_threshold=10;
-    private int page_number=1;
+    private Boolean isLoading = true;
+    private int pastVisibleItems, visibleItemCount, totalItemCount, previoustotal = 0;
+    private int view_threshold = 10;
+    private int page_number = 1;
     private SwipeRefreshLayout swipeRefreshLayout;
-
 
 
     @Override
@@ -55,10 +56,10 @@ public class RecyclerPoetcontents extends AppCompatActivity {
         gid = bundle.getString("gid");
         poet_id = bundle.getString("poet_id");
 
-        Log.w("Ya Ali madad","catid="+catid+"gid="+gid+"poet_id="+poet_id+"mode="+mode);
+        Log.w("Ya Ali madad", "catid=" + catid + "gid=" + gid + "poet_id=" + poet_id + "mode=" + mode);
         recyclerView = (RecyclerView) findViewById(R.id.poem_recycler);
-        adapter = new PoetsContentsAdapter(poem, catid,gid,poet_id,mode,RecyclerPoetcontents.this);
-        layoutManager=new LinearLayoutManager(RecyclerPoetcontents.this);
+        adapter = new PoetsContentsAdapter(poem, catid, gid, poet_id, mode, RecyclerPoetcontents.this);
+        layoutManager = new LinearLayoutManager(RecyclerPoetcontents.this);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
 
@@ -66,28 +67,28 @@ public class RecyclerPoetcontents extends AppCompatActivity {
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
-                visibleItemCount=layoutManager.getChildCount();
-                totalItemCount=layoutManager.getItemCount();
-                pastVisibleItems=layoutManager.findFirstVisibleItemPosition();
+                visibleItemCount = layoutManager.getChildCount();
+                totalItemCount = layoutManager.getItemCount();
+                pastVisibleItems = layoutManager.findFirstVisibleItemPosition();
 
-                if(isLoading){
-                    if(totalItemCount>previoustotal){
-                        isLoading=false;
-                        previoustotal=totalItemCount;
+                if (isLoading) {
+                    if (totalItemCount > previoustotal) {
+                        isLoading = false;
+                        previoustotal = totalItemCount;
                     }
 
                 }
-                if(!isLoading&&(totalItemCount-visibleItemCount)<=(pastVisibleItems+view_threshold)){
+                if (!isLoading && (totalItemCount - visibleItemCount) <= (pastVisibleItems + view_threshold)) {
                     page_number++;
                     setData(catid);
-                    isLoading=true;
+                    isLoading = true;
                 }
             }
 
         });
 
 
-        swipeRefreshLayout = (SwipeRefreshLayout)findViewById(R.id.swiprefresh_recpoem);
+        swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swiprefresh_recpoem);
 
         swipeRefreshLayout.setColorSchemeColors(Color.GRAY, Color.GREEN, Color.BLUE,
                 Color.RED, Color.CYAN);
@@ -103,44 +104,43 @@ public class RecyclerPoetcontents extends AppCompatActivity {
         });
 
 
-
         setData(catid);
     }
 
     private void setData(final String catid) {
 
 
-        final String url="https://emam8.com/api/emam8_apps/poet_contents"+"?page="+page_number;
+        final String url = "https://emam8.com/api/emam8_apps/poet_contents" + "?page=" + page_number;
         // Log.w("info",url);
 
         final ProgressDialog pDialog;
-        pDialog=new ProgressDialog(RecyclerPoetcontents.this);
+        pDialog = new ProgressDialog(RecyclerPoetcontents.this);
         pDialog.setMessage("در حال بارگیری اطلاعات ...");
         pDialog.setCancelable(false);
         pDialog.show();
 
-        Response.Listener<JSONArray> listener=new Response.Listener<JSONArray>() {
+        Response.Listener<JSONArray> listener = new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
                 try {
 //                    Log.w("info","Ya Zahra ...");
-                    for(int i=0;i<response.length();i++){
-                        JSONObject jsonObject=response.getJSONObject(i);
-                        String title=jsonObject.getString("title");
-                        String article_id=jsonObject.getString("id");
-                        String poet=jsonObject.getString("full_name");
-                        String sabk=jsonObject.getString("sabk");
-                        String state=jsonObject.getString("state");
-                        String profile=jsonObject.getString("profile");
-                        String poet_id=jsonObject.getString("poet_id");
+                    for (int i = 0; i < response.length(); i++) {
+                        JSONObject jsonObject = response.getJSONObject(i);
+                        String title = jsonObject.getString("title");
+                        String article_id = jsonObject.getString("id");
+                        String poet = jsonObject.getString("full_name");
+                        String sabk = jsonObject.getString("sabk");
+                        String state = jsonObject.getString("state");
+                        String profile = jsonObject.getString("profile");
+                        String poet_id = jsonObject.getString("poet_id");
 
-                        poem.add(new Poems(title, sabk, poet, article_id, state,profile,poet_id));
+                        poem.add(new Poems(title, sabk, poet, article_id, state, profile, poet_id));
 //                        poem.add(new Poems("شعر تولد", "سبک", "شاعر", "2525", "1"));
 //                        Log.w("info","Ya Ali ..."+poet);
                     }
                     adapter.notifyDataSetChanged();
 
-                }catch (Exception e){
+                } catch (Exception e) {
                     e.printStackTrace();
 
                 }
@@ -150,18 +150,18 @@ public class RecyclerPoetcontents extends AppCompatActivity {
         };
 
 
-        JSONArray array=new JSONArray();
-        JSONObject obj=new JSONObject();
+        JSONArray array = new JSONArray();
+        JSONObject obj = new JSONObject();
 
         try {
-            String app_name=MainActivity.app_name;
-            String version=MainActivity.app_version;
-            obj.put("catid",catid);
-            obj.put("mode",mode);
-            obj.put("gid",gid);
-            obj.put("version",version);
-            obj.put("app_name",app_name);
-            obj.put("poet_id",poet_id);
+            String app_name = MainActivity.app_name;
+            String version = MainActivity.app_version;
+            obj.put("catid", catid);
+            obj.put("mode", mode);
+            obj.put("gid", gid);
+            obj.put("version", version);
+            obj.put("app_name", app_name);
+            obj.put("poet_id", poet_id);
             swipeRefreshLayout.setRefreshing(false);
         } catch (JSONException e) {
             e.printStackTrace();
@@ -170,12 +170,12 @@ public class RecyclerPoetcontents extends AppCompatActivity {
 
         array.put(obj);
 
-        Log.d("info","array=>"+array.toString());
+        Log.d("info", "array=>" + array.toString());
 
-        JsonArrayRequest request=new JsonArrayRequest(Request.Method.POST,url,  array ,listener,new Response.ErrorListener() {
+        JsonArrayRequest request = new JsonArrayRequest(Request.Method.POST, url, array, listener, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getApplicationContext(),"متاسفانه ارتباط با سرور برقرار نشد ممکن است مشکل از قطعی اینترنت شما باشد یا شلوغ بودن سرور",Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "متاسفانه ارتباط با سرور برقرار نشد ممکن است مشکل از قطعی اینترنت شما باشد یا شلوغ بودن سرور", Toast.LENGTH_LONG).show();
                 pDialog.dismiss();
                 swipeRefreshLayout.setRefreshing(false);
             }
@@ -184,11 +184,10 @@ public class RecyclerPoetcontents extends AppCompatActivity {
     }
 
 
-
-
-
-
-
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
+    }
 
 
 }
