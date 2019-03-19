@@ -54,30 +54,8 @@ public class SherActivity extends AppCompatActivity {
 
 
 
-        BottomNavigationView bottomNavigationView = (BottomNavigationView)
-                findViewById(R.id.bottom_navigation_sher);
-        bottomNavigationView.setSelectedItemId(R.id.action_home);
 
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()){
-                    case R.id.action_favorites:
 
-                        Intent i=new Intent(getApplicationContext(),login_activity.class);
-                        startActivity(i);
-
-                        break;
-                    case R.id.action_home:
-                        Intent y=new Intent(getApplicationContext(),MainActivity.class);
-                        startActivity(y);
-                        break;
-                    case R.id.action_schedules:
-
-                }
-                return true;
-            }
-        });
 
 
 

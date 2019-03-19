@@ -18,26 +18,26 @@
             android:id="@+id/fp_toolbar_show_poem"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/colorPrimary"/>
+            android:background="@color/colorPrimary" />
 
 
         <ImageView
             android:id="@+id/fp_zoom_plus"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:src="@drawable/magnify_plus"
             android:layout_alignParentRight="true"
             android:layout_centerInParent="true"
-            android:layout_marginRight="8dp"/>
+            android:layout_marginRight="8dp"
+            android:src="@drawable/magnify_plus" />
 
         <ImageView
             android:id="@+id/fp_zoom_minus"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:src="@drawable/magnify_minus"
             android:layout_alignParentRight="true"
             android:layout_centerInParent="true"
-            android:layout_marginRight="40dp"/>
+            android:layout_marginRight="40dp"
+            android:src="@drawable/magnify_minus" />
 
 
     </RelativeLayout>
@@ -46,37 +46,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_anchor="@+id/fp_rltv_toolbar"
-        app:layout_anchorGravity="bottom|right"
+        app:layout_anchorGravity="bottom|center"
 
         >
 
-        <TextView
-            android:id="@+id/current_duration"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="8dp"
-            android:textColor="@android:color/white"
-            android:textSize="12sp"
-            tools:text="00:00" />
 
         <SeekBar
             android:id="@+id/fp_seekBar"
             android:layout_width="240dp"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@+id/current_duration"
-            android:progress="20"
-            />
+            android:progress="20" />
 
-        <TextView
-            android:id="@+id/duration"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_toRightOf="@+id/fp_seekBar"
-            android:textColor="@android:color/white"
-            android:textSize="12sp"
-            tools:text="00:00" />
 
     </RelativeLayout>
 
@@ -84,143 +65,136 @@
         android:id="@+id/fp_img_play"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="left|center"
         android:layout_margin="8dp"
         android:src="@drawable/ic_play"
         app:layout_anchor="@id/fp_rltv_toolbar"
         app:layout_anchorGravity="bottom"
-        android:layout_gravity="left|center"/>
+        android:layoutDirection="ltr"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <android.support.v4.widget.SwipeRefreshLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
             android:id="@+id/fp_swiprefresh_sabk"
-            />
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
     </RelativeLayout>
-
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:layout_marginTop="95dp"
         android:layout_marginLeft="15dp"
+        android:layout_marginTop="95dp"
         android:layout_marginRight="15dp"
         android:layout_marginBottom="15dp"
+        android:orientation="horizontal"
         android:textAlignment="center"
         android:textDirection="rtl"
 
         >
 
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/trans_rectangle_back"
 
+            >
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/trans_rectangle_back"
+                android:layout_margin="4dp"
+                android:background="@drawable/trans_rectangle_poem_back"
+                android:orientation="vertical"
+                android:textAlignment="center">
 
-                >
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/trans_rectangle_poem_back"
-                    android:layout_margin="4dp"
-                    android:textAlignment="center"
-                    android:orientation="vertical"
-                    >
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layoutDirection="ltr">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp">
+                        android:layoutDirection="ltr">
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-
-                            <ImageView
-                                android:id="@+id/fp_img_share_btn"
-                                android:layout_width="30dp"
-                                android:layout_height="30dp"
-                                android:src="@drawable/share"
-                                android:layout_gravity="bottom"
-                                android:layout_marginTop="4dp"
-                                android:layout_marginLeft="12dp"
-                                />
+                        <ImageView
+                            android:id="@+id/fp_img_share_btn"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_gravity="bottom"
+                            android:layout_marginLeft="12dp"
+                            android:layout_marginTop="4dp"
+                            android:src="@drawable/share" />
 
 
-                            <ImageView
-                                android:id="@+id/fp_img_heart_btn"
-                                android:layout_width="30dp"
-                                android:layout_height="30dp"
-                                android:src="@drawable/heart"
-                                android:layout_gravity="bottom"
-                                android:layout_marginTop="4dp"
-                                android:layout_marginLeft="12dp"
-                                />
+                        <ImageView
+                            android:id="@+id/fp_img_heart_btn"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_gravity="bottom"
+                            android:layout_marginLeft="12dp"
+                            android:layout_marginTop="4dp"
+                            android:src="@drawable/heart" />
 
-                            <ImageView
-                                android:id="@+id/fp_img_download"
-                                android:layout_width="30dp"
-                                android:layout_height="30dp"
-                                android:src="@drawable/download"
-                                android:layout_gravity="bottom"
-                                android:layout_marginTop="4dp"
-                                android:layout_marginLeft="12dp"
-                                />
+                        <ImageView
+                            android:id="@+id/fp_img_download"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_gravity="bottom"
+                            android:layout_marginLeft="12dp"
+                            android:layout_marginTop="4dp"
+                            android:src="@drawable/download" />
 
-
-                        </LinearLayout>
 
                     </LinearLayout>
-
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        >
-                        <ScrollView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            >
-
-                            <TextView
-                                android:id="@+id/fp_txt_body"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                tools:text="alireza abbasian"
-                                android:layout_marginBottom="10dp"
-                                android:layout_marginLeft="10dp"
-                                android:layout_marginRight="10dp"
-                                android:layout_marginTop="10dp"
-                                android:paddingBottom="10dp"
-                                android:paddingLeft="10dp"
-                                android:paddingRight="10dp"
-                                android:paddingTop="10dp"
-                                android:scrollbars="vertical"
-                                android:singleLine="false"
-
-                                android:textAlignment="center"
-                                android:textColor="#fff"
-                                android:textDirection="rtl"
-
-                                android:textSize="16dp" />
-                        </ScrollView>
-                    </LinearLayout>
-
 
                 </LinearLayout>
 
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp">
+
+                    <ScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/fp_txt_body"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:paddingLeft="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingRight="10dp"
+                            android:paddingBottom="10dp"
+                            android:scrollbars="vertical"
+                            android:singleLine="false"
+                            android:textAlignment="center"
+
+                            android:textColor="#fff"
+                            android:textDirection="rtl"
+                            android:textSize="16dp"
+
+                            tools:text="alireza abbasian" />
+                    </ScrollView>
+                </LinearLayout>
+
+
             </LinearLayout>
 
-
+        </LinearLayout>
 
 
     </LinearLayout>

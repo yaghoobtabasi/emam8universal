@@ -47,7 +47,6 @@ public class MainActivity extends AppCompatActivity {
         findview();
         AppPreferenceTools appPreferenceTools = new AppPreferenceTools(getBaseContext());
         String id = appPreferenceTools.getUserId();
-        Toast.makeText(getApplicationContext(), id, Toast.LENGTH_LONG).show();
 
         sher_sabk.setOnClickListener(new View.OnClickListener() {
             @Override

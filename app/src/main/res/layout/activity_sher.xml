@@ -73,16 +73,6 @@
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
-    <android.support.design.widget.BottomNavigationView
-        android:id="@+id/bottom_navigation_sher"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        app:itemBackground="@color/gray_back"
-        app:itemIconTint="@color/nav_button"
-        app:itemTextColor="@color/nav_button"
-        app:menu="@menu/article_menu"
 
-        />
 
 </RelativeLayout>
