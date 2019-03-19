@@ -22,14 +22,6 @@
 
 
         <ImageView
-            android:id="@+id/image_poet_showPoem"
-            android:layout_width="45dp"
-            android:layout_height="45dp"
-            android:layout_centerHorizontal="true"
-            android:layout_centerInParent="true"
-            android:src="@drawable/chavoshi" />
-
-        <ImageView
             android:id="@+id/zoom_plus"
             android:layout_width="30dp"
             android:layout_height="30dp"
@@ -54,37 +46,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_anchor="@+id/rltv_toolbar"
-        app:layout_anchorGravity="bottom|right"
+        app:layout_anchorGravity="bottom|center"
 
         >
 
-        <TextView
-            android:id="@+id/current_duration"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="8dp"
-            android:textColor="@android:color/white"
-            android:textSize="12sp"
-            tools:text="00:00" />
 
         <SeekBar
             android:id="@+id/seekbar_showPoem"
             android:layout_width="240dp"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@+id/current_duration"
-            android:progress="20"
+            android:progress="0"
             />
 
-        <TextView
-            android:id="@+id/duration"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_toRightOf="@+id/seekbar_showPoem"
-            android:textColor="@android:color/white"
-            android:textSize="12sp"
-            tools:text="00:00" />
+
 
     </RelativeLayout>
 
@@ -96,7 +71,9 @@
         android:src="@drawable/ic_play"
         app:layout_anchor="@id/rltv_toolbar"
         app:layout_anchorGravity="bottom"
-        android:layout_gravity="left|center"/>
+        android:layout_gravity="left|center"
+        android:layoutDirection="ltr"
+        android:textDirection="ltr"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -145,11 +122,13 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp">
+                    android:layout_marginTop="8dp"
+                    android:layoutDirection="ltr">
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:layoutDirection="ltr">
 
                         <ImageView
                             android:id="@+id/share_showPoem"

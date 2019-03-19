@@ -389,7 +389,7 @@ if(requestCode==30){
             super.onResume();
             mediaPlayer.start();
 //            Log.i("info","On Resume Media player");
-            img_play.setImageResource(R.drawable.pause_btn);
+            img_play.setImageResource(R.drawable.play_btn);
         }
     }
 
@@ -575,9 +575,9 @@ try {
 
         Load_poems load_poems=retro.create(Load_poems.class);
 
-        String article_id="48000";
-        String app_name="s";
-        String app_version="1.2";
+
+        String app_name=MainActivity.app_name;
+        String app_version=MainActivity.app_version;
         Call<Poem_retro> call=load_poems.load_article(headerMap,article_id,app_name,app_version,"json");
 
         call.enqueue(new Callback<Poem_retro>() {

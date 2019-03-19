@@ -4,20 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    >
+    tools:context=".MainActivity">
 
     <ImageView
 
+        android:id="@+id/background"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/background"
         android:scaleType="centerCrop"
-        android:id="@+id/background"
-        />
-
-
-
+        android:src="@drawable/background" />
 
 
     <ScrollView
@@ -25,90 +20,219 @@
         android:layout_height="match_parent"
 
 
-
         >
+
         <LinearLayout
-            android:layout_gravity="center"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
+            android:layout_gravity="center"
             android:layout_marginStart="30dp"
+            android:layout_marginTop="18dp"
             android:layout_marginEnd="30dp"
             android:background="@drawable/trans_rectangle_back_blue"
-            android:layout_marginTop="18dp"
+            android:orientation="vertical"
 
 
             >
-            <LinearLayout
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:background="@drawable/trans_rectangle_back"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingBottom="10dp"
+
+            >
+
+            <ImageView
+                android:id="@+id/emam8_logo"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:background="@drawable/trans_rectangle_back"
-                android:gravity="center"
+                android:layout_height="80dp"
+                android:layout_marginTop="5dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/logo" />
+
+
+            <TextView
+                android:id="@+id/sher_sabk_txt"
+                style="@style/text_button_frame_image"
+                android:text="اشعار و سبک های مداحی" />
+
+
+            <LinearLayout
+                style="@style/text_button_frame_image"
                 android:layout_gravity="center"
-                android:paddingBottom="10dp"
-
-                >
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:id="@+id/emam8_logo"
-                    android:src="@drawable/logo"
-                    android:layout_marginTop="5dp"
-                    android:scaleType="fitCenter"
-                    />
-
-
+                android:gravity="center"
+                android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/sher_sabk_txt"
-                    style="@style/text_button_frame_image"
-                    android:text="اشعار و سبک های مداحی" />
-
-
+                    android:id="@+id/amoozesh_maddahi1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="8dp"
+                    android:text="(بزودی)"
+                    android:textColor="#ffF000"
+                    android:textSize="14sp"
+                    android:textDirection="rtl"/>
 
                 <TextView
-                    android:text="آموزش مداحی"
                     android:id="@+id/amoozesh_maddahi"
-                    style="@style/text_button_frame_image" />
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="آموزش مداحی"
+                    android:textColor="#fff"
+                    android:textSize="20sp" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/text_button_frame_image"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="horizontal">
 
                 <TextView
-                    android:text=" دانلود مداحی"
+                    android:id="@+id/amoozesh_maddahi2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="8dp"
+                    android:text="(بزودی)"
+                    android:textColor="#ffF000"
+                    android:textSize="14sp"
+                    android:textDirection="rtl"/>
+
+                <TextView
                     android:id="@+id/downliad_maddahi"
-                    style="@style/text_button_frame_image" />
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text=" دانلود مداحی"
+                    android:textColor="#fff"
+                    android:textSize="20sp" />
+
+            </LinearLayout>
 
 
+            <LinearLayout
+                style="@style/text_button_frame_image"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="horizontal">
 
                 <TextView
-                    android:text="دانلود قرآن "
+                    android:id="@+id/amoozesh_maddahi3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="8dp"
+                    android:text="(بزودی)"
+                    android:textColor="#ffF000"
+                    android:textSize="14sp"
+                    android:textDirection="rtl"/>
+
+                <TextView
                     android:id="@+id/quran_txt"
-                    style="@style/text_button_frame_image" />
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="دانلود قرآن "
+                    android:textColor="#fff"
+                    android:textSize="20sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/text_button_frame_image"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="horizontal">
 
                 <TextView
-                    android:text="سخنرانی های مذهبی "
+                    android:id="@+id/amoozesh_maddahi4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="8dp"
+                    android:text="(بزودی)"
+                    android:textColor="#ffF000"
+                    android:textSize="14sp"
+                    android:textDirection="rtl"/>
+
+                <TextView
                     android:id="@+id/lectures_txt"
-                    style="@style/text_button_frame_image" />
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="سخنرانی های مذهبی "
+                    android:textColor="#fff"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/text_button_frame_image"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/amoozesh_maddahi5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="8dp"
+                    android:text="(بزودی)"
+                    android:textColor="#ffF000"
+                    android:textSize="14sp"
+                    android:textDirection="rtl"/>
 
                 <TextView
                     android:id="@+id/news_txt"
-                    style="@style/text_button_frame_image"
-                    android:text="اخبار و رویدادهای مذهبی" />
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="اخبار و رویدادهای مذهبی"
+                    android:textColor="#fff"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/text_button_frame_image"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="horizontal">
 
                 <TextView
+                    android:id="@+id/amoozesh_maddahi6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="8dp"
+                    android:text="(بزودی)"
+                    android:textColor="#ffF000"
+                    android:textSize="14sp"
+                    android:textDirection="rtl"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:id="@+id/contatc_us_btn"
-
+                    android:layout_gravity="center"
+                    android:gravity="center"
                     android:text="ارتباط با ما"
-                    style="@style/text_button_frame_image" />
-
-
-
-
+                    android:textColor="#fff"
+                    android:textSize="20sp" />
+            </LinearLayout>
 
 
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
+
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
