@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.emam8.emam8_universal.BuildConfig;
 import com.emam8.emam8_universal.MainActivity;
 import com.emam8.emam8_universal.Model.AuthenticationResponseModel;
 import com.emam8.emam8_universal.R;
@@ -125,7 +126,7 @@ void login_user(){
     pDialog.show();
     ClientConfigs clientConfigs=new ClientConfigs();
     Retrofit retro=new Retrofit.Builder()
-            .baseUrl("https://emam8.com/api/")
+            .baseUrl(BuildConfig.Apikey_BaseUrl)
             .addConverterFactory(GsonConverterFactory.create())
             .build();
 

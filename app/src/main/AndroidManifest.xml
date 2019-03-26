@@ -73,7 +73,7 @@
 
         <meta-data
             android:name="co.ronash.pushe.token"
-            android:value="PUSHE_196709258458" />
+            android:value="${APIKEY_PUSHE_T}" />
         <meta-data
             android:name="co.ronash.pushe.cr"
             android:value="Tm9uZQ==" />

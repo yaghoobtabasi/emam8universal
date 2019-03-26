@@ -51,7 +51,7 @@ public class Cat_Farsi_Poems extends AppCompatActivity {
     }
 
     private void setData(String sectionid) {
-        final String Url = "https://emam8.com/api/emam8_apps/cat_list/"+sectionid;
+        final String Url = BuildConfig.Apikey_CatList+sectionid;
 
         final ProgressDialog progressDialog;
         progressDialog = new ProgressDialog(Cat_Farsi_Poems.this);

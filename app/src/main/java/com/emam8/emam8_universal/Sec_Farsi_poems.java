@@ -55,7 +55,7 @@ public class Sec_Farsi_poems extends AppCompatActivity {
     }
 
     private void setData() {
-        final String url = "https://emam8.com/api/emam8_apps/emam8_universal/section_list";
+        final String url = BuildConfig.Apikey_SectionList;
 
         final ProgressDialog pDialog;
         pDialog = new ProgressDialog(Sec_Farsi_poems.this);

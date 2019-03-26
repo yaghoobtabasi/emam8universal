@@ -142,7 +142,7 @@ public class RecyclerPoem extends AppCompatActivity {
     private void setData(final String catid) {
 
 
-        final String url = "https://emam8.com/api/emam8_apps/poem_list" + "?page=" + page_number;
+        final String url = BuildConfig.Apikey_PoemList + "?page=" + page_number;
         // Log.w("info",url);
 
         final ProgressDialog pDialog;

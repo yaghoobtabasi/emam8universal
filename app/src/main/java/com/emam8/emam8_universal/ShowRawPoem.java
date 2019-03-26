@@ -47,8 +47,8 @@ public class ShowRawPoem extends AppCompatActivity {
     private SwipeRefreshLayout swipeRefreshLayout;
     private String body_response,id,title,sabk,sname,cname,sectionid,catid,state_1,body,poet_id,poet_name;
     private ConnectionDetector connectionDetector;
-    public final String Site_url="https://emam8.com/";
-    private static final String url_load_poem="https://emam8.com/api/emam8_apps/";
+    public final String Site_url=BuildConfig.Apikey_BaseUrl;
+    private static final String url_load_poem=BuildConfig.ApiKey_baseUrl_Apps;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,10 +75,10 @@ public class ShowRawPoem extends AppCompatActivity {
 
         if(db.check_fav_content(article_id))
         {
-            heart_btn.setImageResource(R.drawable.heart_red);
+            heart_btn.setImageResource(R.drawable.heartr);
         }else
         {
-            heart_btn.setImageResource(R.drawable.heart_white);
+            heart_btn.setImageResource(R.drawable.heart);
         }
 
 
@@ -152,7 +152,7 @@ public class ShowRawPoem extends AppCompatActivity {
 
 
         Retrofit retro=new Retrofit.Builder()
-                .baseUrl(Site_url+"api/emam8_apps/")
+                .baseUrl(BuildConfig.ApiKey_baseUrl_Apps)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 

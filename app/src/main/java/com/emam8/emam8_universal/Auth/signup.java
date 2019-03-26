@@ -13,6 +13,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.emam8.emam8_universal.BuildConfig;
 import com.emam8.emam8_universal.MainActivity;
 import com.emam8.emam8_universal.Model.AuthenticationResponseModel;
 import com.emam8.emam8_universal.Model.SignUpRequestModel;
@@ -60,7 +61,8 @@ public class signup extends AppCompatActivity {
     void signup_user(){
         txt_conf_pass=conf_pass.getText().toString().trim();
         txt_username=username.getText().toString().trim();
-        String Base_url="https://emam8.com/api/auth/";
+        //String Base_url="https://emam8.com/api/auth/";
+        String Base_url= BuildConfig.ApiKey_BaseUrl_Aut;
         Retrofit retrofit=new Retrofit.
                 Builder().
                 baseUrl(Base_url).

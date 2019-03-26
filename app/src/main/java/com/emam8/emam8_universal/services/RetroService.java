@@ -1,6 +1,7 @@
 package com.emam8.emam8_universal.services;
 
 
+import com.emam8.emam8_universal.BuildConfig;
 import com.emam8.emam8_universal.Model.AuthenticationResponseModel;
 import com.emam8.emam8_universal.Model.RefreshTokenRequestModel;
 import com.emam8.emam8_universal.Model.SignInRequestModel;
@@ -46,14 +47,14 @@ public interface RetroService {
 //    @DELETE("tweet/{id}")
 //    Call<OperationResultModel> deleteTweetById(@Path("id") String tweetId);
 
-    @POST("signup")
+    @POST(BuildConfig.Apikey_BaseUrl_Signup)
     Call<AuthenticationResponseModel> signUp(
             @HeaderMap Map<String , String> headers,
             @Query("mobile")String mobile,
             @Query("password")String password
     );
 
-    @POST("login")
+    @POST(BuildConfig.Apikey_BaseUrl_Login)
     Call<AuthenticationResponseModel> signIn(
             @HeaderMap Map<String , String> headers,
             @Query("username")String username,
@@ -63,7 +64,7 @@ public interface RetroService {
 
     );
 
-    @GET("auth/user")
+    @GET(BuildConfig.Apikey_BaseUrl_Aut_User)
     Call<User_info> user_info(
             @HeaderMap Map<String , String> headers
 
@@ -71,15 +72,16 @@ public interface RetroService {
 
 
 
-    @PUT("user/profile")
+    @PUT(BuildConfig.Apikey_BaseUrl_User_Profile)
     Call<UserModel> updateUserProfile(@Body UserModel userModel);
 
     @Multipart
-    @POST("user/profile/image")
+    @POST(BuildConfig.Apikey_BaseUrl_User_Profile_Image)
     Call<UserModel> uploadUserProfileImage(@Header("Authorization") String authHeader, @PartMap Map<String, RequestBody> map);
 
 
-    @POST("refreshtoken")
+
+    @POST(BuildConfig.Apikey_BaseUrl_refreshtoken)
     Call<TokenModel> getRefreshToken(@Body RefreshTokenRequestModel refreshTokenRequestModel);
 
 //    @GET("tweet")

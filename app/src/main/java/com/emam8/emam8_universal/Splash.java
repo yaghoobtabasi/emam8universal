@@ -50,7 +50,7 @@ public class Splash extends AppCompatActivity {
                 .create();
 
         Retrofit retrofit=new Retrofit.Builder().
-                baseUrl("https://emam8.com/api/")
+                baseUrl(BuildConfig.Apikey_BaseUrl_Api)
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
         HashMap<String,String> headerMap=new HashMap<String,String>();
