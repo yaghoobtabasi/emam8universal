@@ -9,6 +9,33 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        manifestPlaceholders = [APIKEY_PUSHE_T : ApiKey_Pushe_Token]
+
+        buildConfigField "String" , 'Apikey_Inc_Counter' , '"' + ApiKey_IncCounter + '"'
+
+        buildConfigField "String" , 'Apikey_BaseUrl' , '"' + ApiKey_BaseUrl + '"'
+        buildConfigField "String" , 'Apikey_BaseUrl_Api' , '"' + ApiKey_BaseUrl_Api + '"'
+        buildConfigField "String" , 'ApiKey_BaseUrl_Aut' , '"' + ApiKey_BaseUrl_Aut + '"'
+        buildConfigField "String" , 'ApiKey_baseUrl_Apps' , '"' + ApiKey_baseUrl_Apps + '"'
+
+        buildConfigField "String" , 'Apikey_BaseUrl_Signup' , '"' + ApiKey_BaseUrl_Signup + '"'
+        buildConfigField "String" , 'Apikey_BaseUrl_Login' , '"' + ApiKey_BaseUrl_Login + '"'
+        buildConfigField "String" , 'Apikey_BaseUrl_Aut_User' , '"' + ApiKey_BaseUrl_Aut_User + '"'
+        buildConfigField "String" , 'Apikey_BaseUrl_User_Profile' , '"' + ApiKey_BaseUrl_User_Profile + '"'
+        buildConfigField "String" , 'Apikey_BaseUrl_User_Profile_Image' , '"' + ApiKey_BaseUrl_User_Profile_Image + '"'
+        buildConfigField "String" , 'Apikey_BaseUrl_refreshtoken' , '"' + ApiKey_BaseUrl_refreshtoken + '"'
+
+        buildConfigField "String" , 'ApiKey_LoadPoem' , '"' + ApiKey_LoadPoem + '"'
+        buildConfigField "String" , 'Apikey_CatList' , '"' + Apikey_CatList + '"'
+        buildConfigField "String" , 'Apikey_PoemList' , '"' + Apikey_PoemList + '"'
+        buildConfigField "String" , 'Apikey_PoetContents' , '"' + Apikey_PoetContents + '"'
+        buildConfigField "String" , 'Apikey_SectionList' , '"' + Apikey_SectionList + '"'
+
+        buildConfigField "String" , 'Apikey_Audio' , '"' + Apikey_Audio + '"'
+
+
+
     }
     buildTypes {
         release {

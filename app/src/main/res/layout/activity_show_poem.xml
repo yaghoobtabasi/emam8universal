@@ -21,24 +21,6 @@
             android:background="@color/colorPrimary"/>
 
 
-        <ImageView
-            android:id="@+id/zoom_plus"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@drawable/magnify_plus"
-            android:layout_alignParentRight="true"
-            android:layout_centerInParent="true"
-            android:layout_marginRight="8dp"/>
-
-        <ImageView
-            android:id="@+id/zoom_minus"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@drawable/magnify_minus"
-            android:layout_alignParentRight="true"
-            android:layout_centerInParent="true"
-            android:layout_marginRight="40dp"/>
-
 
     </RelativeLayout>
 
@@ -47,27 +29,44 @@
         android:layout_height="wrap_content"
         app:layout_anchor="@+id/rltv_toolbar"
         app:layout_anchorGravity="bottom|center"
-
+        android:layoutDirection="ltr"
         >
-
 
         <SeekBar
             android:id="@+id/seekbar_showPoem"
             android:layout_width="240dp"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/current_duration"
-            android:progress="0"
+            android:progress="220"
+            android:layout_centerInParent="true"
             />
 
+    </RelativeLayout>
 
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_anchor="@+id/rltv_toolbar"
+        app:layout_anchorGravity="bottom|center|right"
+        android:layout_marginRight="16dp"
+        >
+
+        <TextView
+            android:id="@+id/duration_showPoem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="00:00"
+            android:textSize="18sp"
+            android:textColor="@color/colorAccent"
+            android:clickable="false"
+            />
 
     </RelativeLayout>
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab_play"
+        android:id="@+id/fab_play_showPoem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
+        android:layout_margin="12dp"
         android:src="@drawable/ic_play"
         app:layout_anchor="@id/rltv_toolbar"
         app:layout_anchorGravity="bottom"
@@ -137,7 +136,8 @@
                             android:src="@drawable/share"
                             android:layout_gravity="bottom"
                             android:layout_marginTop="4dp"
-                            android:layout_marginLeft="12dp"
+                            android:layout_marginLeft="8dp"
+                            android:layout_weight="0.25"
                             />
 
 
@@ -148,7 +148,8 @@
                             android:src="@drawable/heart"
                             android:layout_gravity="bottom"
                             android:layout_marginTop="4dp"
-                            android:layout_marginLeft="12dp"
+                            android:layout_marginLeft="8dp"
+                            android:layout_weight="0.25"
                             />
 
                         <ImageView
@@ -158,9 +159,41 @@
                             android:src="@drawable/download"
                             android:layout_gravity="bottom"
                             android:layout_marginTop="4dp"
+                            android:layout_marginLeft="8dp"
+                            android:layout_weight="0.25"
+
+                            />
+                        <ImageView
+                            android:id="@+id/zoom_minus_showPoem"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_gravity="bottom"
                             android:layout_marginLeft="12dp"
+                            android:layout_marginTop="4dp"
+                            android:src="@drawable/magnify_minus"
+                            android:layout_weight="0.25"
                             />
 
+                        <SeekBar
+                            android:id="@+id/seekbar_size_showPoem"
+                            android:layout_width="155dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:progress="50"
+                            android:layout_marginLeft="4dp"
+                            android:layout_weight="1"
+                            />
+
+                        <ImageView
+                            android:id="@+id/zoom_plus_showPoem"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_gravity="bottom"
+                            android:layout_marginTop="4dp"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginRight="4dp"
+                            android:src="@drawable/magnify_plus"
+                            android:layout_weight="0.25"/>
 
                     </LinearLayout>
 

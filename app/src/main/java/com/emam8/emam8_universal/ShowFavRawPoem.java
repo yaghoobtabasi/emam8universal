@@ -53,7 +53,7 @@ public class ShowFavRawPoem extends AppCompatActivity {
 
         if(db.check_fav_content(article_id))
         {
-            heart_btn.setImageResource(R.drawable.heart_red);
+            heart_btn.setImageResource(R.drawable.heartr);
         }else
         {
             heart_btn.setImageResource(R.drawable.heart);
@@ -71,14 +71,14 @@ public class ShowFavRawPoem extends AppCompatActivity {
                     long result = db.add_fav(article_id);
                     if (result > 0) {
                         Toast.makeText(getApplicationContext(),"این مطلب به اشعار منتخب افزوده شد",Toast.LENGTH_SHORT).show();
-                        heart_btn.setImageResource(R.drawable.heart_red);
+                        heart_btn.setImageResource(R.drawable.heartr);
                     }
 
                 }else
                 {
                     long res=db.del_fav(article_id);
                     if(res>0){
-                        heart_btn.setImageResource(R.drawable.heart_white);
+                        heart_btn.setImageResource(R.drawable.heart);
                         Toast.makeText(getApplicationContext(),"این مطلب از فهرست اشعار حذف شد",Toast.LENGTH_SHORT).show();
                     }
 

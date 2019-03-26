@@ -21,24 +21,6 @@
             android:background="@color/colorPrimary" />
 
 
-        <ImageView
-            android:id="@+id/fp_zoom_plus"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_alignParentRight="true"
-            android:layout_centerInParent="true"
-            android:layout_marginRight="8dp"
-            android:src="@drawable/magnify_plus" />
-
-        <ImageView
-            android:id="@+id/fp_zoom_minus"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_alignParentRight="true"
-            android:layout_centerInParent="true"
-            android:layout_marginRight="40dp"
-            android:src="@drawable/magnify_minus" />
-
 
     </RelativeLayout>
 
@@ -66,7 +48,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="left|center"
-        android:layout_margin="8dp"
+        android:layout_margin="12dp"
         android:src="@drawable/ic_play"
         app:layout_anchor="@id/fp_rltv_toolbar"
         app:layout_anchorGravity="bottom"
@@ -128,29 +110,58 @@
                             android:id="@+id/fp_img_share_btn"
                             android:layout_width="30dp"
                             android:layout_height="30dp"
-                            android:layout_gravity="bottom"
-                            android:layout_marginLeft="12dp"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="8dp"
                             android:layout_marginTop="4dp"
                             android:src="@drawable/share" />
-
 
                         <ImageView
                             android:id="@+id/fp_img_heart_btn"
                             android:layout_width="30dp"
                             android:layout_height="30dp"
-                            android:layout_gravity="bottom"
-                            android:layout_marginLeft="12dp"
+                            android:src="@drawable/heart"
+                            android:layout_gravity="center"
                             android:layout_marginTop="4dp"
-                            android:src="@drawable/heart" />
+                            android:layout_marginLeft="8dp"
+                            />
+
 
                         <ImageView
                             android:id="@+id/fp_img_download"
                             android:layout_width="30dp"
                             android:layout_height="30dp"
-                            android:layout_gravity="bottom"
-                            android:layout_marginLeft="12dp"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="8dp"
                             android:layout_marginTop="4dp"
                             android:src="@drawable/download" />
+
+                        <ImageView
+                            android:id="@+id/fp_zoom_minus"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="4dp"
+                            android:src="@drawable/magnify_minus"
+                            />
+
+                        <SeekBar
+                            android:id="@+id/fp_seekbar_volume"
+                            android:layout_width="155dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:progress="50"
+                            android:layout_marginLeft="4dp"
+                            />
+
+                        <ImageView
+                            android:id="@+id/fp_zoom_plus"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="4dp"
+                            android:layout_marginLeft="4dp"
+                            android:src="@drawable/magnify_plus" />
 
 
                     </LinearLayout>

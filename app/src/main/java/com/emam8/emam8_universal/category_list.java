@@ -43,7 +43,7 @@ public class category_list extends AppCompatActivity {
     }
 
     void setCats(String sectionid){
-        final String url="https://emam8.com/api/emam8_apps/cat_list/"+sectionid;
+        final String url=BuildConfig.Apikey_CatList+sectionid;
         final ProgressDialog pDialog;
         pDialog=new ProgressDialog(category_list.this);
         pDialog.setMessage("در حال بارگیری اطلاعات ...");
@@ -53,6 +53,7 @@ public class category_list extends AppCompatActivity {
         Response.Listener<JSONArray> listener=new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
+                Toast.makeText(getApplicationContext(),BuildConfig.ApiKey_LoadPoem,Toast.LENGTH_LONG).show();
                 try {
                     for(int i=0;i<response.length();i++){
                         JSONObject jsonObject=response.getJSONObject(i);

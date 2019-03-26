@@ -174,9 +174,9 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    void show_toast() {
-        Toast.makeText(getApplicationContext(), "این گزینه بزودی فعال می گردد", Toast.LENGTH_SHORT).show();
-    }
+//    void show_toast() {
+//        Toast.makeText(getApplicationContext(), "این گزینه بزودی فعال می گردد", Toast.LENGTH_SHORT).show();
+//    }
 
 
     @Override
