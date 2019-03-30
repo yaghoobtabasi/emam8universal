@@ -10,6 +10,18 @@
     tools:context=".ShowPoem">
 
     <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/swiprefresh_sabk"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
         android:id="@+id/rltv_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -18,9 +30,27 @@
             android:id="@+id/toolbar_show_poem"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/colorPrimary"/>
+            android:background="@color/colorPrimary"
+            />
 
+    </RelativeLayout>
 
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_anchor="@id/rltv_toolbar"
+        app:layout_anchorGravity="bottom"
+        android:layout_gravity="left|center"
+        >
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab_play_showPoem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="12dp"
+            android:src="@drawable/ic_play"
+            android:layoutDirection="ltr"
+            android:textDirection="ltr"/>
 
     </RelativeLayout>
 
@@ -36,7 +66,7 @@
             android:id="@+id/seekbar_showPoem"
             android:layout_width="240dp"
             android:layout_height="wrap_content"
-            android:progress="220"
+            android:progress="0"
             android:layout_centerInParent="true"
             />
 
@@ -58,30 +88,6 @@
             android:textSize="18sp"
             android:textColor="@color/colorAccent"
             android:clickable="false"
-            />
-
-    </RelativeLayout>
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab_play_showPoem"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="12dp"
-        android:src="@drawable/ic_play"
-        app:layout_anchor="@id/rltv_toolbar"
-        app:layout_anchorGravity="bottom"
-        android:layout_gravity="left|center"
-        android:layoutDirection="ltr"
-        android:textDirection="ltr"/>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <android.support.v4.widget.SwipeRefreshLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/swiprefresh_sabk"
             />
 
     </RelativeLayout>
@@ -179,7 +185,7 @@
                             android:layout_width="155dp"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:progress="50"
+                            android:progress="0"
                             android:layout_marginLeft="4dp"
                             android:layout_weight="1"
                             />

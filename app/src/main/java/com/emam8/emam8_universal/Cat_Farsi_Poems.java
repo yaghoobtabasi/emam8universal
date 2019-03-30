@@ -2,6 +2,7 @@ package com.emam8.emam8_universal;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -16,6 +17,7 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.emam8.emam8_universal.Adapter.CategoryFarsiAdapter;
 import com.emam8.emam8_universal.App.AppController;
 import com.emam8.emam8_universal.Model.CatFarsiPoem;
+import com.emam8.emam8_universal.Model.SecFarsiPoem;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -31,6 +33,8 @@ public class Cat_Farsi_Poems extends AppCompatActivity {
     private RecyclerView recyclerView;
     private CategoryFarsiAdapter adapter;
     private LinearLayoutManager layoutManager;
+    private Database database;
+    private Cursor categoryCursor;
 
 
     @Override
@@ -47,7 +51,43 @@ public class Cat_Farsi_Poems extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
 
-        setData(sectionid);
+        database = new Database(getApplicationContext());
+        database.useable();
+        database.open();
+
+        if(database.check_category_added(sectionid)){
+            setDatafromDb(sectionid);
+            database.close();
+        }
+        else {
+            setData(sectionid);
+            database.close();
+        }
+
+    }
+
+    private void setDatafromDb(String sectionId) {
+
+        database = new Database(getApplicationContext());
+        database.useable();
+        database.open();
+
+        categoryCursor = database.load_from_category();
+
+        if (categoryCursor.getCount() == 0) {
+            Toast.makeText(getApplicationContext(), "No Data Is Show", Toast.LENGTH_LONG).show();
+        } else {
+            while (categoryCursor.moveToNext()) {
+                catF.add(new CatFarsiPoem(categoryCursor.getString(0),
+                        categoryCursor.getString(1),
+                        categoryCursor.getString(2),
+                        categoryCursor.getString(3)));
+            }
+        }
+
+
+        adapter.notifyDataSetChanged();
+        database.close();
     }
 
     private void setData(String sectionid) {
@@ -63,16 +103,26 @@ public class Cat_Farsi_Poems extends AppCompatActivity {
             @Override
             public void onResponse(JSONArray response) {
                 try {
+                    database = new Database(getApplicationContext());
+                    database.writable();
+                    database.open();
+
                     for (int i = 0; i < response.length(); i++) {
 
                         JSONObject jsonObject = response.getJSONObject(i);
                         String id = jsonObject.getString("id");
                         String title = jsonObject.getString("title");
                         String count = jsonObject.getString("count");
+                        String ordering = jsonObject.getString("ordering");
 
-                        catF.add(new CatFarsiPoem(id,title,count));
+                        if (!database.check_category_exist(id)) {
+                            database.add_to_category(id, title, count,ordering,getApplicationContext());
+                        }
+
+                        catF.add(new CatFarsiPoem(id,title,count,ordering));
                     }
                     adapter.notifyDataSetChanged();
+                    database.close();
 
                 } catch (JSONException e) {
                     e.printStackTrace();

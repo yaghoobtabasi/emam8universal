@@ -16,6 +16,7 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.text.TextUtils;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.SeekBar;
@@ -51,8 +52,15 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 
-public class ShowPoem extends RuntimePermissionsActivity {
+public class ShowPoem extends RuntimePermissionsActivity implements View.OnTouchListener {
+
+    final static float move = 200;
+    float ratio  = 1.0f;
+    int baseDist;
+    float baseRatio;
+
     SeekBar seekBar, seekbarSize;
+    int seekValue;
     private TextView duration;
     MediaPlayer mediaPlayer;
     Handler handler;
@@ -60,9 +68,10 @@ public class ShowPoem extends RuntimePermissionsActivity {
     private String sabk_url;
     private Boolean isplay;
     public TextView txt_title, txt_body;
-    private database db;
+    private Database db;
     public int pos;
     private Timer timer;
+
 
     public String sabk_path;
     public final String Site_url = BuildConfig.Apikey_BaseUrl;
@@ -87,6 +96,8 @@ public class ShowPoem extends RuntimePermissionsActivity {
 
 
         txt_body = (TextView) findViewById(R.id.txt_body);
+        txt_body.setTextSize(ratio+15);
+
         share_btn = (ImageView) findViewById(R.id.share_showPoem);
         dwonload_img = (ImageView) findViewById(R.id.download_showPoem);
 
@@ -112,7 +123,7 @@ public class ShowPoem extends RuntimePermissionsActivity {
 
         }
 
-        db = new database(ShowPoem.this);
+        db = new Database(ShowPoem.this);
         db.useable();
         db.open();
         heart_btn = (ImageView) findViewById(R.id.like_showPoem);
@@ -275,6 +286,7 @@ public class ShowPoem extends RuntimePermissionsActivity {
         seekBar = (SeekBar) findViewById(R.id.seekbar_showPoem);
         seekbarSize = (SeekBar) findViewById(R.id.seekbar_size_showPoem);
 
+
         seekBar.setMax(mediaPlayer.getDuration());
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
@@ -306,6 +318,35 @@ public class ShowPoem extends RuntimePermissionsActivity {
         seconds %= 60;
 
         return String.format(Locale.ENGLISH, "%02d", minutes) + ":" + String.format(Locale.ENGLISH, "%02d", seconds);
+    }
+
+    @Override
+    public boolean onTouch(View v, MotionEvent event) {
+        if (event.getPointerCount()==2){
+            int action = event.getAction();
+            int mainAction = action & MotionEvent.ACTION_MASK;
+            if (mainAction == MotionEvent.ACTION_POINTER_DOWN){
+                baseDist = getDistance(event);
+                baseRatio = ratio;
+            }else {
+                float scale = (getDistance(event)-baseDist)/move;
+                float factor = (float) Math.pow(2,scale);
+                ratio = Math.min(1024.0f,Math.max(0.1f,baseRatio*factor));
+                txt_body.setTextSize(ratio+15);
+            }
+        }
+        return true;
+    }
+
+    private int getDistance(MotionEvent event) {
+        int dx = (int) (event.getX(0)- event.getX(1));
+        int dy = (int) (event.getY(0)- event.getY(1));
+        return (int) Math.sqrt(dx*dx+dy*dy);
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        return super.onTouchEvent(event);
     }
 
     private class MainTimer extends TimerTask {

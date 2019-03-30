@@ -5,11 +5,13 @@ public class CatFarsiPoem {
     private String id;
     private String title;
     private String count;
+    private String ordering;
 
-    public CatFarsiPoem(String id, String title, String count) {
+    public CatFarsiPoem(String id, String title, String count, String ordering) {
         this.id = id;
         this.title = title;
         this.count = count;
+        this.ordering = ordering;
     }
 
     public String getId() {
@@ -34,5 +36,13 @@ public class CatFarsiPoem {
 
     public void setCount(String count) {
         this.count = count;
+    }
+
+    public String getOrdering() {
+        return ordering;
+    }
+
+    public void setOrdering(String ordering) {
+        this.ordering = ordering;
     }
 }
