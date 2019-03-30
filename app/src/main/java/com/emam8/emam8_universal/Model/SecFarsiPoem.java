@@ -5,11 +5,13 @@ public class SecFarsiPoem {
     private String id;
     private String title;
     private String count;
+    private String ordering;
 
-    public SecFarsiPoem(String id, String name, String count) {
+    public SecFarsiPoem(String id, String title, String count, String ordering) {
         this.id = id;
-        this.title = name;
+        this.title = title;
         this.count = count;
+        this.ordering = ordering;
     }
 
     public String getId() {
@@ -20,12 +22,12 @@ public class SecFarsiPoem {
         this.id = id;
     }
 
-    public String getTille() {
+    public String getTitle() {
         return title;
     }
 
-    public void setTitle(String name) {
-        this.title = name;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getCount() {
@@ -34,5 +36,13 @@ public class SecFarsiPoem {
 
     public void setCount(String count) {
         this.count = count;
+    }
+
+    public String getOrdering() {
+        return ordering;
+    }
+
+    public void setOrdering(String ordering) {
+        this.ordering = ordering;
     }
 }

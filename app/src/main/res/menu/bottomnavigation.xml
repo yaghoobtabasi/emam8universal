@@ -18,7 +18,7 @@
         <item
             android:id="@+id/action_schedules"
             android:enabled="true"
-            android:icon="@drawable/ic_shopping_cart"
+            android:icon="@drawable/account"
             android:title="@string/txt_shop"
             app:showAsAction="ifRoom" />
 

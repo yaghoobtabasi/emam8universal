@@ -25,7 +25,7 @@
     <string name="pref_user_name" translatable="false">pref_user_name</string>
     <string name="pref_user_image_url">pref_user_image_url</string>
     <string name="title_activity_sign_up">SignUpActivity</string>
-    <string name="txt_shop">فروشگاه</string>
+    <string name="txt_shop">پروفایل</string>
     <string name="txt_home">خانه</string>
     <string name="text_favorites">علاقمندی ها</string>
     <string name="text_filter">فیلتر</string>

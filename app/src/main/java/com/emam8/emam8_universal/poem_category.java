@@ -28,7 +28,7 @@ public class poem_category extends AppCompatActivity {
     private PoemsCategoryAdapter adapter;
     private Cursor poem_cursor;
     public String mode;
-    database db;
+    Database db;
     TextView title;
 
 
@@ -51,7 +51,7 @@ public class poem_category extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         recyclerView.setAdapter(adapter);
 
-        db=new database(getApplicationContext());
+        db=new Database(getApplicationContext());
         db.useable();
         db.open();
 //        db.get_poem();

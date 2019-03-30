@@ -39,7 +39,7 @@ public class SectionFarsiAdapter extends RecyclerView.Adapter<SectionFarsiAdapte
     public void onBindViewHolder(@NonNull SectionfarsiViewHolder holder, final int position) {
 
         SecFarsiPoem sec = secFarsiPoemList.get(position);
-        holder.txtTitleSecFarsi.setText(sec.getTille());
+        holder.txtTitleSecFarsi.setText(sec.getTitle());
         holder.txtCountSecFarsi.setText(sec.getCount());
 
 

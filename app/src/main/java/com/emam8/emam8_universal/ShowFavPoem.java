@@ -32,7 +32,7 @@ public class ShowFavPoem extends AppCompatActivity {
     private String sabk_url;
     private Boolean isplay;
     public TextView txt_title,body;
-    private  database db;
+    private Database db;
     public  int pos;
     private String sabk,article_id,state,new_body;
     ImageView heart_btn,img_play,share_btn,dwonload_img;
@@ -79,7 +79,7 @@ public class ShowFavPoem extends AppCompatActivity {
 
         }
 
-        db = new database(ShowFavPoem.this);
+        db = new Database(ShowFavPoem.this);
         db.useable();
         db.open();
         heart_btn=(ImageView)findViewById(R.id.fp_img_heart_btn);
@@ -96,7 +96,7 @@ public class ShowFavPoem extends AppCompatActivity {
         heart_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                db = new database(ShowFavPoem.this);
+                db = new Database(ShowFavPoem.this);
                 db.writable();
                 db.open();
                 if(!db.check_fav_content(article_id))

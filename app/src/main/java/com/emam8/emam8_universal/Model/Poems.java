@@ -8,6 +8,7 @@ public class Poems {
     String state;
     String profile;
     String poet_id;
+    private boolean isVisited=false;
 
     public Poems(String title, String sabk, String poet, String article_id, String state,String profile,String poet_id) {
         this.title = title;

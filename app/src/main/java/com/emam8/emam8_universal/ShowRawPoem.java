@@ -1,7 +1,6 @@
 package com.emam8.emam8_universal;
 
 
-import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -12,7 +11,6 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -40,7 +38,7 @@ import static com.emam8.emam8_universal.MainActivity.app_version;
 
 public class ShowRawPoem extends AppCompatActivity {
     public TextView body_raw;
-    private  database db;
+    private Database db;
     private String article_id,state;
     public String body_r,new_body;
     ImageView heart_btn,share_btn;
@@ -65,7 +63,7 @@ public class ShowRawPoem extends AppCompatActivity {
 
 
 
-        db = new database(ShowRawPoem.this);
+        db = new Database(ShowRawPoem.this);
         db.useable();
         db.open();
 

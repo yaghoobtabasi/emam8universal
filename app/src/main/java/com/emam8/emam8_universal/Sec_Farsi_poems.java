@@ -2,13 +2,12 @@ package com.emam8.emam8_universal;
 
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.Intent;
+import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -33,13 +32,15 @@ public class Sec_Farsi_poems extends AppCompatActivity {
     private RecyclerView recyclerView;
     private SectionFarsiAdapter adapter;
     private LinearLayoutManager layoutManager;
-
+    private Database database;
     private CardView cardView;
+    private Cursor sectionCursor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sec_farsi_poems);
+
 
         cardView = findViewById(R.id.cardView_secFarsi);
 
@@ -49,10 +50,55 @@ public class Sec_Farsi_poems extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
 
-        setData();
+        database = new Database(getApplicationContext());
+        database.useable();
+        database.open();
+
+        if (database.check_section_added()) {
+            database.close();
+            setDatafromDb();
+        } else {
+            database.close();
+            setData();
+        }
 
 
     }
+
+    private void setDatafromDb() {
+
+        final ProgressDialog pDialog;
+        pDialog = new ProgressDialog(Sec_Farsi_poems.this);
+        pDialog.setMessage("در حال بارگیری اطلاعات ...");
+        pDialog.setCancelable(false);
+        pDialog.show();
+
+        database = new Database(getApplicationContext());
+        database.useable();
+        database.open();
+
+        sectionCursor = database.load_from_section();
+
+        if (sectionCursor.getCount() == 0) {
+            Toast.makeText(getApplicationContext(), "No Data Is Show", Toast.LENGTH_LONG).show();
+        } else {
+            while (sectionCursor.moveToNext()) {
+                secF.add(new SecFarsiPoem(sectionCursor.getString(0),
+                        sectionCursor.getString(1),
+                        sectionCursor.getString(2),
+                        sectionCursor.getString(3)));
+            }
+        }
+
+
+        adapter.notifyDataSetChanged();
+
+
+        pDialog.dismiss();
+
+
+    }
+
 
     private void setData() {
         final String url = BuildConfig.Apikey_SectionList;
@@ -68,16 +114,25 @@ public class Sec_Farsi_poems extends AppCompatActivity {
             public void onResponse(JSONArray response) {
 
                 try {
+                    Database db = new Database(getApplicationContext());
+                    db.writable();
+                    db.open();
+
                     for (int i = 0; i < response.length(); i++) {
 
                         JSONObject jsonObject = response.getJSONObject(i);
                         String id = jsonObject.getString("id");
                         String title = jsonObject.getString("title");
                         String count = jsonObject.getString("count");
+                        String ordering = jsonObject.getString("ordering");
+                        if (!db.check_section_exist(id)) {
+                            db.add_to_section(id, title, count, ordering, getApplicationContext());
+                        }
 
-                        secF.add(new SecFarsiPoem(id, title, count));
+                        secF.add(new SecFarsiPoem(id, title, count, ordering));
                     }
                     adapter.notifyDataSetChanged();
+                    db.close();
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -89,7 +144,7 @@ public class Sec_Farsi_poems extends AppCompatActivity {
         Response.ErrorListener errorListener = new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getApplicationContext(),"متاسفانه ارتباط با سرور برقرار نشد ممکن است مشکل از قطعی اینترنت شما باشد یا شلوغ بودن سرور",Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "متاسفانه ارتباط با سرور برقرار نشد ممکن است مشکل از قطعی اینترنت شما باشد یا شلوغ بودن سرور", Toast.LENGTH_LONG).show();
                 pDialog.dismiss();
             }
         };

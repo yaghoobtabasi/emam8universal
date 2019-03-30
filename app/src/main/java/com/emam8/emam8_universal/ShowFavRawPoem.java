@@ -17,7 +17,7 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class ShowFavRawPoem extends AppCompatActivity {
     public TextView body_raw;
-    private  database db;
+    private Database db;
     public  int pos;
     private String article_id,state,body;
     ImageView heart_btn,share_btn;
@@ -43,7 +43,7 @@ public class ShowFavRawPoem extends AppCompatActivity {
         }
 
 
-        db = new database(ShowFavRawPoem.this);
+        db = new Database(ShowFavRawPoem.this);
         db.useable();
         db.open();
 
@@ -62,7 +62,7 @@ public class ShowFavRawPoem extends AppCompatActivity {
         heart_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                db = new database(ShowFavRawPoem.this);
+                db = new Database(ShowFavRawPoem.this);
                 db.writable();
                 db.open();
                 if(!db.check_fav_content(article_id))

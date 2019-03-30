@@ -18,17 +18,14 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-
-
         >
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="18dp"
-            android:layout_marginEnd="30dp"
+            android:layout_marginStart="@dimen/_30sdp"
+            android:layout_marginEnd="@dimen/_30sdp"
             android:background="@drawable/trans_rectangle_back_blue"
             android:orientation="vertical"
 
@@ -42,15 +39,15 @@
             android:background="@drawable/trans_rectangle_back"
             android:gravity="center"
             android:orientation="vertical"
-            android:paddingBottom="10dp"
+            android:paddingBottom="@dimen/_10sdp"
 
             >
 
             <ImageView
                 android:id="@+id/emam8_logo"
                 android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:layout_marginTop="5dp"
+                android:layout_height="@dimen/_70sdp"
+                android:layout_marginTop="@dimen/_6sdp"
                 android:scaleType="fitCenter"
                 android:src="@drawable/logo" />
 
@@ -58,7 +55,8 @@
             <TextView
                 android:id="@+id/sher_sabk_txt"
                 style="@style/text_button_frame_image"
-                android:text="اشعار و سبک های مداحی" />
+                android:text="اشعار و سبک های مداحی"
+                android:textSize="@dimen/_14sdp"/>
 
 
             <LinearLayout
@@ -71,21 +69,24 @@
                     android:id="@+id/amoozesh_maddahi1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="8dp"
+                    android:layout_marginRight="@dimen/_6sdp"
                     android:text="(بزودی)"
                     android:textColor="#ffF000"
-                    android:textSize="14sp"
-                    android:textDirection="rtl"/>
+                    android:textSize="@dimen/_10sdp"
+                    android:textDirection="rtl"
+                    android:layoutDirection="rtl"
+                    android:layout_weight="1"
+                    />
 
                 <TextView
                     android:id="@+id/amoozesh_maddahi"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="center"
+                    android:layout_weight="1"
                     android:text="آموزش مداحی"
                     android:textColor="#fff"
-                    android:textSize="20sp" />
+                    android:textSize="@dimen/_14sdp"
+                    android:gravity="left"/>
 
 
             </LinearLayout>
@@ -100,21 +101,23 @@
                     android:id="@+id/amoozesh_maddahi2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="8dp"
+                    android:layout_marginRight="@dimen/_6sdp"
                     android:text="(بزودی)"
                     android:textColor="#ffF000"
-                    android:textSize="14sp"
-                    android:textDirection="rtl"/>
+                    android:textSize="@dimen/_10sdp"
+                    android:textDirection="rtl"
+
+                    android:layout_weight="1"/>
 
                 <TextView
                     android:id="@+id/downliad_maddahi"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="center"
+                    android:gravity="left"
                     android:text=" دانلود مداحی"
                     android:textColor="#fff"
-                    android:textSize="20sp" />
+                    android:textSize="@dimen/_14sdp"
+                    android:layout_weight="1" />
 
             </LinearLayout>
 
@@ -129,21 +132,22 @@
                     android:id="@+id/amoozesh_maddahi3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="8dp"
+                    android:layout_marginRight="@dimen/_6sdp"
                     android:text="(بزودی)"
                     android:textColor="#ffF000"
-                    android:textSize="14sp"
-                    android:textDirection="rtl"/>
+                    android:textSize="@dimen/_10sdp"
+                    android:textDirection="rtl"
+                    android:layout_weight="1"/>
 
                 <TextView
                     android:id="@+id/quran_txt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="center"
+                    android:gravity="left"
                     android:text="دانلود قرآن "
                     android:textColor="#fff"
-                    android:textSize="20sp" />
+                    android:textSize="@dimen/_14sdp"
+                    android:layout_weight="1"/>
 
             </LinearLayout>
 
@@ -157,21 +161,22 @@
                     android:id="@+id/amoozesh_maddahi4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="8dp"
+                    android:layout_marginRight="@dimen/_6sdp"
                     android:text="(بزودی)"
                     android:textColor="#ffF000"
-                    android:textSize="14sp"
-                    android:textDirection="rtl"/>
+                    android:textSize="@dimen/_10sdp"
+                    android:textDirection="rtl"
+                    android:layout_weight="1"/>
 
                 <TextView
                     android:id="@+id/lectures_txt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:gravity="left"
                     android:text="سخنرانی های مذهبی "
                     android:textColor="#fff"
-                    android:textSize="20sp" />
+                    android:textSize="@dimen/_14sdp" />
             </LinearLayout>
 
             <LinearLayout
@@ -184,21 +189,22 @@
                     android:id="@+id/amoozesh_maddahi5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="8dp"
+                    android:layout_marginRight="@dimen/_6sdp"
                     android:text="(بزودی)"
                     android:textColor="#ffF000"
-                    android:textSize="14sp"
-                    android:textDirection="rtl"/>
+                    android:textSize="@dimen/_10sdp"
+                    android:textDirection="rtl"
+                    android:layout_weight="1"/>
 
                 <TextView
                     android:id="@+id/news_txt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="center"
+                    android:gravity="left"
                     android:text="اخبار و رویدادهای مذهبی"
                     android:textColor="#fff"
-                    android:textSize="20sp" />
+                    android:textSize="@dimen/_14sdp"
+                    android:layout_weight="1"/>
             </LinearLayout>
 
             <LinearLayout
@@ -207,25 +213,17 @@
                 android:gravity="center"
                 android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/amoozesh_maddahi6"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="8dp"
-                    android:text="(بزودی)"
-                    android:textColor="#ffF000"
-                    android:textSize="14sp"
-                    android:textDirection="rtl"/>
+
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/contatc_us_btn"
-                    android:layout_gravity="center"
+                    android:layout_weight="1"
                     android:gravity="center"
                     android:text="ارتباط با ما"
                     android:textColor="#fff"
-                    android:textSize="20sp" />
+                    android:textSize="@dimen/_14sdp" />
             </LinearLayout>
 
 
