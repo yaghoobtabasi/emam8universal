@@ -2,7 +2,9 @@ package com.emam8.emam8_universal.Auth;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputLayout;
+import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -34,6 +36,8 @@ public class login_activity extends AppCompatActivity {
     private TextInputLayout inputLayoutUsr,inputLayoutPass;
     private Button login_btn;
     private TextView creat_acnt_txt,cancle_signup;
+    private ProgressDialog pDialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -119,11 +123,21 @@ void findview(){
 void login_user(){
       username=usr.getText().toString().trim();
       password=pass.getText().toString().trim();
-    final ProgressDialog pDialog;
+
     pDialog=new ProgressDialog(login_activity.this);
     pDialog.setMessage("در حال فراخوانی اطلاعات ...");
     pDialog.setCancelable(true);
     pDialog.show();
+
+    if (username.isEmpty()){
+        Snackbar.make(findViewById(R.id.rltv_snack_login),"شماره موبایل خود را وارد کنید",Snackbar.LENGTH_LONG).show();
+        pDialog.dismiss();
+    }
+    else if (password.isEmpty()){
+        Snackbar.make(findViewById(R.id.rltv_snack_login),"رمز خود را وارد کنید",Snackbar.LENGTH_LONG).show();
+        pDialog.dismiss();
+    }
+
     ClientConfigs clientConfigs=new ClientConfigs();
     Retrofit retro=new Retrofit.Builder()
             .baseUrl(BuildConfig.Apikey_BaseUrl)

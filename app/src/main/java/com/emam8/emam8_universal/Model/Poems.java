@@ -8,9 +8,9 @@ public class Poems {
     String state;
     String profile;
     String poet_id;
-    private boolean isVisited=false;
+    int is_visited=0;
 
-    public Poems(String title, String sabk, String poet, String article_id, String state,String profile,String poet_id) {
+    public Poems(String title, String sabk, String poet, String article_id, String state, String profile, String poet_id) {
         this.title = title;
         this.sabk = sabk;
         this.poet = poet;
@@ -18,22 +18,6 @@ public class Poems {
         this.state = state;
         this.profile = profile;
         this.poet_id = poet_id;
-    }
-
-    public String getPoet_id() {
-        return poet_id;
-    }
-
-    public void setPoet_id(String poet_id) {
-        this.poet_id = poet_id;
-    }
-
-    public String getProfile() {
-        return profile;
-    }
-
-    public void setProfile(String profile) {
-        this.profile = profile;
     }
 
     public String getTitle() {
@@ -75,4 +59,29 @@ public class Poems {
     public void setState(String state) {
         this.state = state;
     }
+
+    public String getProfile() {
+        return profile;
+    }
+
+    public void setProfile(String profile) {
+        this.profile = profile;
+    }
+
+    public String getPoet_id() {
+        return poet_id;
+    }
+
+    public void setPoet_id(String poet_id) {
+        this.poet_id = poet_id;
+    }
+
+    public int getIs_visited() {
+        return is_visited;
+    }
+
+    public void setIs_visited(int is_visited) {
+        this.is_visited = is_visited;
+    }
 }
+

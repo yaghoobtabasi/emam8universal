@@ -65,8 +65,8 @@ public class MainActivity extends AppCompatActivity {
 
                 Intent i;
 //                i=new Intent(getApplicationContext(),choose_mode.class);
-                i = new Intent(getApplicationContext(), Splash.class);
-                startActivity(i);
+//                i = new Intent(getApplicationContext(), Splash.class);
+//                startActivity(i);
             }
         });
 
@@ -76,8 +76,8 @@ public class MainActivity extends AppCompatActivity {
 
                 Intent i;
 //                i=new Intent(getApplicationContext(),choose_mode.class);
-                i = new Intent(getApplicationContext(), Splash.class);
-                startActivity(i);
+//                i = new Intent(getApplicationContext(), Splash.class);
+//                startActivity(i);
             }
         });
 
@@ -86,8 +86,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i;
 //                i=new Intent(getApplicationContext(),choose_mode_torki.class);
-                i = new Intent(getApplicationContext(), Splash.class);
-                startActivity(i);
+//                i = new Intent(getApplicationContext(), Splash.class);
+//                startActivity(i);
             }
         });
         news.setOnClickListener(new View.OnClickListener() {
@@ -95,8 +95,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
 //                Intent i=new Intent(getApplicationContext(),FavContent.class);
-                Intent i = new Intent(getApplicationContext(), Splash.class);
-                startActivity(i);
+//                Intent i = new Intent(getApplicationContext(), Splash.class);
+//                startActivity(i);
             }
         });
 
@@ -105,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 //                Intent i =new Intent(getApplicationContext(),choose_about_contact.class);
-                Intent i = new Intent(getApplicationContext(), Splash.class);
+                Intent i = new Intent(MainActivity.this, Contact_us.class);
                 startActivity(i);
             }
         });
@@ -115,8 +115,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 //                Intent intent=new Intent(getApplicationContext(),choose_amoozesh.class);
-                Intent i = new Intent(getApplicationContext(), Splash.class);
-                startActivity(i);
+//                Intent i = new Intent(getApplicationContext(), Splash.class);
+//                startActivity(i);
             }
         });
 
@@ -135,16 +135,17 @@ public class MainActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.action_favorites:
-
                         Intent i = new Intent(getApplicationContext(), login_activity.class);
                         startActivity(i);
-
                         break;
                     case R.id.action_home:
                         Intent y = new Intent(getApplicationContext(), MainActivity.class);
                         startActivity(y);
                         break;
-                    case R.id.action_schedules:
+                    case R.id.action_account:
+                        Intent z = new Intent(MainActivity.this, ProfileUser.class);
+                        startActivity(z);
+                        break;
 
                 }
                 return true;

@@ -368,6 +368,7 @@ public class ShowPoem extends RuntimePermissionsActivity implements View.OnTouch
         timer.purge();
         timer.cancel();
         super.onDestroy();
+
     }
 
     @Override

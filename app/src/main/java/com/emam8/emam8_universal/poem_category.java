@@ -66,7 +66,7 @@ public class poem_category extends AppCompatActivity {
 
         if(poem_cursor.getCount()==0)
         {
-            Toast.makeText(this,"No data to show",Toast.LENGTH_SHORT).show();
+//            Toast.makeText(this,"No data to show",Toast.LENGTH_SHORT).show();
         }
         else{
             while (poem_cursor.moveToNext()) {

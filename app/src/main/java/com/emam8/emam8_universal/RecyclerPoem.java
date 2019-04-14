@@ -3,9 +3,15 @@ package com.emam8.emam8_universal;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.database.Cursor;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.Snackbar;
+import android.support.v4.content.res.ResourcesCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -15,7 +21,9 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Toolbar;
@@ -27,12 +35,14 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.emam8.emam8_universal.Adapter.PoemsAdapter;
 import com.emam8.emam8_universal.App.AppController;
 import com.emam8.emam8_universal.Model.Poems;
+import com.emam8.emam8_universal.Model.SecFarsiPoem;
 import com.miguelcatalan.materialsearchview.MaterialSearchView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,13 +52,14 @@ public class RecyclerPoem extends AppCompatActivity {
     public List<Poems> poem = new ArrayList<>();
     private String catid, mode, gid, poet_id, allow_private, lang;
     private RecyclerView recyclerView;
+    private Cursor cursor;
+    private Database db;
+    private MediaPlayer mediaPlayer;
+
+
     private PoemsAdapter adapter;
-    android.support.v7.widget.Toolbar toolbar;
     MaterialSearchView materialSearchView;
     private LinearLayoutManager layoutManager;
-    TextView title;
-
-
 
 
     //variables for pagination
@@ -57,6 +68,7 @@ public class RecyclerPoem extends AppCompatActivity {
     private int view_threshold = 10;
     private int page_number = 1;
     private SwipeRefreshLayout swipeRefreshLayout;
+    private ImageView heart_btn;
 
 
     @Override
@@ -70,6 +82,7 @@ public class RecyclerPoem extends AppCompatActivity {
         poet_id = "";
         allow_private = "";
         lang = "torki";
+
 
 
         recyclerView = (RecyclerView) findViewById(R.id.poem_recycler);
@@ -119,10 +132,18 @@ public class RecyclerPoem extends AppCompatActivity {
         });
 
 
-        setupToolbar();
         setData(catid);
 
 
+    }
+
+
+
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mediaPlayer.release();
     }
 
 
@@ -132,11 +153,7 @@ public class RecyclerPoem extends AppCompatActivity {
     }
 
 
-    private void setupToolbar() {
-        toolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
-    }
 
 
     private void setData(final String catid) {
@@ -207,7 +224,7 @@ public class RecyclerPoem extends AppCompatActivity {
         JsonArrayRequest request = new JsonArrayRequest(Request.Method.POST, url, array, listener, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getApplicationContext(), "متاسفانه ارتباط با سرور برقرار نشد ممکن است مشکل از قطعی اینترنت شما باشد یا شلوغ بودن سرور", Toast.LENGTH_LONG).show();
+                Snackbar.make(findViewById(R.id.rltv_recycler_poem), "متاسفانه ارتباط با سرور برقرار نشد ممکن است مشکل از قطعی اینترنت شما باشد یا شلوغ بودن سرور", Snackbar.LENGTH_LONG).show();
                 pDialog.dismiss();
                 swipeRefreshLayout.setRefreshing(false);
             }

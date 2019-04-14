@@ -5,7 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".RecyclerPoem"
-    android:background="@drawable/background">
+    android:background="@drawable/background"
+    android:layoutDirection="rtl"
+    android:textDirection="rtl">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -43,8 +45,36 @@
 
                 />
 
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/rltv_snack_rec_poem"
+                android:layoutDirection="rtl"
+                android:textDirection="rtl"
+                android:layout_alignParentBottom="true">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/txt_snack_rec_poem"
+                    android:textDirection="rtl"
+                    android:layoutDirection="rtl"/>
+
+            </RelativeLayout>
+
         </android.support.v4.widget.SwipeRefreshLayout>
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/rltv_recycler_poem">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/signup_recycler_poem"/>
+
+    </RelativeLayout>
 
 
 </android.support.design.widget.CoordinatorLayout>
