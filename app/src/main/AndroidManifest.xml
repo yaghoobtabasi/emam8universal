@@ -19,7 +19,6 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
     <application
-        
         android:name=".App.AppController"
         android:allowBackup="true"
         android:hardwareAccelerated="false"
@@ -28,6 +27,9 @@
         android:largeHeap="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:theme="@style/AppTheme">
+        <activity android:name=".About_us"></activity>
+        <activity android:name=".EditProfileUser" />
+        <activity android:name=".ProfileUser" />
         <activity android:name=".Cat_Farsi_Poems" />
         <activity android:name=".Splash">
             <intent-filter>
@@ -49,6 +51,7 @@
         <activity android:name=".category_list" />
         <activity android:name=".RecyclerPoem" />
         <activity android:name=".Matn_maghtal" />
+        <activity android:name=".Contact_us" />
 
         <receiver android:name="co.ronash.pushe.receiver.UpdateReceiver">
             <intent-filter>

@@ -27,8 +27,10 @@
             android:layout_height="wrap_content"
             android:text="شهادت و مصایب اهل بیت"
             android:textColor="@android:color/black"
-            android:textSize="18sp"
+            android:textSize="@dimen/_12sdp"
             android:layout_marginLeft="4dp"
+            android:ellipsize="end"
+            android:maxLines="1"
             />
 
         <TextView
@@ -38,7 +40,7 @@
             android:layout_marginLeft="3dp"
             android:text="("
             android:textColor="#263238"
-            android:textSize="14sp"
+            android:textSize="@dimen/_10sdp"
             android:textDirection="rtl"/>
 
         <TextView
@@ -47,7 +49,7 @@
             android:layout_height="wrap_content"
             android:text="22"
             android:textColor="#263238"
-            android:textSize="14sp"
+            android:textSize="@dimen/_10sdp"
             />
 
 
@@ -58,7 +60,7 @@
             android:layout_marginRight="3dp"
             android:text=")"
             android:textColor="#263238"
-            android:textSize="14sp"
+            android:textSize="@dimen/_10sdp"
              />
 
 

@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".About_us"
+    android:background="@drawable/background"
+    android:layoutDirection="rtl">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.v7.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"/>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:id="@+id/lnr_txt1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="به"
+                android:textSize="@dimen/_12sdp"
+                android:textColor="#BDBDBD"
+                android:padding="@dimen/_2sdp"
+                android:layout_marginTop="@dimen/_6sdp"
+                android:layout_marginRight="@dimen/_12sdp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="امام هشت"
+                android:textSize="@dimen/_14sdp"
+                android:textColor="#81D4FA"
+                android:padding="@dimen/_2sdp"
+                android:layout_marginTop="@dimen/_6sdp"
+                android:textStyle="bold"
+
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="خوش آمدید"
+                android:textSize="@dimen/_12sdp"
+                android:textColor="#BDBDBD"
+                android:padding="@dimen/_2sdp"
+                android:layout_marginTop="@dimen/_6sdp"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lnr_txt2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/lnr_txt1">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="امام هشت به عنوان بزرگترین مرجع شعر و سبک مداحی ، هم اکنون سیزدهمین سال خود را با چشم اندازهای بزرگ می گذراند. این سایت با هدف گردآوری اشعار مذهبی و در دسترس قرار دادن این اشعار به جامعه پر از معنویت مداحان و شاعران فعالیت خود را آغاز کرد. همچنین در این مسیر جهت خدمات رسانی بهتر و غنی تر به این عزیزان اقدام به برگزاری دوره های آموزشی از قبیل آموزش مداحی، صداسازی و ... کرده است."
+                android:textSize="@dimen/_12sdp"
+                android:textColor="#BDBDBD"
+                android:layout_marginTop="@dimen/_6sdp"
+                android:layout_marginRight="@dimen/_12sdp"
+                android:layout_marginLeft="@dimen/_4sdp"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lnr_txt3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/lnr_txt2">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="امام هشت مفتخر است که هم اکنون به بیش از 25 هزار نفر
+عضو و مشترک از جامعه مداحان، شاعران و افراد علاقه مند در این حوزه خدمات رسانی می نماید. اگر شاعر، مداح و یا علاقه مند در این حوزه هستید ، می توانید در امام هشت آثار خود را به اشتراک بگذارید و به جدیدترین اشعار دسترسی داشته باشید."
+                android:textSize="@dimen/_12sdp"
+                android:textColor="#BDBDBD"
+                android:layout_marginTop="@dimen/_6sdp"
+                android:layout_marginRight="@dimen/_12sdp"
+                android:layout_marginLeft="@dimen/_4sdp"
+                />
+
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/lnr_txt4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/lnr_txt3">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="پرسنل امام هشت با نهایت سعی و تلاش آماده خدمت رسانی به تمامی شما عزیزان می باشد."
+                android:textSize="@dimen/_12sdp"
+                android:textColor="#BDBDBD"
+                android:layout_marginTop="@dimen/_6sdp"
+                android:layout_marginRight="@dimen/_12sdp"
+                android:layout_marginLeft="@dimen/_4sdp"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="8dp"
+            android:layout_below="@+id/lnr_txt4">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/enamad"
+                android:layoutDirection="rtl"
+                android:layout_below="@+id/lnr_txt4"
+                />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/samandhi"
+                android:layoutDirection="rtl"
+                android:layout_below="@+id/lnr_txt4"
+                />
+
+
+        </LinearLayout>
+
+
+
+    </RelativeLayout>
+
+
+
+
+</android.support.design.widget.CoordinatorLayout>

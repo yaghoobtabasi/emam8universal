@@ -76,5 +76,15 @@
 
     </LinearLayout>
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/rltv_recycler_poet">
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/signup_recycler_poet"/>
+
+    </RelativeLayout>
 </android.support.design.widget.CoordinatorLayout>

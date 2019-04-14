@@ -3,12 +3,13 @@ package com.emam8.emam8_universal.Model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * Authentication response Model used as response model in sign in and sign up request
  */
-public class AuthenticationResponseModel {
+public class AuthenticationResponseModel implements Serializable {
 //    public TokenModel token;
 //    public UserModel user_profile;
     @SerializedName("success")

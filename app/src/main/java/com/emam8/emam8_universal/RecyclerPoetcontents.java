@@ -5,6 +5,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -175,7 +176,7 @@ public class RecyclerPoetcontents extends AppCompatActivity {
         JsonArrayRequest request = new JsonArrayRequest(Request.Method.POST, url, array, listener, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getApplicationContext(), "متاسفانه ارتباط با سرور برقرار نشد ممکن است مشکل از قطعی اینترنت شما باشد یا شلوغ بودن سرور", Toast.LENGTH_LONG).show();
+                Snackbar.make(findViewById(R.id.rltv_recycler_poet),"متاسفانه ارتباط با سرور برقرار نشد ممکن است مشکل از قطعی اینترنت شما باشد یا شلوغ بودن سرور",Snackbar.LENGTH_LONG).show();
                 pDialog.dismiss();
                 swipeRefreshLayout.setRefreshing(false);
             }

@@ -27,7 +27,7 @@
                 android:layoutDirection="rtl"
                 android:text="فهرست اشعار فارسی"
                 android:textColor="@color/white"
-                android:textSize="22sp"
+                android:textSize="@dimen/_12sdp"
                 />
 
         </android.support.v7.widget.Toolbar>

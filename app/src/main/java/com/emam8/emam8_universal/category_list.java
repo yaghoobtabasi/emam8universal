@@ -32,7 +32,7 @@ public class category_list extends AppCompatActivity {
         setContentView(R.layout.activity_category_list);
         Bundle bundle = getIntent().getExtras();
         final String sectionid= bundle.getString("sectionid");
-        Toast.makeText(getApplicationContext(),sectionid,Toast.LENGTH_LONG).show();
+//        Toast.makeText(getApplicationContext(),sectionid,Toast.LENGTH_LONG).show();
 
         recyclerView=(RecyclerView)findViewById(R.id.cat_recycler);
         recyclerView.setVisibility(View.GONE);
@@ -53,7 +53,7 @@ public class category_list extends AppCompatActivity {
         Response.Listener<JSONArray> listener=new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
-                Toast.makeText(getApplicationContext(),BuildConfig.ApiKey_LoadPoem,Toast.LENGTH_LONG).show();
+//                Toast.makeText(getApplicationContext(),BuildConfig.ApiKey_LoadPoem,Toast.LENGTH_LONG).show();
                 try {
                     for(int i=0;i<response.length();i++){
                         JSONObject jsonObject=response.getJSONObject(i);
@@ -77,7 +77,7 @@ public class category_list extends AppCompatActivity {
         Response.ErrorListener errorListener=new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getApplicationContext(),"Error",Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getApplicationContext(),"Error",Toast.LENGTH_SHORT).show();
                 pDialog.dismiss();
             }
         };

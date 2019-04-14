@@ -2,12 +2,15 @@ package com.emam8.emam8_universal.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v4.content.res.ResourcesCompat;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,8 +22,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.emam8.emam8_universal.MainActivity;
 import com.emam8.emam8_universal.Model.Poems;
 import com.emam8.emam8_universal.R;
+import com.emam8.emam8_universal.RecyclerPoem;
 import com.emam8.emam8_universal.RecyclerPoetcontents;
 import com.emam8.emam8_universal.ShowPoem;
 import com.emam8.emam8_universal.ShowRawPoem;
@@ -28,6 +33,8 @@ import com.emam8.emam8_universal.ShowRawPoem;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.security.auth.callback.Callback;
 
 
 public class PoemsAdapter extends RecyclerView.Adapter<PoemsAdapter.PoemViewHolder> {
@@ -38,6 +45,9 @@ public class PoemsAdapter extends RecyclerView.Adapter<PoemsAdapter.PoemViewHold
     private MediaPlayer mediaPlayer;
     private Boolean isplay;
     Context mContext;
+    private ImageView img_play;
+
+
 
 
     public PoemsAdapter(List<Poems> poem, String catid, String gid, String poet_id, String mode, Context mContext) {
@@ -49,6 +59,7 @@ public class PoemsAdapter extends RecyclerView.Adapter<PoemsAdapter.PoemViewHold
         this.mContext = mContext;
 
     }
+
 
     @NonNull
     @Override
@@ -65,8 +76,6 @@ public class PoemsAdapter extends RecyclerView.Adapter<PoemsAdapter.PoemViewHold
         final String state = poems.getState();
         final String poet = poems.getPoet();
         final String profile = poems.getProfile();
-        mediaPlayer = new MediaPlayer();
-        mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
 
 
         String title = poem.get(position).getTitle();
@@ -91,72 +100,61 @@ public class PoemsAdapter extends RecyclerView.Adapter<PoemsAdapter.PoemViewHold
             holder.img_play.setVisibility(View.GONE);
         }
 
-        isplay = false;
-        holder.img_play.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(mContext, sabk, Toast.LENGTH_SHORT).show();
-                String audio_url = "https://emam8.com/" + sabk;
-//                mediaPlayer=MediaPlayer.create(mContext,audio_url);
+        String audio_url = "https://emam8.com/" + sabk;
+        mediaPlayer = new MediaPlayer();
+        try {
+            mediaPlayer.setDataSource(mContext, Uri.parse(audio_url));
+            mediaPlayer.prepareAsync();
+            mediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+                @Override
+                public void onPrepared(MediaPlayer mp) {
 
+                    holder.img_play.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+//                            Toast.makeText(mContext, sabk, Toast.LENGTH_SHORT).show();
+                            if (mediaPlayer.isPlaying()) {
+                                mediaPlayer.pause();
+                                img_play.setImageResource(R.drawable.ic_play_arrow_black_24dp);
+                            } else {
+                                mediaPlayer.start();
+                                img_play.setImageResource(R.drawable.ic_pause_black_24dp);
 
-                try {
-                    if (!isplay) {
-                        holder.img_play.setImageResource(R.drawable.ic_pause_black_24dp);
-                        mediaPlayer.setDataSource(audio_url);
-
-                        mediaPlayer.prepare(); // might take long! (for buffering, etc)
-                        mediaPlayer.start();
-
-                    } else {
-                        if (mediaPlayer.isPlaying()) {
-                            mediaPlayer.pause();
-                            holder.img_play.setImageResource(R.drawable.ic_play_arrow_black_24dp);
-
-
-                        } else {
-                            mediaPlayer.start();
-                            holder.img_play.setImageResource(R.drawable.ic_pause_black_24dp);
-
-
+                            }
                         }
-                    }
+                    });
 
-                } catch (IOException e) {
-                    e.printStackTrace();
                 }
+            });
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
-                isplay = true;
-
-
-            }
-        });
 
         holder.txtTitle.setText(title);
         holder.txt_poet.setText(poet_name);
         holder.imgpoet.setOnClickListener(new View.OnClickListener() {
-                                              @Override
-                                              public void onClick(View v) {
-                                                  Intent i;
-                                                  String poetid = poems.getPoet_id();
-                                                  String catid = PoemsAdapter.this.catid;
-                                                  String mode = PoemsAdapter.this.mode;
-                                                  String gid = PoemsAdapter.this.gid;
-                                                  String poet_id = poetid;
+            @Override
+            public void onClick(View v) {
+                Intent i;
+                String poetid = poems.getPoet_id();
+                String catid = PoemsAdapter.this.catid;
+                String mode = PoemsAdapter.this.mode;
+                String gid = PoemsAdapter.this.gid;
+                String poet_id = poetid;
 //                                                  Toast.makeText(mContext,"Poet id : "+poetid+"catid="+catid,Toast.LENGTH_SHORT).show();
-                                                  i = new Intent(mContext, RecyclerPoetcontents.class);
-                                                  i.putExtra("poet_id", poet_id);
+                i = new Intent(mContext, RecyclerPoetcontents.class);
+                i.putExtra("poet_id", poet_id);
 
-                                                  i.putExtra("catid", catid);
-                                                  i.putExtra("mode", mode);
-                                                  i.putExtra("gid", gid);
-                                                  mContext.startActivity(i);
-                                              }
-                                          }
-        );
+                i.putExtra("catid", catid);
+                i.putExtra("mode", mode);
+                i.putExtra("gid", gid);
+                mContext.startActivity(i);
+            }
+        });
 
 
-        holder.txtTitle.setOnClickListener(new View.OnClickListener() {
+        holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -198,14 +196,14 @@ public class PoemsAdapter extends RecyclerView.Adapter<PoemsAdapter.PoemViewHold
     public class PoemViewHolder extends RecyclerView.ViewHolder {
         public TextView txtTitle, txt_poet;
         public ImageView imgpoet, img_play, img_fav;
-        public RelativeLayout rltv;
+        public CardView cardView;
 
         public PoemViewHolder(View itemView) {
             super(itemView);
             txtTitle = (TextView) itemView.findViewById(R.id.txt_title);
             txt_poet = (TextView) itemView.findViewById(R.id.txt_poet);
             imgpoet = (ImageView) itemView.findViewById(R.id.img_poet);
-            rltv = (RelativeLayout) itemView.findViewById(R.id.rltv);
+            cardView = itemView.findViewById(R.id.cardView_poetPage);
             img_play = (ImageView) itemView.findViewById(R.id.play_paus_btn);
 
         }
@@ -214,4 +212,6 @@ public class PoemsAdapter extends RecyclerView.Adapter<PoemsAdapter.PoemViewHold
             return this.imgpoet;
         }
     }
+
+
 }

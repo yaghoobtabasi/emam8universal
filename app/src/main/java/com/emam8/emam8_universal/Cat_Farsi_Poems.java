@@ -3,6 +3,7 @@ package com.emam8.emam8_universal;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.database.Cursor;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -156,7 +157,7 @@ public class Cat_Farsi_Poems extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
 
-                Toast.makeText(getApplicationContext(),"متاسفانه ارتباط با سرور برقرار نشد ممکن است مشکل از قطعی اینترنت شما باشد یا شلوغ بودن سرور",Toast.LENGTH_LONG).show();
+                Snackbar.make(findViewById(R.id.rltv_cat_farsi_poem),"متاسفانه ارتباط با سرور برقرار نشد ممکن است مشکل از قطعی اینترنت شما باشد یا شلوغ بودن سرور",Snackbar.LENGTH_LONG).show();
                 progressDialog.dismiss();
             }
         };

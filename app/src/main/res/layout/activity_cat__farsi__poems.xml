@@ -25,8 +25,8 @@
                 android:layout_height="wrap_content"
                 android:layoutDirection="rtl"
                 android:textColor="@color/white"
-                android:textSize="22sp"
-                tools:text="فهرست اشعار فارسی"
+                android:textSize="@dimen/_12sdp"
+                android:text="فهرست اشعار فارسی"
                 />
 
         </android.support.v7.widget.Toolbar>
@@ -44,5 +44,15 @@
         android:padding="@dimen/_4sdp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/rltv_cat_farsi_poem">
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/signup_cat_farsi_poem"/>
+
+    </RelativeLayout>
 </android.support.design.widget.CoordinatorLayout>
