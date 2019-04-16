@@ -112,7 +112,6 @@ public class PoemsAdapter extends RecyclerView.Adapter<PoemsAdapter.PoemViewHold
                     holder.img_play.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-//                            Toast.makeText(mContext, sabk, Toast.LENGTH_SHORT).show();
                             if (mediaPlayer.isPlaying()) {
                                 mediaPlayer.pause();
                                 img_play.setImageResource(R.drawable.ic_play_arrow_black_24dp);

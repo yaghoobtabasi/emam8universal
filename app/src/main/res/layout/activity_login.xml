@@ -39,8 +39,6 @@
                 android:background="@drawable/trans_rectangle_back"
                 android:gravity="center"
                 android:orientation="vertical"
-                android:paddingBottom="4dp"
-
                 >
 
                 <ImageView
@@ -50,6 +48,7 @@
                     android:layout_marginTop="16dp"
                     android:scaleType="fitCenter"
                     android:src="@drawable/logo"
+
 
                     />
 
@@ -70,7 +69,9 @@
                         android:layout_marginRight="@dimen/_20sdp"
                         android:hint="موبایل یا ایمیل"
                         android:inputType="textEmailAddress"
-                        android:textSize="@dimen/_14sdp" />
+                        android:textSize="@dimen/_14sdp"
+                        android:textColor="@android:color/black"
+                        android:textColorHint="@android:color/black"/>
 
                 </android.support.design.widget.TextInputLayout>
 
@@ -92,7 +93,8 @@
                         android:hint="رمز عبور"
                         android:inputType="textPassword"
                         android:textSize="@dimen/_14sdp"
-
+                        android:textColor="@android:color/black"
+                        android:textColorHint="@android:color/black"
                         />
                 </android.support.design.widget.TextInputLayout>
 
@@ -103,7 +105,7 @@
                     android:layout_marginLeft="@dimen/_36sdp"
                     android:layout_marginTop="@dimen/_12sdp"
                     android:layout_marginRight="@dimen/_36sdp"
-                    android:layout_marginBottom="@dimen/_12sdp"
+                    android:layout_marginBottom="@dimen/_4sdp"
                     android:background="@drawable/rounded_button"
                     android:text="ورود"
                     android:textColor="#fff"
@@ -117,26 +119,28 @@
                     android:orientation="horizontal"
                     >
 
-                    <TextView
+                    <Button
                         android:id="@+id/link_signup"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginLeft="@dimen/_14sdp"
-                        android:layout_marginBottom="@dimen/_14sdp"
+                        android:layout_marginBottom="@dimen/_6sdp"
                         android:layout_weight="1"
                         android:gravity="center"
                         android:text="ایجاد حساب کاربری"
-                        android:textColor="#263238"
-                        android:textSize="@dimen/_12sdp" />
+                        android:textColor="#000"
+                        android:textSize="@dimen/_12sdp"
+                        android:background="#EEEEEE"
+                        />
 
-                    <TextView
+                    <Button
                         android:id="@+id/link_cancel_signup"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginRight="@dimen/_14sdp"
-                        android:layout_marginBottom="@dimen/_14sdp"
+                        android:layout_marginBottom="@dimen/_6sdp"
                         android:layout_weight="1"
                         android:gravity="center"
                         android:singleLine="true"

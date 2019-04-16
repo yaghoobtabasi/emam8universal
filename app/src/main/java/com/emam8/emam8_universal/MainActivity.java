@@ -3,6 +3,7 @@ package com.emam8.emam8_universal;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -43,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         Pushe.initialize(this, false);
         findview();
         AppPreferenceTools appPreferenceTools = new AppPreferenceTools(getBaseContext());
@@ -139,8 +141,6 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(i);
                         break;
                     case R.id.action_home:
-                        Intent y = new Intent(getApplicationContext(), MainActivity.class);
-                        startActivity(y);
                         break;
                     case R.id.action_account:
                         Intent z = new Intent(MainActivity.this, ProfileUser.class);

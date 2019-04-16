@@ -8,6 +8,7 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="cardViewStyle">@style/CardView.Light</item>
     </style>
+
     <style name="text_button_frame">
         <item name="android:color">#ffffff</item>
         <item name="android:textSize">20dp</item>
@@ -16,9 +17,9 @@
         <item name="android:layout_marginTop">-50dp</item>
 
     </style>
+
     <style name="text_button_frame_image">
         <item name="android:color">#ffffff</item>
-        <item name="android:textSize">20sp</item>
         <item name="android:gravity">center</item>
         <item name="android:textColor">#ffffff</item>
         <item name="android:layout_height">50dp</item>
@@ -26,10 +27,11 @@
         <item name="android:background">@drawable/frame</item>
         <item name="android:layout_marginStart">10dp</item>
         <item name="android:layout_marginEnd">10dp</item>
-        <item name="android:layout_marginTop">8dp</item>
 
 
     </style>
+
+
     <style name="text_button_frame_cat">
         <item name="android:color">#ffffff</item>
         <item name="android:textSize">16sp</item>

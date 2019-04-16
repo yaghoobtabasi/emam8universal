@@ -2,6 +2,7 @@ package com.emam8.emam8_universal;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
@@ -22,6 +23,7 @@ public class SherActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sher);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         findView();
 
         txt_farsi.setOnClickListener(new View.OnClickListener() {
@@ -36,7 +38,10 @@ public class SherActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 i=new Intent(getApplicationContext(),Cat_Farsi_Poems.class);
+                String title="فهرست اشعار ترکی";
                 i.putExtra("sectionid", "19");
+                i.putExtra("title",title);
+
                startActivity(i);
 
             }
@@ -46,7 +51,9 @@ public class SherActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 i=new Intent(getApplicationContext(),Cat_Farsi_Poems.class);
+                String title="فهرست متن مقاتل";
                 i.putExtra("sectionid", "30");
+                i.putExtra("title",title);
                 startActivity(i);
             }
         });

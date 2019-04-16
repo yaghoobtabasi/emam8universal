@@ -114,8 +114,8 @@ void findview(){
         usr=(EditText) findViewById(R.id.input_email);
         pass=(EditText)findViewById(R.id.input_password);
         login_btn=(Button) findViewById(R.id.btn_login);
-        creat_acnt_txt=(TextView) findViewById(R.id.link_signup);
-        cancle_signup=(TextView) findViewById(R.id.link_cancel_signup);
+        creat_acnt_txt=(Button) findViewById(R.id.link_signup);
+        cancle_signup=(Button) findViewById(R.id.link_cancel_signup);
 
 }
 

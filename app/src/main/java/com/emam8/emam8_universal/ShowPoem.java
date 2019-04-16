@@ -284,7 +284,6 @@ public class ShowPoem extends RuntimePermissionsActivity implements View.OnTouch
         duration.setText(formatDuration(mediaPlayer.getDuration()));
 
         seekBar = (SeekBar) findViewById(R.id.seekbar_showPoem);
-        seekbarSize = (SeekBar) findViewById(R.id.seekbar_size_showPoem);
 
 
         seekBar.setMax(mediaPlayer.getDuration());
