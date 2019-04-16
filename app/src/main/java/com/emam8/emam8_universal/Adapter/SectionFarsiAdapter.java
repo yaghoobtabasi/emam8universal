@@ -47,9 +47,11 @@ public class SectionFarsiAdapter extends RecyclerView.Adapter<SectionFarsiAdapte
             @Override
             public void onClick(View v) {
                 String sectionid=secFarsiPoemList.get(position).getId();
+                String title_page=secFarsiPoemList.get(position).getTitle();
                 final Intent intent;
                 intent = new Intent(context, Cat_Farsi_Poems.class);
                 intent.putExtra("sectionid",sectionid);
+                intent.putExtra("title",title_page);
                 context.startActivity(intent);
             }
         });

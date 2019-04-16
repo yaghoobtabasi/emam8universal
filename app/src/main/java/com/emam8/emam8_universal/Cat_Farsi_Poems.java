@@ -8,7 +8,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -23,6 +25,7 @@ import com.emam8.emam8_universal.Model.SecFarsiPoem;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -37,6 +40,10 @@ public class Cat_Farsi_Poems extends AppCompatActivity {
     private Database database;
     private Cursor categoryCursor;
 
+    private Toolbar toolbar;
+    private TextView textView;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,12 +52,19 @@ public class Cat_Farsi_Poems extends AppCompatActivity {
 
         Bundle bundle = getIntent().getExtras();
         final String sectionid = bundle.getString("sectionid");
+        final String title = bundle.getString("title");
+
+        toolbar = (Toolbar) findViewById(R.id.toolbar_cat);
+        textView = (TextView) findViewById(R.id.txt_tool);
+
 
         recyclerView = findViewById(R.id.recyclerView_cat_poemFarsi);
         adapter = new CategoryFarsiAdapter(catF, Cat_Farsi_Poems.this);
         layoutManager = new LinearLayoutManager(Cat_Farsi_Poems.this);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
+
+        setToolbar(title);
 
         database = new Database(getApplicationContext());
         database.useable();
@@ -64,6 +78,12 @@ public class Cat_Farsi_Poems extends AppCompatActivity {
             setData(sectionid);
             database.close();
         }
+
+    }
+
+    private void setToolbar(String title) {
+            textView.setText(title);
+
 
     }
 

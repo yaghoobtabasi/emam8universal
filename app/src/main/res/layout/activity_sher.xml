@@ -4,15 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SherActivity">
-
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:src="@drawable/background"
-        android:scaleType="centerCrop"
-        android:id="@+id/background"
-        />
+    tools:context=".SherActivity"
+    android:background="@drawable/background">
 
 
     <ScrollView
@@ -20,7 +13,7 @@
         android:layout_height="match_parent"
 
         >
-        <LinearLayout
+        <RelativeLayout
             android:layout_gravity="center"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -28,6 +21,7 @@
             android:layout_marginStart="30dp"
             android:layout_marginEnd="30dp"
             android:background="@drawable/trans_rectangle_back_blue"
+
 
 
             >
@@ -46,8 +40,9 @@
                     android:layout_height="80dp"
                     android:id="@+id/emam8_logo"
                     android:src="@drawable/logo"
-                    android:layout_marginTop="16dp"
                     android:scaleType="fitCenter"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:layout_marginBottom="@dimen/_12sdp"
                     />
 
 
@@ -74,7 +69,7 @@
 
 
             </LinearLayout>
-        </LinearLayout>
+        </RelativeLayout>
     </ScrollView>
 
 

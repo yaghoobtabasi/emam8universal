@@ -10,7 +10,7 @@
                 android:topLeftRadius="20dp"
                 android:topRightRadius="20dp"/>
 
-            <solid android:color="@color/colorAccent"/>
+            <solid android:color="#26C6DA"/>
         </shape>
     </item>
     <item
@@ -23,7 +23,7 @@
                 android:topLeftRadius="20dp"
                 android:topRightRadius="20dp"/>
 
-            <solid android:color="#00BCD4"/>
+            <solid android:color="#26C6DA"/>
         </shape>
     </item>
 </selector>

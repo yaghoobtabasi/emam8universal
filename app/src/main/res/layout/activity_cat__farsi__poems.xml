@@ -14,19 +14,19 @@
 
 
         <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar_cat"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:layoutDirection="rtl"
+            app:titleTextColor="@color/white"
             >
 
-
             <TextView
+                android:id="@+id/txt_tool"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layoutDirection="rtl"
+                android:textSize="@dimen/_16sdp"
                 android:textColor="@color/white"
-                android:textSize="@dimen/_12sdp"
-                android:text="فهرست اشعار فارسی"
                 />
 
         </android.support.v7.widget.Toolbar>

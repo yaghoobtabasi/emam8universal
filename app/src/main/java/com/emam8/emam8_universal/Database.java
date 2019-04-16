@@ -197,7 +197,7 @@ public class Database extends SQLiteOpenHelper {
 
     public Boolean check_category_added(String sectionId) {
 
-        Cursor cursor = mydb.rawQuery("SELECT * FROM category ", null);
+        Cursor cursor = mydb.rawQuery("SELECT * FROM category where section=? ", new String[]{sectionId});
         int cnt = cursor.getCount();
         if (cnt > 0)
             return true;
