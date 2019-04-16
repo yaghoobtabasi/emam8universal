@@ -6,10 +6,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.RelativeLayout;
 
+import com.emam8.emam8_universal.utilities.AppPreferenceTools;
+
 public class ProfileUser extends AppCompatActivity {
 
-    private RelativeLayout rltv_user;
-    private RelativeLayout rltv_about;
+    private RelativeLayout rltv_user,rltv_about,rltv_out;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +21,7 @@ public class ProfileUser extends AppCompatActivity {
 
         rltv_user = findViewById(R.id.rltv_prof);
         rltv_about=findViewById(R.id.rltv_about);
+        rltv_out=findViewById(R.id.rltv_out);
 
 
 
@@ -35,6 +38,14 @@ public class ProfileUser extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(ProfileUser.this,About_us.class);
                 startActivity(intent);
+            }
+        });
+
+        rltv_out.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AppPreferenceTools appPreferenceTools=new AppPreferenceTools(getApplicationContext());
+                appPreferenceTools.removeAllPrefs();
             }
         });
 

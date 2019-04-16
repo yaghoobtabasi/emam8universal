@@ -199,6 +199,7 @@
             android:layout_marginRight="40dp"/>
 
         <RelativeLayout
+            android:id="@+id/rltv_out"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/line_about"

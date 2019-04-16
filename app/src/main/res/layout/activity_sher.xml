@@ -51,7 +51,8 @@
                     android:id="@+id/sher_sabk_farsi"
                     style="@style/text_button_frame_image"
                     android:text="شعر و سبک فارسی"
-                    android:textSize="@dimen/_12sdp"/>
+                    android:textSize="@dimen/_12sdp"
+                    />
 
                 <TextView
                     android:text=" شعر و سبک ترکی"

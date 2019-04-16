@@ -16,6 +16,7 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -26,7 +27,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.Toolbar;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -50,7 +50,7 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class RecyclerPoem extends AppCompatActivity {
     public List<Poems> poem = new ArrayList<>();
-    private String catid, mode, gid, poet_id, allow_private, lang;
+    private String catid, mode, gid, poet_id, allow_private, lang, title;
     private RecyclerView recyclerView;
     private Cursor cursor;
     private Database db;
@@ -60,6 +60,9 @@ public class RecyclerPoem extends AppCompatActivity {
     private PoemsAdapter adapter;
     MaterialSearchView materialSearchView;
     private LinearLayoutManager layoutManager;
+
+    private Toolbar toolbar;
+    private TextView textView;
 
 
     //variables for pagination
@@ -79,14 +82,17 @@ public class RecyclerPoem extends AppCompatActivity {
         catid = bundle.getString("catid");
         mode = bundle.getString("mode");
         gid = bundle.getString("gid");
+        title = bundle.getString("title");
         poet_id = "";
         allow_private = "";
         lang = "torki";
 
+        toolbar = (Toolbar) findViewById(R.id.toolbar_rec);
+        textView = (TextView) findViewById(R.id.txt_tool_rec);
 
-
+        mediaPlayer = new MediaPlayer();
         recyclerView = (RecyclerView) findViewById(R.id.poem_recycler);
-        adapter = new PoemsAdapter(poem, catid, gid, poet_id, mode, RecyclerPoem.this);
+        adapter = new PoemsAdapter(poem, catid, gid, poet_id, mode, RecyclerPoem.this, mediaPlayer);
         layoutManager = new LinearLayoutManager(RecyclerPoem.this);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
@@ -132,18 +138,14 @@ public class RecyclerPoem extends AppCompatActivity {
         });
 
 
+        setToolbar(title);
         setData(catid);
 
 
     }
 
-
-
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        mediaPlayer.release();
+    private void setToolbar(String title) {
+        textView.setText(title);
     }
 
 
@@ -151,9 +153,6 @@ public class RecyclerPoem extends AppCompatActivity {
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
-
-
-
 
 
     private void setData(final String catid) {

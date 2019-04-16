@@ -45,9 +45,11 @@ public class CategoryFarsiAdapter extends RecyclerView.Adapter<CategoryFarsiAdap
             @Override
             public void onClick(View v) {
                 String catid=catFarsiPoems.get(position).getId();
+                String title = catFarsiPoems.get(position).getTitle();
                 final Intent intent;
 //                intent = new Intent(context, ListPoemsFarsiPoem.class);
                 intent = new Intent(context, RecyclerPoem.class);
+                intent.putExtra("title",title);
                 intent.putExtra("catid",catid);
                 intent.putExtra("mode","all");
                 intent.putExtra("gid","0");

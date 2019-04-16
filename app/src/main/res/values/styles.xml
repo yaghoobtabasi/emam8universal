@@ -27,7 +27,7 @@
         <item name="android:background">@drawable/frame</item>
         <item name="android:layout_marginStart">10dp</item>
         <item name="android:layout_marginEnd">10dp</item>
-
+        <item name="android:layout_marginTop">@dimen/_1sdp</item>
 
     </style>
 

@@ -48,15 +48,14 @@ public class PoemsAdapter extends RecyclerView.Adapter<PoemsAdapter.PoemViewHold
     private ImageView img_play;
 
 
-
-
-    public PoemsAdapter(List<Poems> poem, String catid, String gid, String poet_id, String mode, Context mContext) {
+    public PoemsAdapter(List<Poems> poem, String catid, String gid, String poet_id, String mode, Context mContext,MediaPlayer mediaPlayer) {
         this.poem = poem;
         this.catid = catid;
         this.gid = gid;
         this.poet_id = poet_id;
         this.mode = mode;
         this.mContext = mContext;
+        this.mediaPlayer=mediaPlayer;
 
     }
 
@@ -100,34 +99,60 @@ public class PoemsAdapter extends RecyclerView.Adapter<PoemsAdapter.PoemViewHold
             holder.img_play.setVisibility(View.GONE);
         }
 
-        String audio_url = "https://emam8.com/" + sabk;
-        mediaPlayer = new MediaPlayer();
-        try {
-            mediaPlayer.setDataSource(mContext, Uri.parse(audio_url));
-            mediaPlayer.prepareAsync();
-            mediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-                @Override
-                public void onPrepared(MediaPlayer mp) {
 
-                    holder.img_play.setOnClickListener(new View.OnClickListener() {
+//        String audio_url = "https://emam8.com/" + sabk;
+//        try {
+//            mediaPlayer.setDataSource(mContext, Uri.parse(audio_url));
+//            mediaPlayer.prepareAsync();
+//            mediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+//                @Override
+//                public void onPrepared(MediaPlayer mp) {
+//
+//                    holder.img_play.setOnClickListener(new View.OnClickListener() {
+//                        @Override
+//                        public void onClick(View v) {
+//                            if (mediaPlayer.isPlaying()) {
+//
+//                                img_play.setImageResource(R.drawable.ic_play_arrow_black_24dp);
+//                            } else {
+//
+//                                img_play.setImageResource(R.drawable.ic_pause_black_24dp);
+//
+//                            }
+//                        }
+//                    });
+//                }
+//            });
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+
+        holder.img_play.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String audio_url = "https://emam8.com/" + sabk;
+                try {
+                    mediaPlayer.setDataSource(mContext, Uri.parse(audio_url));
+                    mediaPlayer.prepareAsync();
+                    mediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
                         @Override
-                        public void onClick(View v) {
-                            if (mediaPlayer.isPlaying()) {
-                                mediaPlayer.pause();
+                        public void onPrepared(MediaPlayer mp) {
+                            if (mediaPlayer.isPlaying()){
+                                mp.pause();
                                 img_play.setImageResource(R.drawable.ic_play_arrow_black_24dp);
-                            } else {
-                                mediaPlayer.start();
+                            }
+                            else {
+                                mp.start();
                                 img_play.setImageResource(R.drawable.ic_pause_black_24dp);
-
                             }
                         }
                     });
-
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
-            });
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
+            }
+        });
 
 
         holder.txtTitle.setText(title);

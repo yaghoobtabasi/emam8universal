@@ -33,7 +33,7 @@ public class signup extends AppCompatActivity {
     private EditText username,pass,conf_pass;
     String txt_pass,txt_conf_pass,txt_username;
     private TextInputLayout inputLayoutUserName,inputLayoutPass,inputLayoutConfPass;
-    Button btn_signup;
+    Button btn_signup,email_singup;
     Boolean check_pass;
     Snackbar snackbar;
     @Override
@@ -50,6 +50,14 @@ public class signup extends AppCompatActivity {
                 if (check_pass){
                     signup_user();
                 }
+            }
+        });
+
+        email_singup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
             }
         });
 
@@ -128,11 +136,8 @@ public class signup extends AppCompatActivity {
 
     void  findView(){
         inputLayoutUserName = (TextInputLayout)findViewById(R.id.input_layout_signup_email);
-        inputLayoutPass = (TextInputLayout)findViewById(R.id.input_layout_signup_password);
-        inputLayoutConfPass = (TextInputLayout)findViewById(R.id.input_layout_signup_password_confirm);
         username=(EditText)findViewById(R.id.signup_email);
-        pass=(EditText)findViewById(R.id.signup_password);
-        conf_pass=(EditText)findViewById(R.id.signup_password_confirm);
         btn_signup=(Button)findViewById(R.id.btnsignup);
+        email_singup = (Button) findViewById(R.id.email_signup);
     }
 }

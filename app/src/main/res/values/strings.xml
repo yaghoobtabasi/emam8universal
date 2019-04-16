@@ -37,7 +37,7 @@
     <string name="txt_hint_username_login">شماره موبایل  خود را وارد کنید</string>
     <string name="txt_hint_pass_signup">رمز عبور را وارد کنید</string>
     <string name="txt_hint_pass_confirm_signup">رمز عبور را مجددا وارد کنید</string>
-    <string name="btn_signup">ثبت نام</string>
+    <string name="btn_signup">ارسال کد</string>
 
 
     <string name="msg_err_signup_lenth">حد اقل طول رمز بایستی 6 کاراکتر باشد</string>
