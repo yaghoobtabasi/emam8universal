@@ -11,6 +11,7 @@ import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,16 +47,18 @@ public class PoemsAdapter extends RecyclerView.Adapter<PoemsAdapter.PoemViewHold
     private Boolean isplay;
     Context mContext;
     private ImageView img_play;
+    private Integer playing_status = 0, playing_position = 0,old_playing_position=0;
 
 
-    public PoemsAdapter(List<Poems> poem, String catid, String gid, String poet_id, String mode, Context mContext,MediaPlayer mediaPlayer) {
+    public PoemsAdapter(List<Poems> poem, String catid, String gid, String poet_id, String mode, Context mContext, MediaPlayer mediaPlayer) {
         this.poem = poem;
         this.catid = catid;
         this.gid = gid;
         this.poet_id = poet_id;
         this.mode = mode;
         this.mContext = mContext;
-        this.mediaPlayer=mediaPlayer;
+        this.mediaPlayer = mediaPlayer;
+
 
     }
 
@@ -100,53 +103,84 @@ public class PoemsAdapter extends RecyclerView.Adapter<PoemsAdapter.PoemViewHold
         }
 
 
-//        String audio_url = "https://emam8.com/" + sabk;
-//        try {
-//            mediaPlayer.setDataSource(mContext, Uri.parse(audio_url));
-//            mediaPlayer.prepareAsync();
-//            mediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-//                @Override
-//                public void onPrepared(MediaPlayer mp) {
-//
-//                    holder.img_play.setOnClickListener(new View.OnClickListener() {
-//                        @Override
-//                        public void onClick(View v) {
-//                            if (mediaPlayer.isPlaying()) {
-//
-//                                img_play.setImageResource(R.drawable.ic_play_arrow_black_24dp);
-//                            } else {
-//
-//                                img_play.setImageResource(R.drawable.ic_pause_black_24dp);
-//
-//                            }
-//                        }
-//                    });
-//                }
-//            });
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-
         holder.img_play.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String audio_url = "https://emam8.com/" + sabk;
+
                 try {
-                    mediaPlayer.setDataSource(mContext, Uri.parse(audio_url));
-                    mediaPlayer.prepareAsync();
+                    Log.d("playing_status", playing_status + " position= " + playing_position);
+                    if ((playing_status == 0)) {
+
+                        mediaPlayer.setDataSource(mContext, Uri.parse(audio_url));
+                        mediaPlayer.prepareAsync();
+                        Log.d("play_pause ", "position=" + position + "  playing_status" + playing_status + " first condition");
+                        playing_position = position;
+                        old_playing_position=position;
+
+                    }
+                    if ((playing_status == 2) && (position == playing_position)) {
+                        Log.d("play_pause", "position=" + position + "  playing_status" + playing_status + " second condition");
+                        mediaPlayer.start();
+                        playing_status = 1;
+                        holder.img_play.setImageResource(R.drawable.ic_pause_black_24dp);
+
+                    } else if ((playing_status == 1)&& mediaPlayer.isPlaying() && (position == playing_position) ) {
+                        mediaPlayer.pause();
+                        Log.d("paly_pause", "is_playing " + "fourth condition");
+                        playing_status = 2;
+                        holder.img_play.setImageResource(R.drawable.ic_play_arrow_black_24dp);
+                    }
+
+                    if (playing_position != position) {
+
+
+                        old_playing_position=playing_position;
+                        playing_position = position;
+                        Log.d("play_pause", "position=" + position + "  playing_status" + playing_status + " third condition"+"old_position=>"+old_playing_position);
+                        change_play_pause_Image(holder,old_playing_position);
+//                        holder.img_play.setImageResource(poem.get(old_playing_position));poem.get(old_playing_position);
+
+
+                        mediaPlayer.stop();
+                        mediaPlayer.reset();
+//                        holder.img_play.setImageResource(R.drawable.ic_play_arrow_black_24dp);
+//                        mediaPlayer.release();
+
+                        try {
+                            mediaPlayer.setDataSource(mContext, Uri.parse(audio_url));
+                            mediaPlayer.prepareAsync();
+                            playing_status = 3;
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+
+
+
+
+                    }
+
+
                     mediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
                         @Override
                         public void onPrepared(MediaPlayer mp) {
-                            if (mediaPlayer.isPlaying()){
+                            if (mp.isPlaying()) {
                                 mp.pause();
-                                img_play.setImageResource(R.drawable.ic_play_arrow_black_24dp);
-                            }
-                            else {
+                                Log.d("paly_pause", "is_playing");
+
+//                                int id=
+                                playing_status = 2;
+                                holder.img_play.setImageResource(R.drawable.ic_play_arrow_black_24dp);
+                            } else {
                                 mp.start();
-                                img_play.setImageResource(R.drawable.ic_pause_black_24dp);
+                                Log.d("paly_pause", "is_pause");
+                                playing_status = 1;
+                                holder.img_play.setImageResource(R.drawable.ic_pause_black_24dp);
                             }
                         }
                     });
+
+
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -227,14 +261,23 @@ public class PoemsAdapter extends RecyclerView.Adapter<PoemsAdapter.PoemViewHold
             txtTitle = (TextView) itemView.findViewById(R.id.txt_title);
             txt_poet = (TextView) itemView.findViewById(R.id.txt_poet);
             imgpoet = (ImageView) itemView.findViewById(R.id.img_poet);
-            cardView = itemView.findViewById(R.id.cardView_poetPage);
             img_play = (ImageView) itemView.findViewById(R.id.play_paus_btn);
+            cardView = itemView.findViewById(R.id.cardView_poetPage);
+
 
         }
 
         public ImageView getImage() {
             return this.imgpoet;
         }
+    }
+
+
+    private void change_play_pause_Image(final PoemsAdapter.PoemViewHolder holder,final int position)
+    {
+//        holder.img_play.setImageResource(poem.get(position).getYourMethodName());
+        holder.img_play.setImageResource(R.drawable.ic_play_arrow_black_24dp);
+//        Log.d("new holder",poem.get(position).getTitle());
     }
 
 
