@@ -55,7 +55,7 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 public class ShowPoem extends RuntimePermissionsActivity implements View.OnTouchListener {
 
     final static float move = 200;
-    float ratio  = 1.0f;
+    float ratio = 1.0f;
     int baseDist;
     float baseRatio;
 
@@ -96,7 +96,7 @@ public class ShowPoem extends RuntimePermissionsActivity implements View.OnTouch
 
 
         txt_body = (TextView) findViewById(R.id.txt_body);
-        txt_body.setTextSize(ratio+15);
+        txt_body.setTextSize(ratio + 15);
 
         share_btn = (ImageView) findViewById(R.id.share_showPoem);
         dwonload_img = (ImageView) findViewById(R.id.download_showPoem);
@@ -216,14 +216,14 @@ public class ShowPoem extends RuntimePermissionsActivity implements View.OnTouch
             sabk_url = BuildConfig.Apikey_BaseUrl + sabk_path;
 
             //check exist sabk on download folder
-            if (check_sabk_exist(sabk)) {
-
-                String fileName = sabk.substring(sabk.lastIndexOf('/') + 1, sabk.length());
-                File directory = new File(Environment.getDataDirectory()
-                        + BuildConfig.Apikey_Audio);
-                sabk_url = directory + "/" + fileName;
-                sabk_url = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MUSIC) + "/" + fileName;
-            }
+//            if (check_sabk_exist(sabk)) {
+//
+//                String fileName = sabk.substring(sabk.lastIndexOf('/') + 1, sabk.length());
+//                File directory = new File(Environment.getDataDirectory()
+//                        + BuildConfig.Apikey_Audio);
+//                sabk_url = directory + "/" + fileName;
+//                sabk_url = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MUSIC) + "/" + fileName;
+//            }
 
 
             mediaPlayer = new MediaPlayer();
@@ -236,18 +236,33 @@ public class ShowPoem extends RuntimePermissionsActivity implements View.OnTouch
                 return;
             }
 
-            try {
-                mediaPlayer.setDataSource(getApplicationContext(), Uri.parse(sabk_url));
-                mediaPlayer.prepareAsync();
-                mediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-                    @Override
-                    public void onPrepared(MediaPlayer mp) {
-                        setupViews();
-                    }
-                });
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+
+//            try {
+//                if (check_sabk_exist(sabk_path)) {
+//                    String path = Environment.getDataDirectory() + "/sdcard/Emam8/audio/"+get_file_name(sabk_path);
+//                    mediaPlayer.setDataSource(this, Uri.parse(path));
+//                    Log.d("play_status",path);
+//                } else {
+//                    mediaPlayer.setDataSource(getApplicationContext(), Uri.parse(sabk_url));
+//                    Log.d("play_status",sabk_path);
+//                }
+//                mediaPlayer.prepareAsync();
+//                mediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+//                    @Override
+//                    public void onPrepared(MediaPlayer mp) {
+//                        setupViews();
+//                    }
+//                });
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+
+            mediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+                @Override
+                public void onPrepared(MediaPlayer mp) {
+                    setupViews();
+                }
+            });
 
             mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                 @Override
@@ -261,15 +276,39 @@ public class ShowPoem extends RuntimePermissionsActivity implements View.OnTouch
         db.close();
         pDialog.dismiss();
 
-    }
+    }// end of oncreate
+
+
+
+
+
+    private void playSabk(String sabk_path){
+        try {
+            if (check_sabk_exist(sabk_path)) {
+                String path = Environment.getDataDirectory() + "/sdcard/Emam8/audio/"+get_file_name(sabk_path);
+                mediaPlayer.setDataSource(this, Uri.parse(path));
+                Log.d("play_status",path);
+            } else {
+                mediaPlayer.setDataSource(getApplicationContext(), Uri.parse(sabk_url));
+                Log.d("play_status",sabk_path);
+            }
+            mediaPlayer.prepareAsync();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    } //end of play sabk
+
+
 
     private void setupViews() {
 
         img_play = (ImageView) findViewById(R.id.fab_play_showPoem);
         img_play.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
-
+                playSabk(sabk_path);
                 if (mediaPlayer.isPlaying()) {
                     mediaPlayer.pause();
                     img_play.setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.play_btn, null));
@@ -290,7 +329,7 @@ public class ShowPoem extends RuntimePermissionsActivity implements View.OnTouch
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                    mediaPlayer.seekTo(progress);
+                mediaPlayer.seekTo(progress);
 
             }
 
@@ -308,7 +347,7 @@ public class ShowPoem extends RuntimePermissionsActivity implements View.OnTouch
         timer = new Timer();
         timer.schedule(new MainTimer(), 0, 1000);
 
-    }
+    } //end of setupview
 
     private String formatDuration(long duration) {
 
@@ -321,26 +360,26 @@ public class ShowPoem extends RuntimePermissionsActivity implements View.OnTouch
 
     @Override
     public boolean onTouch(View v, MotionEvent event) {
-        if (event.getPointerCount()==2){
+        if (event.getPointerCount() == 2) {
             int action = event.getAction();
             int mainAction = action & MotionEvent.ACTION_MASK;
-            if (mainAction == MotionEvent.ACTION_POINTER_DOWN){
+            if (mainAction == MotionEvent.ACTION_POINTER_DOWN) {
                 baseDist = getDistance(event);
                 baseRatio = ratio;
-            }else {
-                float scale = (getDistance(event)-baseDist)/move;
-                float factor = (float) Math.pow(2,scale);
-                ratio = Math.min(1024.0f,Math.max(0.1f,baseRatio*factor));
-                txt_body.setTextSize(ratio+15);
+            } else {
+                float scale = (getDistance(event) - baseDist) / move;
+                float factor = (float) Math.pow(2, scale);
+                ratio = Math.min(1024.0f, Math.max(0.1f, baseRatio * factor));
+                txt_body.setTextSize(ratio + 15);
             }
         }
         return true;
     }
 
     private int getDistance(MotionEvent event) {
-        int dx = (int) (event.getX(0)- event.getX(1));
-        int dy = (int) (event.getY(0)- event.getY(1));
-        return (int) Math.sqrt(dx*dx+dy*dy);
+        int dx = (int) (event.getX(0) - event.getX(1));
+        int dy = (int) (event.getY(0) - event.getY(1));
+        return (int) Math.sqrt(dx * dx + dy * dy);
     }
 
     @Override
@@ -363,9 +402,10 @@ public class ShowPoem extends RuntimePermissionsActivity implements View.OnTouch
 
     @Override
     protected void onDestroy() {
-        mediaPlayer.release();
+
         timer.purge();
         timer.cancel();
+        mediaPlayer.release();
         super.onDestroy();
 
     }
@@ -471,13 +511,28 @@ public class ShowPoem extends RuntimePermissionsActivity implements View.OnTouch
             String urlStr = sabk_path;
             String fileName = urlStr.substring(urlStr.lastIndexOf('/') + 1, urlStr.length());
 
-            File directory = new File(Environment.getDataDirectory()
-                    + BuildConfig.Apikey_Audio, fileName);
+            String path = Environment.getDataDirectory().getAbsolutePath().toString() + "/storage/emulated/0/appFolder";
+
+            File mfolder = new File(path);
+            if (!mfolder.exists()) {
+                mfolder.mkdir();
+            }
+
+            File Directory = new File("/sdcard/Emam8/audio");
+            Directory.mkdirs();
+
+            //check if file downloaded before
+            File directory = new File(path, fileName);
             if (!directory.exists()) {
                 directory.mkdir();
             }
 
-            File futureStudioIconFile = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MUSIC), fileName);
+            if (check_sabk_exist(sabk_path)) {
+                Log.d("Emam8", "sabk exist before");
+                return true;
+            }
+
+            File futureStudioIconFile = new File(Directory, fileName);
             InputStream inputStream = null;
             OutputStream outputStream = null;
 
@@ -496,7 +551,7 @@ public class ShowPoem extends RuntimePermissionsActivity implements View.OnTouch
 
                     outputStream.write(fileReader, 0, read);
                     fileSizeDownloaded += read;
-                    Log.d("Future studio", "file download" + fileSizeDownloaded + "of " + fileSize);
+//                    Log.d("Future studio", "file download" + fileSizeDownloaded + "of " + fileSize);
                 }
                 outputStream.flush();
                 return true;
@@ -527,21 +582,29 @@ public class ShowPoem extends RuntimePermissionsActivity implements View.OnTouch
         }, Write_External_Request_Code);
     }
 
-    boolean check_sabk_exist(String sabk) {
+    String get_file_name(String sabk) {
         String fileName = sabk.substring(sabk.lastIndexOf('/') + 1, sabk.length());
+        return fileName;
+    }
+
+    boolean check_sabk_exist(String sabk) {
+//        String fileName = sabk.substring(sabk.lastIndexOf('/') + 1, sabk.length());
+        String fileName = get_file_name(sabk);
+
         File directory = new File(Environment.getDataDirectory()
                 + BuildConfig.Apikey_Audio);
         if (!directory.exists()) {
             directory.mkdir();
         }
-        fileName = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MUSIC) + "/" + fileName;
+        String fileName1 = Environment.getExternalStoragePublicDirectory(Environment.getDataDirectory().getAbsolutePath().toString() + "/sdcard/Emam8/audio") + "/" + fileName;
         ;
-        File sabkFile = new File(fileName);
+        String file_name2 = "/sdcard/Emam8/audio/" + fileName;
+        File sabkFile = new File(file_name2);
         if (sabkFile.exists()) {
-            Log.d("File_exist :", "exist file " + fileName);
+            Log.d("File_exist :", "exist file " + file_name2);
             return true;
         } else {
-            Log.d("File_exist ", "not file" + fileName);
+            Log.d("File_exist ", "not file exist" + file_name2);
             return false;
         }
     }
