@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import com.emam8.emam8_universal.Auth.login_activity;
 import com.emam8.emam8_universal.services.ConnectionDetector;
@@ -49,6 +50,15 @@ public class MainActivity extends AppCompatActivity {
         findview();
         AppPreferenceTools appPreferenceTools = new AppPreferenceTools(getBaseContext());
         String id = appPreferenceTools.getUserId();
+        Database db=new Database(this);
+
+        db.useable();
+        db.open();
+
+        String count_fav=db.fav_count();
+        db.close();
+        Toast.makeText(this,count_fav,Toast.LENGTH_LONG).show();
+
 
         sher_sabk.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -137,7 +147,7 @@ public class MainActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.action_favorites:
-                        Intent i = new Intent(getApplicationContext(), login_activity.class);
+                        Intent i = new Intent(getApplicationContext(), RecycleFavPoem.class);
                         startActivity(i);
                         break;
                     case R.id.action_home:

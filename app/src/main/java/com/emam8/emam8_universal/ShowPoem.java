@@ -1,6 +1,7 @@
 package com.emam8.emam8_universal;
 
 import android.Manifest;
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -11,6 +12,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
+import android.support.design.widget.Snackbar;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.text.TextUtils;
@@ -23,14 +25,26 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.emam8.emam8_universal.App.AppController;
+import com.emam8.emam8_universal.Model.CatFarsiPoem;
+import com.emam8.emam8_universal.Model.Poem_fav;
 import com.emam8.emam8_universal.Model.Poem_retro;
 import com.emam8.emam8_universal.services.ConnectionDetector;
 import com.emam8.emam8_universal.services.FileDownloadClient;
+import com.emam8.emam8_universal.services.Load_Fav_Poem;
 import com.emam8.emam8_universal.services.Load_poems;
 import com.emam8.emam8_universal.services.RuntimePermissionsActivity;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonIOException;
+import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -72,11 +86,13 @@ public class ShowPoem extends RuntimePermissionsActivity implements View.OnTouch
     public int pos;
     private Timer timer;
 
+    public ProgressDialog pDialog;
+
 
     public String sabk_path;
     public final String Site_url = BuildConfig.Apikey_BaseUrl;
     private static final String url_load_poem = BuildConfig.ApiKey_baseUrl_Apps;
-    private String article_id, state, new_body, poet;
+    private String article_id, user_id, state, new_body, poet;
     private SwipeRefreshLayout swipeRefreshLayout;
     private String body_response, id, title, body, sabk, sname, cname, sectionid, catid, state_1, poet_id, poet_name;
 
@@ -128,7 +144,6 @@ public class ShowPoem extends RuntimePermissionsActivity implements View.OnTouch
         db.open();
         heart_btn = (ImageView) findViewById(R.id.like_showPoem);
 
-
         if (db.check_fav_content(article_id)) {
             heart_btn.setImageResource(R.drawable.heartr);
         } else {
@@ -138,8 +153,29 @@ public class ShowPoem extends RuntimePermissionsActivity implements View.OnTouch
         heart_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("Emam8", article_id + "");
-                heart_btn.setImageResource(R.drawable.heartr);
+                db = new Database(ShowPoem.this);
+                db.writable();
+                db.open();
+                if (!db.check_fav_content(article_id)) {
+                    if (db.add_to_app_contents(id, title, body, sname, cname, catid, sectionid, state, sabk, poet_id, poet_name, "1")) {
+                        db.add_fav(id);
+                        Log.d("tagg", "success");
+                        heart_btn.setImageResource(R.drawable.heartr);
+                        Snackbar.make(findViewById(R.id.rltv_snack_showPoem), "به لیست علاقه مندی ها اضافه شد", Snackbar.LENGTH_LONG).show();
+                        setDataFav("ADD");
+                    }
+
+                } else {
+                    Log.d("tagg", "fail");
+                    db.del_fav(id);
+                    setDataFav("Remove");
+                    heart_btn.setImageResource(R.drawable.heart);
+                    Snackbar.make(findViewById(R.id.rltv_snack_showPoem), "از لیست علاقه مندی ها حذف شد", Snackbar.LENGTH_LONG).show();
+
+                }
+                db.close();
+
+
             }
         });
 
@@ -256,7 +292,21 @@ public class ShowPoem extends RuntimePermissionsActivity implements View.OnTouch
 //            } catch (IOException e) {
 //                e.printStackTrace();
 //            }
+            try {
+                if (check_sabk_exist(sabk_path)) {
+                    String path = Environment.getDataDirectory() + "/sdcard/Emam8/audio/" + get_file_name(sabk_path);
+                    Log.d("play_status", path);
+                    mediaPlayer.setDataSource(this, Uri.parse(path));
+                    mediaPlayer.prepareAsync();
+                } else {
+                    mediaPlayer.setDataSource(getApplicationContext(), Uri.parse(sabk_url));
+                    mediaPlayer.prepareAsync();
+                    Log.d("play_status", sabk_path);
+                }
 
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             mediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
                 @Override
                 public void onPrepared(MediaPlayer mp) {
@@ -279,28 +329,6 @@ public class ShowPoem extends RuntimePermissionsActivity implements View.OnTouch
     }// end of oncreate
 
 
-
-
-
-    private void playSabk(String sabk_path){
-        try {
-            if (check_sabk_exist(sabk_path)) {
-                String path = Environment.getDataDirectory() + "/sdcard/Emam8/audio/"+get_file_name(sabk_path);
-                mediaPlayer.setDataSource(this, Uri.parse(path));
-                Log.d("play_status",path);
-            } else {
-                mediaPlayer.setDataSource(getApplicationContext(), Uri.parse(sabk_url));
-                Log.d("play_status",sabk_path);
-            }
-            mediaPlayer.prepareAsync();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    } //end of play sabk
-
-
-
     private void setupViews() {
 
         img_play = (ImageView) findViewById(R.id.fab_play_showPoem);
@@ -308,7 +336,6 @@ public class ShowPoem extends RuntimePermissionsActivity implements View.OnTouch
 
             @Override
             public void onClick(View v) {
-                playSabk(sabk_path);
                 if (mediaPlayer.isPlaying()) {
                     mediaPlayer.pause();
                     img_play.setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.play_btn, null));
@@ -615,7 +642,6 @@ public class ShowPoem extends RuntimePermissionsActivity implements View.OnTouch
 
         // Log.w("info",url);
 
-        final ProgressDialog pDialog;
         pDialog = new ProgressDialog(ShowPoem.this);
         pDialog.setMessage("در حال فراخوانی اطلاعات ...");
         pDialog.setCancelable(true);
@@ -693,6 +719,65 @@ public class ShowPoem extends RuntimePermissionsActivity implements View.OnTouch
         String text = body_response;
 
         pDialog.dismiss();
+    }
+
+    private void setDataFav(String method) {
+        final String Url = BuildConfig.Apikey_Fav;
+
+        Retrofit retro = new Retrofit.Builder()
+                .baseUrl(BuildConfig.ApiKey_baseUrl_Apps)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        HashMap<String, String> headerMap = new HashMap<String, String>();
+        headerMap.put("content-type", "application/json");
+
+
+        Load_Fav_Poem load_poems = retro.create(Load_Fav_Poem.class);
+
+
+        String app_name = MainActivity.app_name;
+        String app_version = MainActivity.app_version;
+
+        switch (method) {
+
+            case "ADD":
+                Call<Poem_fav> call = load_poems.fav_article(headerMap, article_id, "62", app_name, app_version, "json");
+                call.enqueue(new Callback<Poem_fav>() {
+                    @Override
+                    public void onResponse(Call<Poem_fav> call, Response<Poem_fav> response) {
+
+                    }
+
+                    @Override
+                    public void onFailure(Call<Poem_fav> call, Throwable t) {
+                        Log.w("Emam8", "Error1 " + t.getMessage());
+                    }
+
+                });
+                break;
+
+            case "Remove":
+                Call<Poem_fav> call_del = load_poems.del_fav_article(headerMap, article_id, "62", app_name, app_version, "json");
+                call_del.enqueue(new Callback<Poem_fav>() {
+                    @Override
+                    public void onResponse(Call<Poem_fav> call, Response<Poem_fav> response) {
+
+
+                        git
+                        Log.d("Emam8", response.body().toString());
+                    }
+
+                    @Override
+                    public void onFailure(Call<Poem_fav> call, Throwable t) {
+                        Log.w("Emam8", "Error1 " + t.getMessage());
+
+                    }
+                });
+                break;
+        }
+
+
     }
 
     @Override

@@ -58,7 +58,6 @@ public class RecyclerPoem extends AppCompatActivity {
 
 
     private PoemsAdapter adapter;
-    MaterialSearchView materialSearchView;
     private LinearLayoutManager layoutManager;
 
     private Toolbar toolbar;

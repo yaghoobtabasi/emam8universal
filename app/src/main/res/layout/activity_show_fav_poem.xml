@@ -37,7 +37,6 @@
             android:id="@+id/fp_seekBar"
             android:layout_width="240dp"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/current_duration"
             android:progress="20" />
 
 
@@ -135,33 +134,6 @@
                             android:layout_marginTop="4dp"
                             android:src="@drawable/download" />
 
-                        <ImageView
-                            android:id="@+id/fp_zoom_minus"
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
-                            android:layout_gravity="center"
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginTop="4dp"
-                            android:src="@drawable/magnify_minus"
-                            />
-
-                        <SeekBar
-                            android:id="@+id/fp_seekbar_volume"
-                            android:layout_width="155dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:progress="50"
-                            android:layout_marginLeft="4dp"
-                            />
-
-                        <ImageView
-                            android:id="@+id/fp_zoom_plus"
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
-                            android:layout_gravity="center"
-                            android:layout_marginTop="4dp"
-                            android:layout_marginLeft="4dp"
-                            android:src="@drawable/magnify_plus" />
 
 
                     </LinearLayout>

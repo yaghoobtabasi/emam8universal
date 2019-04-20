@@ -49,6 +49,8 @@ public class PoemsAdapter extends RecyclerView.Adapter<PoemsAdapter.PoemViewHold
     private ImageView img_play;
     private Integer playing_status = 0, playing_position = 0,old_playing_position=0;
 
+    int click=0;
+
 
     public PoemsAdapter(List<Poems> poem, String catid, String gid, String poet_id, String mode, Context mContext, MediaPlayer mediaPlayer) {
         this.poem = poem;

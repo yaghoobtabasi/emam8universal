@@ -83,8 +83,10 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginRight="@dimen/_4sdp"
-                        android:text="0511_3325453"
-                        android:textSize="@dimen/_14sdp" />
+                        android:text="051-37539666"
+                        android:textSize="@dimen/_14sdp"
+                        android:layoutDirection="rtl"
+                        android:textDirection="rtl"/>
 
                 </LinearLayout>
 
@@ -115,8 +117,10 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginRight="@dimen/_4sdp"
-                        android:text="0511_3325453"
-                        android:textSize="@dimen/_14sdp" />
+                        android:text="09381565636"
+                        android:textSize="@dimen/_14sdp"
+                        android:layoutDirection="rtl"
+                        android:textDirection="rtl"/>
                 </LinearLayout>
 
             </android.support.v7.widget.CardView>
@@ -167,7 +171,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginRight="@dimen/_4sdp"
-                        android:text="0511_3325453"
+                        android:text="همه روزه به جز ایام تعطیل از ساعت 9 الی 20"
                         android:textSize="@dimen/_14sdp" />
                 </LinearLayout>
 
@@ -197,7 +201,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginRight="@dimen/_4sdp"
-                        android:text="0511_3325453"
+                        android:text=""
                         android:textSize="@dimen/_14sdp" />
                 </LinearLayout>
 
@@ -232,7 +236,9 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:layoutDirection="rtl"
+                    android:textDirection="rtl">
 
                     <ImageView
                         android:layout_width="wrap_content"
@@ -246,8 +252,10 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginRight="@dimen/_4sdp"
-                        android:text="0511_3325453"
-                        android:textSize="@dimen/_14sdp" />
+                        android:textSize="@dimen/_14sdp"
+                        android:text="مشهد - میدان شهدا - مجنمع میلاد - واحد F20"
+                        android:layoutDirection="rtl"
+                        android:textDirection="rtl"/>
                 </LinearLayout>
 
             </android.support.v7.widget.CardView>

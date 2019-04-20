@@ -17,6 +17,7 @@ android {
         buildConfigField "String", 'Apikey_BaseUrl', '"' + ApiKey_BaseUrl + '"'
         buildConfigField "String", 'Apikey_BaseUrl_Api', '"' + ApiKey_BaseUrl_Api + '"'
         buildConfigField "String", 'ApiKey_BaseUrl_Aut', '"' + ApiKey_BaseUrl_Aut + '"'
+        buildConfigField "String", 'ApiKey_BaseUrl_Aut_Sms', '"' + ApiKey_BaseUrl_Aut_Sms + '"'
         buildConfigField "String", 'ApiKey_baseUrl_Apps', '"' + ApiKey_baseUrl_Apps + '"'
 
         buildConfigField "String", 'Apikey_BaseUrl_Signup', '"' + ApiKey_BaseUrl_Signup + '"'
@@ -27,10 +28,12 @@ android {
         buildConfigField "String", 'Apikey_BaseUrl_refreshtoken', '"' + ApiKey_BaseUrl_refreshtoken + '"'
 
         buildConfigField "String", 'ApiKey_LoadPoem', '"' + ApiKey_LoadPoem + '"'
+        buildConfigField "String", 'ApiKey_LoadFav', '"' + Apikey_Fav + '"'
         buildConfigField "String", 'Apikey_CatList', '"' + Apikey_CatList + '"'
         buildConfigField "String", 'Apikey_PoemList', '"' + Apikey_PoemList + '"'
         buildConfigField "String", 'Apikey_PoetContents', '"' + Apikey_PoetContents + '"'
         buildConfigField "String", 'Apikey_SectionList', '"' + Apikey_SectionList + '"'
+        buildConfigField "String", 'Apikey_Fav', '"' + Apikey_Fav + '"'
 
         buildConfigField "String", 'Apikey_Audio', '"' + Apikey_Audio + '"'
 

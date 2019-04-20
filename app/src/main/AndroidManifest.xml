@@ -27,7 +27,9 @@
         android:largeHeap="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:theme="@style/AppTheme">
-        <activity android:name=".About_us"></activity>
+        <activity android:name=".RecycleFavPoem"></activity>
+        <activity android:name=".Auth.SignupCode" />
+        <activity android:name=".About_us" />
         <activity android:name=".EditProfileUser" />
         <activity android:name=".ProfileUser" />
         <activity android:name=".Cat_Farsi_Poems" />
@@ -81,7 +83,7 @@
             android:name="co.ronash.pushe.cr"
             android:value="Tm9uZQ==" />
 
-        <activity android:name=".Auth.signup" />
+        <activity android:name=".Auth.Signup" />
     </application>
 
 </manifest>

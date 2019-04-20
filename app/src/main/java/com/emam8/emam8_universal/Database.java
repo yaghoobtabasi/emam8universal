@@ -355,6 +355,9 @@ public class Database extends SQLiteOpenHelper {
     public int del_fav(String article_id) {
 
         int res_del = mydb.delete("content_fav", "content_id " + "=" + article_id, null);
+        Log.d("del_fav"," "+res_del);
+        if(res_del>0)
+            mydb.delete("app_contents", "id " + "=" + article_id, null);
 //        mydb.close();
         Log.i("info", " Deleted fav=" + res_del);
         return res_del;
@@ -380,6 +383,7 @@ public class Database extends SQLiteOpenHelper {
 
         return false;
     }
+
 
 
 //------------------------c 	این خط هم برای آپدیت هست ولی استفاده نشده است
