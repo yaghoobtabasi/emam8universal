@@ -764,7 +764,7 @@ public class ShowPoem extends RuntimePermissionsActivity implements View.OnTouch
                     public void onResponse(Call<Poem_fav> call, Response<Poem_fav> response) {
 
 
-                        git
+
                         Log.d("Emam8", response.body().toString());
                     }
 
