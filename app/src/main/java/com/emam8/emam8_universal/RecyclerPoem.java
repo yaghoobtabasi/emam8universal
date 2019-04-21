@@ -61,7 +61,7 @@ public class RecyclerPoem extends AppCompatActivity {
     private RecyclerView recyclerView;
     private Cursor cursor;
     private Database db;
-    private MediaPlayer mediaPlayer;
+    public MediaPlayer mediaPlayer;
 
 
     private PoemsAdapter adapter;
@@ -151,6 +151,35 @@ public class RecyclerPoem extends AppCompatActivity {
         setData(catid);
 
 
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if(mediaPlayer!=null){
+            Log.d("Life","onPause");
+            mediaPlayer.pause();
+
+        }
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if(mediaPlayer!=null){
+            Log.d("Life","onStop");
+            mediaPlayer.pause();
+
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if(mediaPlayer!=null){
+            Log.d("Life","onDestroy");
+            mediaPlayer.stop();
+        }
     }
 
     private void setToolbar(String title) {

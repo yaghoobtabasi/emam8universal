@@ -92,7 +92,7 @@ public class PoemsAdapter extends RecyclerView.Adapter<PoemsAdapter.PoemViewHold
         }
 
         String profile_pic = poems.getProfile();
-        if (profile != null && profile_pic.length() < 8) {
+        if (profile_pic != null && profile_pic.length() < 8) {
             profile_pic = "images/icons/emam8_logo_orange.png";
 
         }
@@ -115,8 +115,10 @@ public class PoemsAdapter extends RecyclerView.Adapter<PoemsAdapter.PoemViewHold
             public void onClick(View v) {
                 String audio_url = "https://emam8.com/" + sabk;
 
+
+
                 try {
-                    Log.d("playing_status", playing_status + " position= " + playing_position);
+                    Log.d("playing_status", playing_status + " position= " + playing_position+" sabk="+sabk);
                     if ((playing_status == 0)) {
 
                         mediaPlayer.setDataSource(mContext, Uri.parse(audio_url));
@@ -139,7 +141,7 @@ public class PoemsAdapter extends RecyclerView.Adapter<PoemsAdapter.PoemViewHold
                         holder.img_play.setImageResource(R.drawable.ic_play_arrow_black_24dp);
                     }
 
-                    if (playing_position != position) {
+                    if (playing_position != position ) {
 
 
                         old_playing_position = playing_position;
@@ -237,6 +239,9 @@ public class PoemsAdapter extends RecyclerView.Adapter<PoemsAdapter.PoemViewHold
         });
 
 
+
+
+
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -244,7 +249,7 @@ public class PoemsAdapter extends RecyclerView.Adapter<PoemsAdapter.PoemViewHold
 //                Toast.makeText(mContext,poems.getArticle_id()+"", Toast.LENGTH_SHORT).show();
                 String sabk = poems.getSabk();
                 Intent i;
-                if (sabk.length() > 10) {
+                if (sabk !=null && sabk.length() > 10) {
 
                     i = new Intent(mContext, ShowPoem.class);
                     i.putExtra("sabk", poems.getSabk());
@@ -304,6 +309,7 @@ public class PoemsAdapter extends RecyclerView.Adapter<PoemsAdapter.PoemViewHold
         holder.img_play.setImageResource(R.drawable.ic_play_arrow_black_24dp);
 //        Log.d("new holder",poem.get(position).getTitle());
     }
+
 
 
 }

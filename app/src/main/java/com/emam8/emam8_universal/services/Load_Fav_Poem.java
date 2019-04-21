@@ -20,7 +20,6 @@ public interface Load_Fav_Poem {
     @POST(BuildConfig.ApiKey_LoadFav)
     Call<Poem_fav> fav_article(
             @HeaderMap Map<String, String> headers,
-
             @Query("article_id") String article_id,
             @Query("user_id") String user_id,
             @Query("mode") String mode,
@@ -30,7 +29,7 @@ public interface Load_Fav_Poem {
 
     );
 
-    @DELETE(BuildConfig.ApiKey_LoadFav)
+    @POST(BuildConfig.ApiKey_LoadFav)
     Call<Poem_fav> del_fav_article(
             @HeaderMap Map<String, String> headers,
 

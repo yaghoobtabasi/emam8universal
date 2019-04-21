@@ -160,9 +160,10 @@ public class ShowPoem extends RuntimePermissionsActivity implements View.OnTouch
                     if (db.add_to_app_contents(id, title, body, sname, cname, catid, sectionid, state, sabk, poet_id, poet_name, "1")) {
                         db.add_fav(id);
                         Log.d("tagg", "success");
+                        setDataFav("ADD");
                         heart_btn.setImageResource(R.drawable.heartr);
                         Snackbar.make(findViewById(R.id.rltv_snack_showPoem), "به لیست علاقه مندی ها اضافه شد", Snackbar.LENGTH_LONG).show();
-                        setDataFav("ADD");
+
                     }
 
                 } else {
@@ -429,9 +430,12 @@ public class ShowPoem extends RuntimePermissionsActivity implements View.OnTouch
 
     @Override
     protected void onDestroy() {
+        if(timer!=null)
+        {
+            timer.purge();
+            timer.cancel();
+        }
 
-        timer.purge();
-        timer.cancel();
         mediaPlayer.release();
         super.onDestroy();
 
@@ -722,34 +726,33 @@ public class ShowPoem extends RuntimePermissionsActivity implements View.OnTouch
     }
 
     private void setDataFav(String method) {
-        final String Url = BuildConfig.Apikey_Fav;
+//        final String Url = BuildConfig.Apikey_Fav;
 
         Retrofit retro = new Retrofit.Builder()
                 .baseUrl(BuildConfig.ApiKey_baseUrl_Apps)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
-
         HashMap<String, String> headerMap = new HashMap<String, String>();
         headerMap.put("content-type", "application/json");
-
-
         Load_Fav_Poem load_poems = retro.create(Load_Fav_Poem.class);
-
-
         String app_name = MainActivity.app_name;
         String app_version = MainActivity.app_version;
-
         AppPreferenceTools appPreferenceTools = new AppPreferenceTools(getApplicationContext());
         String user_id = appPreferenceTools.getUserId();
+        if(user_id.length()==0)
+            user_id="62";
 
+        Log.d("Fav","Start fav operation"+method);
         switch (method) {
 
-            case "ADD":
+            case "ADD":{
+
                 Call<Poem_fav> call = load_poems.fav_article(headerMap, article_id, user_id,"ADD", app_name, app_version, "json");
+                Log.d("Fav","Start Adding ...");
                 call.enqueue(new Callback<Poem_fav>() {
                     @Override
                     public void onResponse(Call<Poem_fav> call, Response<Poem_fav> response) {
-
+                        Log.d("retro Fav Add",response.body().toString());
                     }
 
                     @Override
@@ -758,15 +761,17 @@ public class ShowPoem extends RuntimePermissionsActivity implements View.OnTouch
                     }
 
                 });
+            }
                 break;
 
-            case "Remove":
-                Call<Poem_fav> call_del = load_poems.del_fav_article(headerMap, article_id, user_id,"DELETE", app_name, app_version, "json");
+            case "Remove": {
+                Log.d("Fav", "Start Removing ...");
+                Call<Poem_fav> call_del = load_poems.del_fav_article(headerMap, article_id, user_id , "DELETE", app_name, app_version, "json");
                 call_del.enqueue(new Callback<Poem_fav>() {
                     @Override
                     public void onResponse(Call<Poem_fav> call, Response<Poem_fav> response) {
 
-
+                        Log.d("retro Fav Remove", response.body().toString());
 
                     }
 
@@ -776,6 +781,7 @@ public class ShowPoem extends RuntimePermissionsActivity implements View.OnTouch
 
                     }
                 });
+            }
                 break;
         }
 

@@ -51,9 +51,14 @@ public class MainActivity extends AppCompatActivity {
         AppPreferenceTools appPreferenceTools = new AppPreferenceTools(getBaseContext());
         String id = appPreferenceTools.getUserId();
         Database db=new Database(this);
+try {
+    db.useable();
+    db.open();
+}
+catch (Exception e){
+    e.printStackTrace();
+}
 
-        db.useable();
-        db.open();
 
         String count_fav=db.fav_count();
         db.close();
