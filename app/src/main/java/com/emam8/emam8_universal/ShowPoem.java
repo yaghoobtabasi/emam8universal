@@ -96,7 +96,7 @@ public class ShowPoem extends RuntimePermissionsActivity implements View.OnTouch
     private SwipeRefreshLayout swipeRefreshLayout;
     private String body_response, id, title, body, sabk, sname, cname, sectionid, catid, state_1, poet_id, poet_name;
 
-    ImageView heart_btn, img_play, share_btn, dwonload_img;
+    ImageView heart_btn, img_play, share_btn, dwonload_img,img_ref;
 
     ConnectionDetector connectionDetector;
 
@@ -116,6 +116,7 @@ public class ShowPoem extends RuntimePermissionsActivity implements View.OnTouch
 
         share_btn = (ImageView) findViewById(R.id.share_showPoem);
         dwonload_img = (ImageView) findViewById(R.id.download_showPoem);
+        img_ref = findViewById(R.id.ref_showPoem);
 
 
         Bundle bundle = getIntent().getExtras();
@@ -203,21 +204,16 @@ public class ShowPoem extends RuntimePermissionsActivity implements View.OnTouch
         }
 
 
-        swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swiprefresh_sabk);
-
-        swipeRefreshLayout.setColorSchemeColors(Color.GRAY, Color.GREEN, Color.BLUE,
-                Color.RED, Color.CYAN);
-        swipeRefreshLayout.setDistanceToTriggerSync(20);// in dips
-        swipeRefreshLayout.setSize(SwipeRefreshLayout.DEFAULT);// LARGE also can be used
-        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+        img_ref.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onRefresh() {
-
+            public void onClick(View v) {
                 load_data();
-                pDialog.dismiss();
-
             }
         });
+
+
+
+
 
 
         load_data();
@@ -675,7 +671,6 @@ public class ShowPoem extends RuntimePermissionsActivity implements View.OnTouch
             public void onResponse(Call<Poem_retro> call, Response<Poem_retro> response) {
                 Log.d(MainActivity.TAG, "onResponse : server response :" + response.toString());
 
-                pDialog.dismiss();
                 try {
                     body = response.body().getBody();
                     txt_body.setText(body);
@@ -691,7 +686,6 @@ public class ShowPoem extends RuntimePermissionsActivity implements View.OnTouch
                     poet_name = response.body().getPoet_name();
 
 
-                    swipeRefreshLayout.setRefreshing(false);
                     pDialog.dismiss();
 
 //                    Log.e(" Full json gson => ", new Gson().toJson(response));
@@ -722,7 +716,7 @@ public class ShowPoem extends RuntimePermissionsActivity implements View.OnTouch
     }
 
     private void setDataFav(String method) {
-        final String Url = BuildConfig.Apikey_Fav;
+//        final String Url = BuildConfig.Apikey_Fav;
 
         Retrofit retro = new Retrofit.Builder()
                 .baseUrl(BuildConfig.ApiKey_baseUrl_Apps)

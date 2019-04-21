@@ -43,14 +43,12 @@ import javax.security.auth.callback.Callback;
 public class PoemsAdapter extends RecyclerView.Adapter<PoemsAdapter.PoemViewHolder> {
 
     private List<Poems> poem;
-
     private String catid, gid, poet_id, mode;
     private MediaPlayer mediaPlayer;
-    private Boolean isplay;
     Context mContext;
+
     private Integer playing_status = 0, playing_position = 0, old_playing_position = 0;
 
-    int click = 0;
 
     Database db;
 
@@ -92,7 +90,7 @@ public class PoemsAdapter extends RecyclerView.Adapter<PoemsAdapter.PoemViewHold
         }
 
         String profile_pic = poems.getProfile();
-        if (profile != null && profile_pic.length() < 8) {
+        if (profile_pic != null && profile_pic.length() < 8) {
             profile_pic = "images/icons/emam8_logo_orange.png";
 
         }
@@ -244,7 +242,7 @@ public class PoemsAdapter extends RecyclerView.Adapter<PoemsAdapter.PoemViewHold
 //                Toast.makeText(mContext,poems.getArticle_id()+"", Toast.LENGTH_SHORT).show();
                 String sabk = poems.getSabk();
                 Intent i;
-                if (sabk.length() > 10) {
+                if (sabk != null && sabk.length() > 10) {
 
                     i = new Intent(mContext, ShowPoem.class);
                     i.putExtra("sabk", poems.getSabk());
@@ -283,12 +281,12 @@ public class PoemsAdapter extends RecyclerView.Adapter<PoemsAdapter.PoemViewHold
 
         public PoemViewHolder(View itemView) {
             super(itemView);
-            txtTitle = (TextView) itemView.findViewById(R.id.txt_title);
+            txtTitle = (TextView) itemView.findViewById(R.id.txt_title_ca);
             txt_poet = (TextView) itemView.findViewById(R.id.txt_poet);
-            imgpoet = (ImageView) itemView.findViewById(R.id.img_poet);
+            imgpoet = (ImageView) itemView.findViewById(R.id.img_poet_ca);
             img_play = (ImageView) itemView.findViewById(R.id.play_paus_btn);
             cardView = itemView.findViewById(R.id.cardView_poetPage);
-            img_fav = itemView.findViewById(R.id.like_content);
+            img_fav = itemView.findViewById(R.id.like_content_ca);
 
 
         }

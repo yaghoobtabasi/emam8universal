@@ -3,6 +3,7 @@ package com.emam8.emam8_universal;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -77,7 +78,7 @@ public class RecyclerPoem extends AppCompatActivity {
     private int view_threshold = 10;
     private int page_number = 1;
     private SwipeRefreshLayout swipeRefreshLayout;
-    private ImageView heart_btn;
+    private ImageView backHome;
 
 
     @Override
@@ -93,7 +94,7 @@ public class RecyclerPoem extends AppCompatActivity {
         allow_private = "";
         lang = "torki";
 
-        ImageView hearth;
+        backHome = findViewById(R.id.img_backHome);
 
         toolbar = (Toolbar) findViewById(R.id.toolbar_rec);
         textView = (TextView) findViewById(R.id.txt_tool_rec);
@@ -143,6 +144,14 @@ public class RecyclerPoem extends AppCompatActivity {
                 setData(catid);
 
 
+            }
+        });
+
+        backHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(RecyclerPoem.this,MainActivity.class);
+                startActivity(i);
             }
         });
 

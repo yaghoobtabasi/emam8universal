@@ -28,7 +28,7 @@ android {
         buildConfigField "String", 'Apikey_BaseUrl_refreshtoken', '"' + ApiKey_BaseUrl_refreshtoken + '"'
 
         buildConfigField "String", 'ApiKey_LoadPoem', '"' + ApiKey_LoadPoem + '"'
-        buildConfigField "String", 'ApiKey_LoadFav', '"' + Apikey_Fav + '"'
+        buildConfigField "String", 'ApiKey_LoadFav', '"' + ApiKey_LoadFav + '"'
         buildConfigField "String", 'Apikey_CatList', '"' + Apikey_CatList + '"'
         buildConfigField "String", 'Apikey_PoemList', '"' + Apikey_PoemList + '"'
         buildConfigField "String", 'Apikey_PoetContents', '"' + Apikey_PoetContents + '"'
