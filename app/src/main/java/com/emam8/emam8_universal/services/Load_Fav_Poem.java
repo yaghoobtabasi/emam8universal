@@ -23,6 +23,7 @@ public interface Load_Fav_Poem {
 
             @Query("article_id") String article_id,
             @Query("user_id") String user_id,
+            @Query("mode") String mode,
             @Query("app_name") String app_name,
             @Query("version") String version,
             @Query("api-type") String type
@@ -35,6 +36,7 @@ public interface Load_Fav_Poem {
 
             @Query("article_id") String article_id,
             @Query("user_id") String user_id,
+            @Query("mode") String mode,
             @Query("app_name") String app_name,
             @Query("version") String version,
             @Query("api-type") String type

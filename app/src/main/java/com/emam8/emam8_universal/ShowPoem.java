@@ -37,6 +37,7 @@ import com.emam8.emam8_universal.services.FileDownloadClient;
 import com.emam8.emam8_universal.services.Load_Fav_Poem;
 import com.emam8.emam8_universal.services.Load_poems;
 import com.emam8.emam8_universal.services.RuntimePermissionsActivity;
+import com.emam8.emam8_universal.utilities.AppPreferenceTools;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonIOException;
 import com.google.gson.JsonObject;
@@ -80,7 +81,6 @@ public class ShowPoem extends RuntimePermissionsActivity implements View.OnTouch
     Handler handler;
     Runnable runnable;
     private String sabk_url;
-    private Boolean isplay;
     public TextView txt_title, txt_body;
     private Database db;
     public int pos;
@@ -92,7 +92,7 @@ public class ShowPoem extends RuntimePermissionsActivity implements View.OnTouch
     public String sabk_path;
     public final String Site_url = BuildConfig.Apikey_BaseUrl;
     private static final String url_load_poem = BuildConfig.ApiKey_baseUrl_Apps;
-    private String article_id, user_id, state, new_body, poet;
+    private String article_id, state, new_body, poet;
     private SwipeRefreshLayout swipeRefreshLayout;
     private String body_response, id, title, body, sabk, sname, cname, sectionid, catid, state_1, poet_id, poet_name;
 
@@ -739,10 +739,13 @@ public class ShowPoem extends RuntimePermissionsActivity implements View.OnTouch
         String app_name = MainActivity.app_name;
         String app_version = MainActivity.app_version;
 
+        AppPreferenceTools appPreferenceTools = new AppPreferenceTools(getApplicationContext());
+        String user_id = appPreferenceTools.getUserId();
+
         switch (method) {
 
             case "ADD":
-                Call<Poem_fav> call = load_poems.fav_article(headerMap, article_id, "62", app_name, app_version, "json");
+                Call<Poem_fav> call = load_poems.fav_article(headerMap, article_id, user_id,"ADD", app_name, app_version, "json");
                 call.enqueue(new Callback<Poem_fav>() {
                     @Override
                     public void onResponse(Call<Poem_fav> call, Response<Poem_fav> response) {
@@ -758,14 +761,13 @@ public class ShowPoem extends RuntimePermissionsActivity implements View.OnTouch
                 break;
 
             case "Remove":
-                Call<Poem_fav> call_del = load_poems.del_fav_article(headerMap, article_id, "62", app_name, app_version, "json");
+                Call<Poem_fav> call_del = load_poems.del_fav_article(headerMap, article_id, user_id,"DELETE", app_name, app_version, "json");
                 call_del.enqueue(new Callback<Poem_fav>() {
                     @Override
                     public void onResponse(Call<Poem_fav> call, Response<Poem_fav> response) {
 
 
 
-                        Log.d("Emam8", response.body().toString());
                     }
 
                     @Override

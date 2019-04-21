@@ -13,10 +13,10 @@ public class Poem_fav {
     @Expose
     private String user_id;
 
-    public Poem_fav(String article_id, String user_id) {
-        this.article_id = article_id;
-        this.user_id = user_id;
-    }
+    @SerializedName("mode")
+    @Expose
+    private String mode;
+
 
     public String getArticle_id() {
         return article_id;
@@ -34,5 +34,11 @@ public class Poem_fav {
         this.user_id = user_id;
     }
 
+    public String getMode() {
+        return mode;
+    }
 
+    public void setMode(String mode) {
+        this.mode = mode;
+    }
 }

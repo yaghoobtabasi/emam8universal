@@ -77,12 +77,15 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/rltv_recycler_poem">
+        android:id="@+id/rltv_recycler_poem"
+        android:layoutDirection="rtl"
+        android:textDirection="rtl">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/signup_recycler_poem"/>
+            android:id="@+id/signup_recycler_poem"
+            android:layoutDirection="rtl"/>
 
     </RelativeLayout>
 

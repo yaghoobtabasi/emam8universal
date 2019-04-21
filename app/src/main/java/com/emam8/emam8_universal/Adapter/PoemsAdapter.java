@@ -7,6 +7,7 @@ import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.support.annotation.NonNull;
+import android.support.design.widget.Snackbar;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -23,6 +24,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.emam8.emam8_universal.Database;
 import com.emam8.emam8_universal.MainActivity;
 import com.emam8.emam8_universal.Model.Poems;
 import com.emam8.emam8_universal.R;
@@ -46,10 +48,11 @@ public class PoemsAdapter extends RecyclerView.Adapter<PoemsAdapter.PoemViewHold
     private MediaPlayer mediaPlayer;
     private Boolean isplay;
     Context mContext;
-    private ImageView img_play;
-    private Integer playing_status = 0, playing_position = 0,old_playing_position=0;
+    private Integer playing_status = 0, playing_position = 0, old_playing_position = 0;
 
-    int click=0;
+    int click = 0;
+
+    Database db;
 
 
     public PoemsAdapter(List<Poems> poem, String catid, String gid, String poet_id, String mode, Context mContext, MediaPlayer mediaPlayer) {
@@ -87,17 +90,19 @@ public class PoemsAdapter extends RecyclerView.Adapter<PoemsAdapter.PoemViewHold
         if (poems.getPoet().length() > 4) {
             title = title + "*" + poems.getPoet();
         }
+
         String profile_pic = poems.getProfile();
-        if (profile_pic.length() < 8) {
+        if (profile != null && profile_pic.length() < 8) {
             profile_pic = "images/icons/emam8_logo_orange.png";
 
         }
+
         String image_path = "https://emam8.com/" + profile_pic;
         Uri uri = Uri.parse(String.valueOf(Uri.parse(image_path)));
         Glide.with(mContext).load(uri).circleCrop().into(holder.imgpoet);
         holder.imgpoet.setLayerType(View.LAYER_TYPE_HARDWARE, null);
 
-        if (sabk.length() > 10) {
+        if (sabk != null && sabk.length() > 10) {
             holder.img_play.setVisibility(View.VISIBLE);
             holder.img_play.setImageResource(R.drawable.ic_play_arrow_black_24dp);
         } else {
@@ -118,7 +123,7 @@ public class PoemsAdapter extends RecyclerView.Adapter<PoemsAdapter.PoemViewHold
                         mediaPlayer.prepareAsync();
                         Log.d("play_pause ", "position=" + position + "  playing_status" + playing_status + " first condition");
                         playing_position = position;
-                        old_playing_position=position;
+                        old_playing_position = position;
 
                     }
                     if ((playing_status == 2) && (position == playing_position)) {
@@ -127,7 +132,7 @@ public class PoemsAdapter extends RecyclerView.Adapter<PoemsAdapter.PoemViewHold
                         playing_status = 1;
                         holder.img_play.setImageResource(R.drawable.ic_pause_black_24dp);
 
-                    } else if ((playing_status == 1)&& mediaPlayer.isPlaying() && (position == playing_position) ) {
+                    } else if ((playing_status == 1) && mediaPlayer.isPlaying() && (position == playing_position)) {
                         mediaPlayer.pause();
                         Log.d("paly_pause", "is_playing " + "fourth condition");
                         playing_status = 2;
@@ -137,10 +142,10 @@ public class PoemsAdapter extends RecyclerView.Adapter<PoemsAdapter.PoemViewHold
                     if (playing_position != position) {
 
 
-                        old_playing_position=playing_position;
+                        old_playing_position = playing_position;
                         playing_position = position;
-                        Log.d("play_pause", "position=" + position + "  playing_status" + playing_status + " third condition"+"old_position=>"+old_playing_position);
-                        change_play_pause_Image(holder,old_playing_position);
+                        Log.d("play_pause", "position=" + position + "  playing_status" + playing_status + " third condition" + "old_position=>" + old_playing_position);
+                        change_play_pause_Image(holder, old_playing_position);
 //                        holder.img_play.setImageResource(poem.get(old_playing_position));poem.get(old_playing_position);
 
 
@@ -156,8 +161,6 @@ public class PoemsAdapter extends RecyclerView.Adapter<PoemsAdapter.PoemViewHold
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
-
-
 
 
                     }
@@ -189,6 +192,26 @@ public class PoemsAdapter extends RecyclerView.Adapter<PoemsAdapter.PoemViewHold
 
             }
         });
+
+//        db = new Database(mContext);
+//        db.useable();
+//        db.open();
+//
+//        if (db.check_fav_content(catid)) {
+//            holder.img_fav.setImageResource(R.drawable.ic_favorite_black_24dp);
+//        } else {
+//            holder.img_fav.setImageResource(R.drawable.ic_favorite_border_black_24dp);
+//        }
+//
+//        holder.img_fav.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                db = new Database(mContext);
+//                db.useable();
+//                db.open();
+//
+//            }
+//        });
 
 
         holder.txtTitle.setText(title);
@@ -265,6 +288,7 @@ public class PoemsAdapter extends RecyclerView.Adapter<PoemsAdapter.PoemViewHold
             imgpoet = (ImageView) itemView.findViewById(R.id.img_poet);
             img_play = (ImageView) itemView.findViewById(R.id.play_paus_btn);
             cardView = itemView.findViewById(R.id.cardView_poetPage);
+            img_fav = itemView.findViewById(R.id.like_content);
 
 
         }
@@ -275,8 +299,7 @@ public class PoemsAdapter extends RecyclerView.Adapter<PoemsAdapter.PoemViewHold
     }
 
 
-    private void change_play_pause_Image(final PoemsAdapter.PoemViewHolder holder,final int position)
-    {
+    private void change_play_pause_Image(final PoemsAdapter.PoemViewHolder holder, final int position) {
 //        holder.img_play.setImageResource(poem.get(position).getYourMethodName());
         holder.img_play.setImageResource(R.drawable.ic_play_arrow_black_24dp);
 //        Log.d("new holder",poem.get(position).getTitle());

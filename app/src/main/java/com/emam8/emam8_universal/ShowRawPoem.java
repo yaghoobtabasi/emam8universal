@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -16,9 +17,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.emam8.emam8_universal.Model.Poem_fav;
 import com.emam8.emam8_universal.Model.Poem_retro;
+import com.emam8.emam8_universal.services.Load_Fav_Poem;
 import com.emam8.emam8_universal.services.Load_poems;
 import com.emam8.emam8_universal.services.ConnectionDetector;
+import com.emam8.emam8_universal.utilities.AppPreferenceTools;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonIOException;
 import com.google.gson.JsonParseException;
@@ -40,10 +44,10 @@ import static com.emam8.emam8_universal.MainActivity.app_version;
 public class ShowRawPoem extends AppCompatActivity {
     public TextView body_raw;
     private Database db;
-    private String article_id, state;
+    private String article_id, state,user_id;
     public String body_r, new_body;
-    ImageView heart_btn, share_btn;
-    private SwipeRefreshLayout swipeRefreshLayout;
+    ImageView heart_btn, share_btn, ref_btn;
+    private ProgressDialog progressDialog;
     private String body_response, id, title, sabk, sname, cname, sectionid, catid, state_1, body, poet_id, poet_name;
     private ConnectionDetector connectionDetector;
     public final String Site_url = BuildConfig.Apikey_BaseUrl;
@@ -60,7 +64,7 @@ public class ShowRawPoem extends AppCompatActivity {
         article_id = bundle.getString("article_id");
         state = bundle.getString("state");
         String poet = bundle.getString("poet");
-        String title = bundle.getString("title");
+        final String title = bundle.getString("title");
 
 
         db = new Database(ShowRawPoem.this);
@@ -70,27 +74,18 @@ public class ShowRawPoem extends AppCompatActivity {
         body_raw = (TextView) findViewById(R.id.txt_raw_body);
         heart_btn = (ImageView) findViewById(R.id.img_heart_btn_raw);
         share_btn = (ImageView) findViewById(R.id.img_share_btn_raw);
+        ref_btn = findViewById(R.id.img_refresh_btn_raw);
 
-        if (db.check_fav_content(article_id)) {
-            heart_btn.setImageResource(R.drawable.heartr);
-        } else {
-            heart_btn.setImageResource(R.drawable.heart);
-        }
-
-
-        swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swiprefresh_raw);
-
-        swipeRefreshLayout.setColorSchemeColors(Color.GRAY, Color.GREEN, Color.BLUE,
-                Color.RED, Color.CYAN);
-        swipeRefreshLayout.setDistanceToTriggerSync(20);// in dips
-        swipeRefreshLayout.setSize(SwipeRefreshLayout.DEFAULT);// LARGE also can be used
-        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+        ref_btn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onRefresh() {
+            public void onClick(View v) {
 
                 load_data();
 
+
+
             }
+
         });
 
 
@@ -101,6 +96,39 @@ public class ShowRawPoem extends AppCompatActivity {
         Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/Vazir.ttf");
         body_raw.setTypeface(tf);
 
+
+        if (db.check_fav_content(article_id)) {
+            heart_btn.setImageResource(R.drawable.heartr);
+        } else {
+            heart_btn.setImageResource(R.drawable.heart);
+        }
+
+        heart_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                db = new Database(ShowRawPoem.this);
+                db.writable();
+                db.open();
+                if (!db.check_fav_content(article_id)) {
+                    if (db.add_to_app_contents(id, title, body, sname, cname, catid, sectionid, state, sabk, poet_id, poet_name, "1")) {
+                        db.add_fav(id);
+                        Log.d("tagg", "success");
+                        heart_btn.setImageResource(R.drawable.heartr);
+                        Snackbar.make(findViewById(R.id.rltv_snack_showRawPoem), "به لیست علاقه مندی ها اضافه شد", Snackbar.LENGTH_LONG).show();
+                        setDataFav("ADD");
+                    }
+
+                } else {
+                    Log.d("tagg", "fail");
+                    db.del_fav(id);
+                    setDataFav("Remove");
+                    heart_btn.setImageResource(R.drawable.heart);
+                    Snackbar.make(findViewById(R.id.rltv_snack_showRawPoem), "از لیست علاقه مندی ها حذف شد", Snackbar.LENGTH_LONG).show();
+
+                }
+                db.close();
+            }
+        });
 
         share_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -174,19 +202,19 @@ public class ShowRawPoem extends AppCompatActivity {
                     poet_name = response.body().getPoet_name();
 
 
-                    swipeRefreshLayout.setRefreshing(false);
+//                    swipeRefreshLayout.setRefreshing(false);
                     pDialog.dismiss();
 
 //                    Log.e(" Full json gson => ", new Gson().toJson(response));
 //                    Log.e(MainActivity.TAG,"on response:Json :"+data.optString("json"));
                 } catch (JsonIOException e) {
                     Log.e(MainActivity.TAG, "on response:JsonException :" + e.getMessage());
-                    swipeRefreshLayout.setRefreshing(false);
+
                     pDialog.dismiss();
                 } catch (JsonParseException e) {
                     Log.e(MainActivity.TAG, "on response:JsonParseException :" + e.getMessage());
                     e.printStackTrace();
-                    swipeRefreshLayout.setRefreshing(false);
+
                     pDialog.dismiss();
                 }
             }
@@ -201,6 +229,65 @@ public class ShowRawPoem extends AppCompatActivity {
         String text = body_response;
 
         pDialog.dismiss();
+
+    }
+
+    private void setDataFav(String method) {
+        final String Url = BuildConfig.Apikey_Fav;
+
+        Retrofit retro = new Retrofit.Builder()
+                .baseUrl(BuildConfig.ApiKey_baseUrl_Apps)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        HashMap<String, String> headerMap = new HashMap<String, String>();
+        headerMap.put("content-type", "application/json");
+
+
+        Load_Fav_Poem load_poems = retro.create(Load_Fav_Poem.class);
+
+
+        String app_name = MainActivity.app_name;
+        String app_version = MainActivity.app_version;
+
+        AppPreferenceTools appPreferenceTools = new AppPreferenceTools(getApplicationContext());
+        user_id = appPreferenceTools.getUserId();
+
+        switch (method) {
+
+            case "ADD":
+                Call<Poem_fav> call = load_poems.fav_article(headerMap, article_id, user_id,"ADD", app_name, app_version, "json");
+                call.enqueue(new Callback<Poem_fav>() {
+                    @Override
+                    public void onResponse(Call<Poem_fav> call, Response<Poem_fav> response) {
+
+                    }
+
+                    @Override
+                    public void onFailure(Call<Poem_fav> call, Throwable t) {
+                        Log.w("Emam8", "Error1 " + t.getMessage());
+                    }
+
+                });
+                break;
+
+            case "Remove":
+                Call<Poem_fav> call_del = load_poems.del_fav_article(headerMap, article_id,user_id,"DELETE", app_name, app_version, "json");
+                call_del.enqueue(new Callback<Poem_fav>() {
+                    @Override
+                    public void onResponse(Call<Poem_fav> call, Response<Poem_fav> response) {
+
+                    }
+
+                    @Override
+                    public void onFailure(Call<Poem_fav> call, Throwable t) {
+                        Log.w("Emam8", "Error1 " + t.getMessage());
+
+                    }
+                });
+                break;
+        }
+
 
     }
 

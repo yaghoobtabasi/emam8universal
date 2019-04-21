@@ -34,8 +34,10 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.emam8.emam8_universal.Adapter.PoemsAdapter;
 import com.emam8.emam8_universal.App.AppController;
+import com.emam8.emam8_universal.Model.Poem_fav;
 import com.emam8.emam8_universal.Model.Poems;
 import com.emam8.emam8_universal.Model.SecFarsiPoem;
+import com.emam8.emam8_universal.services.Load_Fav_Poem;
 import com.miguelcatalan.materialsearchview.MaterialSearchView;
 
 import org.json.JSONArray;
@@ -44,8 +46,13 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class RecyclerPoem extends AppCompatActivity {
@@ -85,6 +92,8 @@ public class RecyclerPoem extends AppCompatActivity {
         poet_id = "";
         allow_private = "";
         lang = "torki";
+
+        ImageView hearth;
 
         toolbar = (Toolbar) findViewById(R.id.toolbar_rec);
         textView = (TextView) findViewById(R.id.txt_tool_rec);
@@ -132,6 +141,7 @@ public class RecyclerPoem extends AppCompatActivity {
             public void onRefresh() {
 
                 setData(catid);
+
 
             }
         });
