@@ -3,15 +3,18 @@ package com.emam8.emam8_universal;
 import android.database.Cursor;
 import android.graphics.Color;
 import android.media.MediaPlayer;
+import android.support.design.widget.Snackbar;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 import android.widget.TextView;
 
 import com.emam8.emam8_universal.Adapter.PoemsAdapter;
+import com.emam8.emam8_universal.Adapter.RecycleFavAdapter;
 import com.emam8.emam8_universal.Model.Poems;
 
 import java.util.ArrayList;
@@ -26,6 +29,8 @@ public class RecycleFavPoem extends AppCompatActivity {
     private Database db;
     private MediaPlayer mediaPlayer;
 
+    TextView textView;
+
 
     private PoemsAdapter adapter;
     private LinearLayoutManager layoutManager;
@@ -36,18 +41,22 @@ public class RecycleFavPoem extends AppCompatActivity {
     private int pastVisibleItems, visibleItemCount, totalItemCount, previoustotal = 0;
     private int view_threshold = 10;
     private int page_number = 1;
-    private SwipeRefreshLayout swipeRefreshLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recycle_fav_poem);
 
+        textView = findViewById(R.id.txt_signup_recycler_favpoem);
+
         recyclerView = (RecyclerView) findViewById(R.id.poem_recycler_fav);
         adapter = new PoemsAdapter(poem, catid, gid, poet_id, mode, RecycleFavPoem.this, mediaPlayer);
         layoutManager = new LinearLayoutManager(RecycleFavPoem.this);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
+
+        mediaPlayer = new MediaPlayer();
+
 
         load_from_Database();
 
@@ -63,6 +72,7 @@ public class RecycleFavPoem extends AppCompatActivity {
 
         if (cursor.getCount() == 0) {
 
+            textView.setVisibility(View.VISIBLE);
         } else {
             while (cursor.moveToNext()) {
                 String title = cursor.getString(1);
