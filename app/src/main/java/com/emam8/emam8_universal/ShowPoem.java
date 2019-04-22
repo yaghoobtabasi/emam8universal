@@ -93,7 +93,7 @@ public class ShowPoem extends RuntimePermissionsActivity implements View.OnTouch
     public final String Site_url = BuildConfig.Apikey_BaseUrl;
     private static final String url_load_poem = BuildConfig.ApiKey_baseUrl_Apps;
     private String article_id, state, new_body, poet;
-    private SwipeRefreshLayout swipeRefreshLayout;
+
     private String body_response, id, title, body, sabk, sname, cname, sectionid, catid, state_1, poet_id, poet_name;
 
     ImageView heart_btn, img_play, share_btn, dwonload_img;
@@ -204,21 +204,8 @@ public class ShowPoem extends RuntimePermissionsActivity implements View.OnTouch
         }
 
 
-        swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swiprefresh_sabk);
 
-        swipeRefreshLayout.setColorSchemeColors(Color.GRAY, Color.GREEN, Color.BLUE,
-                Color.RED, Color.CYAN);
-        swipeRefreshLayout.setDistanceToTriggerSync(20);// in dips
-        swipeRefreshLayout.setSize(SwipeRefreshLayout.DEFAULT);// LARGE also can be used
-        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
 
-                load_data();
-                pDialog.dismiss();
-
-            }
-        });
 
 
         load_data();
@@ -695,20 +682,20 @@ public class ShowPoem extends RuntimePermissionsActivity implements View.OnTouch
                     poet_name = response.body().getPoet_name();
 
 
-                    swipeRefreshLayout.setRefreshing(false);
+
                     pDialog.dismiss();
 
 //                    Log.e(" Full json gson => ", new Gson().toJson(response));
 //                    Log.e(MainActivity.TAG,"on response:Json :"+data.optString("json"));
                 } catch (JsonIOException e) {
                     Log.e(MainActivity.TAG, "on response:JsonException :" + e.getMessage());
-                    swipeRefreshLayout.setRefreshing(false);
+
                     pDialog.dismiss();
                 } catch (JsonParseException e) {
                     Log.e(MainActivity.TAG, "on response:JsonParseException :" + e.getMessage());
                     e.printStackTrace();
                     pDialog.dismiss();
-                    swipeRefreshLayout.setRefreshing(false);
+
                 }
             }
 
