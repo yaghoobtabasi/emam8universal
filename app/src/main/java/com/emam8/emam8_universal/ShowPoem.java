@@ -204,7 +204,21 @@ public class ShowPoem extends RuntimePermissionsActivity implements View.OnTouch
         }
 
 
+        swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swiprefresh_sabk);
 
+        swipeRefreshLayout.setColorSchemeColors(Color.GRAY, Color.GREEN, Color.BLUE,
+                Color.RED, Color.CYAN);
+        swipeRefreshLayout.setDistanceToTriggerSync(20);// in dips
+        swipeRefreshLayout.setSize(SwipeRefreshLayout.DEFAULT);// LARGE also can be used
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+
+                load_data();
+                pDialog.dismiss();
+
+            }
+        });
 
 
         load_data();
@@ -681,7 +695,7 @@ public class ShowPoem extends RuntimePermissionsActivity implements View.OnTouch
                     poet_name = response.body().getPoet_name();
 
 
-
+                    swipeRefreshLayout.setRefreshing(false);
                     pDialog.dismiss();
 
 //                    Log.e(" Full json gson => ", new Gson().toJson(response));
@@ -738,9 +752,7 @@ public class ShowPoem extends RuntimePermissionsActivity implements View.OnTouch
                 call.enqueue(new Callback<Poem_fav>() {
                     @Override
                     public void onResponse(Call<Poem_fav> call, Response<Poem_fav> response) {
-                        Log.d("retro Fav Add",response.body().getResult());
-                        if(response.body().getSuccess().compareTo("true")==0)
-                            Toast.makeText(getApplicationContext(),"Added",Toast.LENGTH_SHORT).show();
+                        Log.d("retro Fav Add",response.body().toString());
                     }
 
                     @Override
@@ -761,12 +773,7 @@ public class ShowPoem extends RuntimePermissionsActivity implements View.OnTouch
 
                         Log.d("retro Fav Remove", response.body().toString());
 
-                        if(response.body().getSuccess().compareTo("true")==0)
-                            Toast.makeText(getApplicationContext(),"Deleted",Toast.LENGTH_SHORT).show();
-
-
-
-                }
+                    }
 
                     @Override
                     public void onFailure(Call<Poem_fav> call, Throwable t) {
