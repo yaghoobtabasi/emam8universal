@@ -31,7 +31,7 @@
             >
 
             <ImageView
-                android:id="@+id/like_content"
+                android:id="@+id/like_content_ca"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_alignParentLeft="true"
@@ -45,7 +45,7 @@
                 android:layout_height="30dp"
                 android:clickable="true"
                 android:layout_marginLeft="6dp"
-                android:layout_toRightOf="@+id/like_content"
+                android:layout_toRightOf="@+id/like_content_ca"
                 tools:src="@drawable/ic_play_arrow_black_24dp" />
 
         </RelativeLayout>
@@ -62,7 +62,7 @@
 
 
                 <ImageView
-                    android:id="@+id/img_poet"
+                    android:id="@+id/img_poet_ca"
                     android:layout_width="75dp"
                     android:layout_height="75dp"
                     android:layout_gravity="center"
@@ -83,7 +83,7 @@
                 android:textDirection="rtl">
 
                 <TextView
-                    android:id="@+id/txt_title"
+                    android:id="@+id/txt_title_ca"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:ellipsize="end"

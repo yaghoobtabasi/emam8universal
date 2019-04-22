@@ -3,15 +3,10 @@ package com.emam8.emam8_universal;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
-import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
-
-import com.emam8.emam8_universal.Auth.login_activity;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 

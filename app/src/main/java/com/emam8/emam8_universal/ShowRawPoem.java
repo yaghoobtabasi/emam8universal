@@ -74,7 +74,7 @@ public class ShowRawPoem extends AppCompatActivity {
         body_raw = (TextView) findViewById(R.id.txt_raw_body);
         heart_btn = (ImageView) findViewById(R.id.img_heart_btn_raw);
         share_btn = (ImageView) findViewById(R.id.img_share_btn_raw);
-        ref_btn = findViewById(R.id.img_refresh_btn_raw);
+        ref_btn = (ImageView) findViewById(R.id.img_refresh_btn_raww);
 
         ref_btn.setOnClickListener(new View.OnClickListener() {
             @Override

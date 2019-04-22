@@ -14,9 +14,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.Toolbar;
 
-import com.emam8.emam8_universal.Auth.login_activity;
 import com.emam8.emam8_universal.services.ConnectionDetector;
 import com.emam8.emam8_universal.utilities.AppPreferenceTools;
 

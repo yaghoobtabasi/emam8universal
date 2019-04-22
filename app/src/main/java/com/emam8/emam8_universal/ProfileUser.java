@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.RelativeLayout;
 
+import com.emam8.emam8_universal.Auth.Login;
 import com.emam8.emam8_universal.utilities.AppPreferenceTools;
 
 public class ProfileUser extends AppCompatActivity {
@@ -46,6 +47,9 @@ public class ProfileUser extends AppCompatActivity {
             public void onClick(View v) {
                 AppPreferenceTools appPreferenceTools=new AppPreferenceTools(getApplicationContext());
                 appPreferenceTools.removeAllPrefs();
+                Intent i=new Intent(ProfileUser.this, Login.class);
+                startActivity(i);
+                finish();
             }
         });
 

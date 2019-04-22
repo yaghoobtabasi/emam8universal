@@ -42,7 +42,7 @@
         </activity>
         <activity android:name=".MainActivity" />
         <activity android:name=".splash_book" />
-        <activity android:name=".Auth.login_activity" />
+        <activity android:name=".Auth.Login" />
         <activity android:name=".SherActivity" />
         <activity android:name=".Sec_Farsi_poems" />
         <activity android:name=".TorkiPoem" />

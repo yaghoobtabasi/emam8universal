@@ -41,7 +41,7 @@
 
 
     <string name="msg_err_signup_lenth">حد اقل طول رمز بایستی 6 کاراکتر باشد</string>
-    <string name="msg_err_signup_username_length">حد اقل طول شماره موبایل یا ایمیل بایستی ده کاراکتر باشد</string>
+    <string name="msg_err_signup_username_length">حد اقل طول شماره موبایل بایستی یازده کاراکتر باشد</string>
     <string name="msg_err_signup_pass_confirm">هر دو رمز وارد شده باید یکسان باشد</string>
 
 

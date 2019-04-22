@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Auth.login_activity">
+    tools:context=".Auth.Login">
 
     <ImageView
         android:id="@+id/background"
@@ -67,11 +67,11 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/_20sdp"
                         android:layout_marginRight="@dimen/_20sdp"
-                        android:hint="موبایل یا ایمیل"
+                        android:hint="شماره موبایل"
                         android:inputType="textEmailAddress"
-                        android:textSize="@dimen/_14sdp"
                         android:textColor="@android:color/black"
-                        android:textColorHint="@android:color/black"/>
+                        android:textColorHint="@android:color/black"
+                        android:textSize="@dimen/_14sdp" />
 
                 </android.support.design.widget.TextInputLayout>
 

@@ -6,7 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.TextView;
 
-import com.emam8.emam8_universal.Auth.login_activity;
+import com.emam8.emam8_universal.Auth.Login;
 import com.emam8.emam8_universal.Model.User_info;
 import com.emam8.emam8_universal.services.RetroService;
 import com.emam8.emam8_universal.utilities.AppPreferenceTools;
@@ -69,7 +69,7 @@ public class Splash extends AppCompatActivity {
                     finish();
                 }else{
                     Log.d("emam8","پاسخ درستی از سرور دریافت نشد");
-                    Intent intent=new Intent(Splash.this,login_activity.class);
+                    Intent intent=new Intent(Splash.this, Login.class);
                     startActivity(intent);
                     finish();
 
@@ -79,7 +79,7 @@ public class Splash extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<User_info> call, Throwable t) {
-                Intent intent=new Intent(Splash.this,login_activity.class);
+                Intent intent=new Intent(Splash.this, Login.class);
                 startActivity(intent);
                 finish();
 

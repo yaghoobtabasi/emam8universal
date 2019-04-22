@@ -15,12 +15,15 @@ public class AuthenticationResponseModel implements Serializable {
     @SerializedName("success")
     @Expose
     public Boolean success;
+
     @SerializedName("access_token")
     @Expose
     public String access_token;
+
     @SerializedName("user_id")
     @Expose
     public String user_id;
+
     @SerializedName("expire_in_sec")
     @Expose
     public String expire_in_sec;

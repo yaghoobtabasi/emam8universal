@@ -5,40 +5,48 @@ import com.google.gson.annotations.SerializedName;
 
 public class Poem_fav {
 
-    @SerializedName("article_id")
+    @SerializedName("msg")
     @Expose
-    private String article_id;
+    private String msg;
 
-    @SerializedName("user_id")
+    @SerializedName("result")
     @Expose
-    private String user_id;
+    private String result;
 
-    @SerializedName("mode")
+    @SerializedName("success")
     @Expose
-    private String mode;
+    private String success;
 
-
-    public String getArticle_id() {
-        return article_id;
+    public String getMsg() {
+        return msg;
     }
 
-    public void setArticle_id(String article_id) {
-        this.article_id = article_id;
+    public void setMsg(String msg) {
+        this.msg = msg;
     }
 
-    public String getUser_id() {
-        return user_id;
+    public String getResult() {
+        return result;
     }
 
-    public void setUser_id(String user_id) {
-        this.user_id = user_id;
+    public void setResult(String result) {
+        this.result = result;
     }
 
-    public String getMode() {
-        return mode;
+    public String getSuccess() {
+        return success;
     }
 
-    public void setMode(String mode) {
-        this.mode = mode;
+    public void setSuccess(String success) {
+        this.success = success;
+    }
+
+    @Override
+    public String toString() {
+        return "Poem_fav{" +
+                "msg='" + msg + '\'' +
+                ", result='" + result + '\'' +
+                ", success='" + success + '\'' +
+                '}';
     }
 }

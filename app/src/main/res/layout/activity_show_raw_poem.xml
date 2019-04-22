@@ -58,7 +58,7 @@
                             android:layout_weight="1"
                             android:src="@drawable/share" />
                         <ImageView
-                            android:id="@+id/img_refresh_btn_raw"
+                            android:id="@+id/img_refresh_btn_raww"
                             android:layout_width="30dp"
                             android:layout_height="30dp"
                             android:layout_gravity="center"
